@@ -21,11 +21,11 @@ const NotFound = () => {
               The page you're looking for doesn't exist or has been moved.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild className="rounded-sm">
+              <Button asChild className="rounded-none px-8 text-sm tracking-[0.15em] uppercase">
                 <Link to="/">Return Home</Link>
               </Button>
-              <Button asChild variant="outline" className="rounded-sm">
-                <Link to="/products">Browse Products</Link>
+              <Button asChild variant="outline" className="rounded-none px-8 text-sm tracking-[0.15em] uppercase">
+                <Link to="/products">Browse Portfolio</Link>
               </Button>
             </div>
           </motion.div>

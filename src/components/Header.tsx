@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useWishlist } from "@/hooks/useWishlist";
 import { CartIcon } from "@/components/CartIcon";
 import { collections } from "@/data/products";
+import logo from "@/assets/bartey-logo.jpg.asset.json";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -47,9 +48,22 @@ export const Header = () => {
           {/* Logo */}
           <Link
             to="/"
-            className="font-serif text-2xl md:text-3xl tracking-tight text-foreground hover:text-primary transition-colors duration-300"
+            className="flex items-center gap-3 group"
+            aria-label="Bartey Decor — home"
           >
-            Maison
+            <img
+              src={logo.url}
+              alt="Bartey Decor"
+              className="h-10 md:h-12 w-auto object-contain"
+            />
+            <span className="hidden sm:flex flex-col leading-tight">
+              <span className="font-serif text-xl md:text-2xl tracking-tight text-foreground group-hover:text-primary transition-colors duration-300">
+                Bartey Decor
+              </span>
+              <span className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground">
+                Your Style, Our Work
+              </span>
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -58,7 +72,7 @@ export const Header = () => {
               <NavigationMenuList>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="bg-transparent text-xs font-medium tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground">
-                    Collections
+                    Services
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid w-[400px] gap-1 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
@@ -91,7 +105,7 @@ export const Header = () => {
               to="/products"
               className="text-xs font-medium tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300 link-underline"
             >
-              Shop All
+              Portfolio
             </Link>
 
             <Link
@@ -100,14 +114,20 @@ export const Header = () => {
             >
               About
             </Link>
+
+            <Link
+              to="/contact"
+              className="text-xs font-medium tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300 link-underline"
+            >
+              Contact
+            </Link>
           </div>
 
           {/* Right side actions */}
           <div className="flex items-center gap-2">
-            {/* Wishlist Icon with Tooltip */}
             <Tooltip>
               <TooltipTrigger asChild>
-                <button className="relative p-2 hover:bg-accent transition-colors duration-300 group">
+                <button className="relative p-2 hover:bg-accent transition-colors duration-300 group" aria-label="Saved pieces">
                   <Heart className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
                   <AnimatePresence>
                     {items.length > 0 && (
@@ -125,10 +145,10 @@ export const Header = () => {
               </TooltipTrigger>
               <TooltipContent side="bottom" className="max-w-xs">
                 {items.length === 0 ? (
-                  <p className="text-sm">Your wishlist is empty</p>
+                  <p className="text-sm">No saved pieces yet</p>
                 ) : (
                   <div className="space-y-2">
-                    <p className="text-sm font-medium">{items.length} saved {items.length === 1 ? 'item' : 'items'}</p>
+                    <p className="text-sm font-medium">{items.length} saved {items.length === 1 ? 'piece' : 'pieces'}</p>
                     <div className="space-y-1">
                       {items.slice(0, 3).map((item) => (
                         <p key={item.id} className="text-xs text-muted-foreground truncate">
@@ -144,13 +164,12 @@ export const Header = () => {
               </TooltipContent>
             </Tooltip>
 
-            {/* Cart Icon */}
             <CartIcon />
 
-            {/* Mobile menu button */}
             <button
               className="md:hidden p-2 hover:bg-accent transition-colors duration-300"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
             >
               <AnimatePresence mode="wait">
                 {mobileMenuOpen ? (
@@ -192,9 +211,9 @@ export const Header = () => {
               <div className="py-8 space-y-6">
                 <div className="space-y-1">
                   <p className="text-[10px] font-semibold tracking-[0.3em] uppercase text-muted-foreground/50 px-2 mb-3">
-                    Collections
+                    Services
                   </p>
-                  {collections.slice(0, 6).map((collection, i) => (
+                  {collections.map((collection, i) => (
                     <motion.div
                       key={collection.id}
                       initial={{ opacity: 0, x: -10 }}
@@ -213,9 +232,10 @@ export const Header = () => {
                 </div>
                 <div className="pt-6 border-t border-border space-y-1">
                   {[
-                    { to: "/products", label: "Shop All" },
+                    { to: "/products", label: "Portfolio" },
                     { to: "/about", label: "About" },
-                    { to: "/cart", label: "Shopping Bag" },
+                    { to: "/contact", label: "Contact" },
+                    { to: "/cart", label: "Your Selection" },
                   ].map((link, i) => (
                     <motion.div
                       key={link.to}

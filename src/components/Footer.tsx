@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Instagram, Phone, MapPin, Mail } from "lucide-react";
 import { collections } from "@/data/products";
+import { CONTACT } from "@/lib/contact";
+import logo from "@/assets/bartey-logo.jpg.asset.json";
 
 export const Footer = () => {
   return (
@@ -10,35 +12,33 @@ export const Footer = () => {
         <div className="container-full py-12 md:py-16">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
             <div>
-              <Link
-                to="/"
-                className="font-serif text-3xl md:text-4xl tracking-tight text-background"
-              >
-                Maison
+              <Link to="/" className="flex items-center gap-3">
+                <img
+                  src={logo.url}
+                  alt="Bartey Decor"
+                  className="h-12 w-auto object-contain bg-background/95 p-1.5 rounded-sm"
+                />
+                <span className="font-serif text-3xl md:text-4xl tracking-tight text-background">
+                  Bartey Decor
+                </span>
               </Link>
               <p className="mt-3 text-sm text-background/50 leading-relaxed max-w-xs">
-                Curated home objects and lifestyle pieces for considered living.
+                {CONTACT.tagline}. Premium custom furniture and interior décor for homes and businesses across Ghana.
               </p>
             </div>
 
-            {/* Newsletter in footer */}
+            {/* CTA in footer */}
             <div className="max-w-sm w-full">
               <p className="text-[10px] font-semibold tracking-[0.3em] uppercase text-background/40 mb-3">
-                Stay Connected
+                Start Your Project
               </p>
-              <form className="flex gap-0">
-                <input
-                  type="email"
-                  placeholder="Your email"
-                  className="flex-1 h-12 px-4 text-sm bg-background/5 border border-background/15 text-background placeholder:text-background/30 focus:outline-none focus:border-background/40 transition-colors"
-                />
-                <button
-                  type="submit"
-                  className="h-12 px-5 text-sm font-medium bg-background text-foreground hover:bg-background/90 transition-colors"
-                >
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </form>
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-between w-full h-12 px-5 text-sm font-medium bg-background text-foreground hover:bg-background/90 transition-colors group"
+              >
+                <span className="tracking-[0.1em] uppercase text-xs">Request a Quote</span>
+                <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+              </Link>
             </div>
           </div>
         </div>
@@ -47,13 +47,13 @@ export const Footer = () => {
       {/* Main footer content */}
       <div className="container-full py-12 md:py-16">
         <div className="grid gap-10 md:grid-cols-4">
-          {/* Collections */}
+          {/* Services */}
           <div>
             <h4 className="text-[11px] font-semibold tracking-[0.25em] uppercase text-background/40 mb-5">
-              Collections
+              Services
             </h4>
             <ul className="space-y-3">
-              {collections.slice(0, 6).map((collection) => (
+              {collections.map((collection) => (
                 <li key={collection.id}>
                   <Link
                     to={`/products?collection=${collection.slug}`}
@@ -66,68 +66,26 @@ export const Footer = () => {
             </ul>
           </div>
 
-          {/* Explore */}
+          {/* Quick Links */}
           <div>
             <h4 className="text-[11px] font-semibold tracking-[0.25em] uppercase text-background/40 mb-5">
-              Explore
+              Quick Links
             </h4>
             <ul className="space-y-3">
               <li>
-                <Link
-                  to="/products"
-                  className="text-sm text-background/60 hover:text-background transition-colors duration-300"
-                >
-                  Shop All
-                </Link>
+                <Link to="/" className="text-sm text-background/60 hover:text-background transition-colors">Home</Link>
               </li>
               <li>
-                <Link
-                  to="/about"
-                  className="text-sm text-background/60 hover:text-background transition-colors duration-300"
-                >
-                  Our Story
-                </Link>
+                <Link to="/products" className="text-sm text-background/60 hover:text-background transition-colors">Portfolio</Link>
               </li>
               <li>
-                <Link
-                  to="/cart"
-                  className="text-sm text-background/60 hover:text-background transition-colors duration-300"
-                >
-                  Shopping Bag
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Support */}
-          <div>
-            <h4 className="text-[11px] font-semibold tracking-[0.25em] uppercase text-background/40 mb-5">
-              Support
-            </h4>
-            <ul className="space-y-3">
-              <li>
-                <a
-                  href="#"
-                  className="text-sm text-background/60 hover:text-background transition-colors duration-300"
-                >
-                  Shipping & Returns
-                </a>
+                <Link to="/about" className="text-sm text-background/60 hover:text-background transition-colors">About Us</Link>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="text-sm text-background/60 hover:text-background transition-colors duration-300"
-                >
-                  Care Guide
-                </a>
+                <Link to="/contact" className="text-sm text-background/60 hover:text-background transition-colors">Contact</Link>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="text-sm text-background/60 hover:text-background transition-colors duration-300"
-                >
-                  FAQ
-                </a>
+                <Link to="/cart" className="text-sm text-background/60 hover:text-background transition-colors">Your Selection</Link>
               </li>
             </ul>
           </div>
@@ -137,19 +95,58 @@ export const Footer = () => {
             <h4 className="text-[11px] font-semibold tracking-[0.25em] uppercase text-background/40 mb-5">
               Contact
             </h4>
+            <ul className="space-y-3 text-sm">
+              <li className="flex items-start gap-2 text-background/60">
+                <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                <span>{CONTACT.location}</span>
+              </li>
+              {CONTACT.phones.map((p) => (
+                <li key={p.tel} className="flex items-center gap-2">
+                  <Phone className="w-4 h-4 flex-shrink-0 text-background/40" />
+                  <a href={`tel:${p.tel}`} className="text-background/60 hover:text-background transition-colors">
+                    {p.label}
+                  </a>
+                </li>
+              ))}
+              <li className="flex items-center gap-2">
+                <Mail className="w-4 h-4 flex-shrink-0 text-background/40" />
+                <a href={`mailto:${CONTACT.email}`} className="text-background/60 hover:text-background transition-colors">
+                  {CONTACT.email}
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Follow */}
+          <div>
+            <h4 className="text-[11px] font-semibold tracking-[0.25em] uppercase text-background/40 mb-5">
+              Follow
+            </h4>
             <ul className="space-y-3">
               <li>
                 <a
-                  href="mailto:hello@maison.com"
-                  className="text-sm text-background/60 hover:text-background transition-colors duration-300"
+                  href={CONTACT.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm text-background/60 hover:text-background transition-colors"
                 >
-                  hello@maison.com
+                  <Instagram className="w-4 h-4" />
+                  {CONTACT.instagramHandle}
                 </a>
               </li>
               <li>
-                <p className="text-sm text-background/40 leading-relaxed">
-                  Mon–Fri, 9am–6pm CET
-                </p>
+                <a
+                  href={CONTACT.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-background/60 hover:text-background transition-colors"
+                >
+                  WhatsApp Us
+                </a>
+              </li>
+              <li className="pt-3">
+                <p className="text-[11px] font-semibold tracking-[0.15em] uppercase text-background/40 mb-1">Hours</p>
+                <p className="text-sm text-background/50">{CONTACT.hours}</p>
               </li>
             </ul>
           </div>
@@ -160,27 +157,10 @@ export const Footer = () => {
       <div className="border-t border-background/10">
         <div className="container-full py-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-background/30">
-            © {new Date().getFullYear()} Maison. All rights reserved.
+            © {new Date().getFullYear()} Bartey Decor. All rights reserved. A registered Ghanaian company.
           </p>
           <div className="flex gap-8">
-            <a
-              href="#"
-              className="text-xs text-background/30 hover:text-background/60 transition-colors duration-300"
-            >
-              Privacy Policy
-            </a>
-            <a
-              href="#"
-              className="text-xs text-background/30 hover:text-background/60 transition-colors duration-300"
-            >
-              Terms of Service
-            </a>
-            <a
-              href="#"
-              className="text-xs text-background/30 hover:text-background/60 transition-colors duration-300"
-            >
-              Cookie Policy
-            </a>
+            <span className="text-xs text-background/30">Founded by {CONTACT.founder}</span>
           </div>
         </div>
       </div>

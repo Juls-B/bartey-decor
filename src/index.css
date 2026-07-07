@@ -4,112 +4,115 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Premium Boutique Home & Lifestyle Design System
-   Warm Scandinavian-inspired palette with elevated visual language
+/* Bartey Decor Design System
+   Premium teal & turquoise palette on warm neutral canvas
 */
 
 @layer base {
   :root {
-    /* Warm neutral palette */
+    /* Warm neutral canvas */
     --background: 40 33% 97%;
-    --foreground: 30 10% 15%;
+    --foreground: 200 25% 12%;
 
     --card: 40 30% 95%;
-    --card-foreground: 30 10% 15%;
+    --card-foreground: 200 25% 12%;
 
     --popover: 40 33% 97%;
-    --popover-foreground: 30 10% 15%;
+    --popover-foreground: 200 25% 12%;
 
-    /* Muted terracotta primary */
-    --primary: 18 45% 45%;
+    /* Deep teal primary (from logo) */
+    --primary: 190 62% 30%;
     --primary-foreground: 40 33% 97%;
 
-    /* Warm taupe secondary */
-    --secondary: 30 15% 85%;
-    --secondary-foreground: 30 10% 20%;
+    /* Warm secondary */
+    --secondary: 200 15% 88%;
+    --secondary-foreground: 200 25% 15%;
 
-    --muted: 30 10% 90%;
-    --muted-foreground: 30 8% 45%;
+    --muted: 200 10% 92%;
+    --muted-foreground: 200 8% 40%;
 
-    /* Soft cream accent */
-    --accent: 35 40% 92%;
-    --accent-foreground: 30 10% 20%;
+    /* Soft turquoise accent */
+    --accent: 189 40% 92%;
+    --accent-foreground: 200 25% 15%;
 
     --destructive: 0 65% 50%;
     --destructive-foreground: 40 33% 97%;
 
-    --border: 30 15% 88%;
-    --input: 30 15% 88%;
-    --ring: 18 45% 45%;
+    --border: 200 12% 86%;
+    --input: 200 12% 86%;
+    --ring: 190 62% 30%;
 
     --radius: 0.25rem;
 
-    /* Custom tokens */
-    --terracotta: 18 45% 45%;
-    --terracotta-light: 18 45% 55%;
+    /* Brand tokens */
+    --terracotta: 190 62% 30%;         /* alias — teal, keeps template refs working */
+    --terracotta-light: 189 65% 49%;   /* turquoise */
+    --teal-deep: 190 62% 30%;
+    --teal-bright: 189 65% 49%;
     --warm-cream: 40 33% 97%;
-    --warm-taupe: 30 15% 75%;
-    --charcoal: 30 10% 15%;
-    --linen: 35 25% 93%;
-    
-    /* Typography */
+    --warm-taupe: 200 12% 78%;
+    --charcoal: 200 25% 12%;
+    --linen: 40 25% 94%;
+
     --font-serif: 'Cormorant Garamond', Georgia, serif;
     --font-sans: 'Inter', system-ui, sans-serif;
 
     --sidebar-background: 40 30% 95%;
-    --sidebar-foreground: 30 10% 25%;
-    --sidebar-primary: 18 45% 45%;
+    --sidebar-foreground: 200 25% 20%;
+    --sidebar-primary: 190 62% 30%;
     --sidebar-primary-foreground: 40 33% 97%;
-    --sidebar-accent: 35 40% 92%;
-    --sidebar-accent-foreground: 30 10% 20%;
-    --sidebar-border: 30 15% 88%;
-    --sidebar-ring: 18 45% 45%;
+    --sidebar-accent: 189 40% 92%;
+    --sidebar-accent-foreground: 200 25% 15%;
+    --sidebar-border: 200 12% 86%;
+    --sidebar-ring: 190 62% 30%;
   }
 
   .dark {
-    --background: 30 10% 10%;
-    --foreground: 40 20% 90%;
+    --background: 200 25% 8%;
+    --foreground: 40 20% 92%;
 
-    --card: 30 10% 12%;
-    --card-foreground: 40 20% 90%;
+    --card: 200 25% 10%;
+    --card-foreground: 40 20% 92%;
 
-    --popover: 30 10% 10%;
-    --popover-foreground: 40 20% 90%;
+    --popover: 200 25% 8%;
+    --popover-foreground: 40 20% 92%;
 
-    --primary: 18 50% 55%;
-    --primary-foreground: 30 10% 10%;
+    --primary: 189 65% 55%;
+    --primary-foreground: 200 25% 8%;
 
-    --secondary: 30 10% 20%;
-    --secondary-foreground: 40 20% 90%;
+    --secondary: 200 15% 18%;
+    --secondary-foreground: 40 20% 92%;
 
-    --muted: 30 10% 18%;
-    --muted-foreground: 30 10% 60%;
+    --muted: 200 15% 16%;
+    --muted-foreground: 200 10% 60%;
 
-    --accent: 30 15% 18%;
-    --accent-foreground: 40 20% 90%;
+    --accent: 200 25% 18%;
+    --accent-foreground: 40 20% 92%;
 
     --destructive: 0 60% 45%;
-    --destructive-foreground: 40 20% 90%;
+    --destructive-foreground: 40 20% 92%;
 
-    --border: 30 10% 20%;
-    --input: 30 10% 20%;
-    --ring: 18 50% 55%;
+    --border: 200 15% 20%;
+    --input: 200 15% 20%;
+    --ring: 189 65% 55%;
 
-    --terracotta: 18 50% 55%;
-    --terracotta-light: 18 50% 65%;
-    --warm-cream: 30 10% 10%;
-    --warm-taupe: 30 10% 30%;
-    --charcoal: 40 20% 90%;
-    --linen: 30 10% 15%;
+    --terracotta: 189 65% 55%;
+    --terracotta-light: 189 65% 65%;
+    --teal-deep: 189 65% 55%;
+    --teal-bright: 189 70% 65%;
+    --warm-cream: 200 25% 8%;
+    --warm-taupe: 200 10% 30%;
+    --charcoal: 40 20% 92%;
+    --linen: 200 20% 12%;
 
-    --sidebar-background: 30 10% 12%;
-    --sidebar-foreground: 40 20% 90%;
-    --sidebar-primary: 18 50% 55%;
-    --sidebar-primary-foreground: 30 10% 10%;
-    --sidebar-accent: 30 15% 18%;
-    --sidebar-accent-foreground: 40 20% 90%;
-    --sidebar-border: 30 10% 20%;
-    --sidebar-ring: 18 50% 55%;
+    --sidebar-background: 200 25% 10%;
+    --sidebar-foreground: 40 20% 92%;
+    --sidebar-primary: 189 65% 55%;
+    --sidebar-primary-foreground: 200 25% 8%;
+    --sidebar-accent: 200 25% 18%;
+    --sidebar-accent-foreground: 40 20% 92%;
+    --sidebar-border: 200 15% 20%;
+    --sidebar-ring: 189 65% 55%;
   }
 }
 
@@ -134,11 +137,10 @@
   }
 
   ::selection {
-    background: hsl(var(--terracotta) / 0.15);
+    background: hsl(var(--teal-deep) / 0.18);
     color: hsl(var(--foreground));
   }
 
-  /* Premium scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
   }
@@ -170,19 +172,16 @@
     @apply max-w-[1600px] mx-auto px-6 lg:px-12;
   }
 
-  /* Editorial grid for products */
   .editorial-grid {
     @apply grid gap-8 md:gap-10;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
 
-  /* Premium editorial grid with featured item */
   .editorial-grid-featured {
     @apply grid gap-6 md:gap-8;
     grid-template-columns: repeat(12, 1fr);
   }
 
-  /* Elegant link underline animation */
   .link-underline {
     @apply relative;
   }
@@ -196,13 +195,11 @@
     @apply scale-x-100;
   }
 
-  /* Linen texture background */
   .bg-linen {
     background-color: hsl(var(--linen));
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23d4c4b5' fill-opacity='0.15' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23a8c8ce' fill-opacity='0.12' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
   }
 
-  /* Subtle hover scale */
   .hover-lift {
     @apply transition-all duration-500 ease-out;
   }
@@ -211,7 +208,6 @@
     @apply -translate-y-1 shadow-lg;
   }
 
-  /* Premium image reveal */
   .image-reveal {
     @apply overflow-hidden;
   }
@@ -224,7 +220,6 @@
     @apply scale-105;
   }
 
-  /* Horizontal divider with style */
   .divider-ornament {
     @apply flex items-center gap-6;
   }
@@ -235,7 +230,6 @@
     @apply flex-1 h-px bg-border;
   }
 
-  /* Product card image swap */
   .product-image-swap {
     @apply relative overflow-hidden;
   }
@@ -261,7 +255,6 @@
     @apply opacity-100;
   }
 
-  /* Marquee animation */
   .marquee {
     @apply flex overflow-hidden;
   }
@@ -270,7 +263,6 @@
     @apply flex shrink-0 animate-marquee;
   }
 
-  /* Stagger children animations */
   .stagger-children > * {
     @apply opacity-0;
     animation: stagger-fade-in 0.6s ease-out forwards;
@@ -283,7 +275,6 @@
   .stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
   .stagger-children > *:nth-child(6) { animation-delay: 0.6s; }
 
-  /* Elegant button styles */
   .btn-premium {
     @apply relative overflow-hidden;
   }
@@ -297,7 +288,6 @@
     @apply translate-y-0;
   }
 
-  /* Text reveal animation */
   .text-reveal {
     @apply overflow-hidden;
   }
@@ -320,7 +310,6 @@
     font-family: var(--font-sans);
   }
 
-  /* Aspect ratios for editorial layouts */
   .aspect-editorial {
     aspect-ratio: 3/4;
   }
@@ -333,56 +322,35 @@
     aspect-ratio: 2/3;
   }
 
-  /* Letter spacing utilities */
   .tracking-editorial {
     letter-spacing: 0.15em;
   }
+
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 }
 
-/* Keyframe animations */
 @keyframes stagger-fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes ken-burns {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.08);
-  }
+  0% { transform: scale(1); }
+  100% { transform: scale(1.08); }
 }
 
 @keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 @keyframes slow-reveal {
-  0% {
-    clip-path: inset(0 100% 0 0);
-  }
-  100% {
-    clip-path: inset(0 0% 0 0);
-  }
+  0% { clip-path: inset(0 100% 0 0); }
+  100% { clip-path: inset(0 0% 0 0); }
 }
 
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-6px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
 }
