@@ -22,6 +22,9 @@ import armchairBoucle from "@/assets/armchair-boucle.jfif";
 import tvConsoleModern from "@/assets/tv-console-modern.jfif";
 import officeReception from "@/assets/office-reception.jfif";
 
+import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+
 const Index = () => {
   const featured = getFeaturedProducts();
   const latestProducts = featured.length ? featured.slice(0, 4) : products.slice(0, 4);
@@ -46,16 +49,77 @@ const Index = () => {
   };
 
   useEffect(() => {
+    // slightly longer dwell time on each slide
     const interval = window.setInterval(() => {
-      setActiveHeroSlide((current) => {
-        const next = (current + 1) % heroSlides.length;
-        setSlideDirection(1);
-        return next;
-      });
-    }, 7000);
+      setSlideDirection(1);
+      setActiveHeroSlide((current) => (current + 1) % heroSlides.length);
+    }, 8500);
 
     return () => window.clearInterval(interval);
   }, [heroSlides.length]);
+
+  // The incoming slide slides fully in over the outgoing one.
+  // The outgoing slide stays put (no exit motion, no opacity change),
+  // so it just gets covered — no gap, no white flash between them.
+  const slideVariants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? "100%" : "-100%",
+    }),
+    center: {
+      x: "0%",
+    },
+    exit: {
+      x: "0%",
+    },
+  };
+
+  return (
+    <div ref={heroRef} className="relative h-screen w-full overflow-hidden">
+      <motion.div
+        style={{ y: heroImageY, opacity: heroOpacity }}
+        className="absolute inset-0"
+      >
+        <AnimatePresence initial={false} custom={slideDirection}>
+          <motion.div
+            key={activeHeroSlide}
+            custom={slideDirection}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{
+              duration: 1.2,
+              ease: [0.76, 0, 0.24, 1], // premium "expo-ish" cubic-bezier
+            }}
+            className="absolute inset-0 will-change-transform"
+          >
+            <img
+              src={heroSlides[activeHeroSlide]}
+              alt={`Hero slide ${activeHeroSlide + 1}`}
+              className="h-full w-full object-cover"
+              draggable={false}
+            />
+          </motion.div>
+        </AnimatePresence>
+      </motion.div>
+
+      {/* Slide indicators, if you have them */}
+      <div className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 gap-2">
+        {heroSlides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => changeHeroSlide(index)}
+            className={`h-1.5 rounded-full transition-all duration-500 ${
+              index === activeHeroSlide ? "w-8 bg-white" : "w-1.5 bg-white/50"
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 
   const whyChoose = [
     { icon: ShieldCheck, title: "Registered Ghanaian Business", copy: "A trusted, fully registered company based in Madina, Accra." },
