@@ -22,9 +22,6 @@ import armchairBoucle from "@/assets/armchair-boucle.jfif";
 import tvConsoleModern from "@/assets/tv-console-modern.jfif";
 import officeReception from "@/assets/office-reception.jfif";
 
-import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
-
 const Index = () => {
   const featured = getFeaturedProducts();
   const latestProducts = featured.length ? featured.slice(0, 4) : products.slice(0, 4);
@@ -49,77 +46,31 @@ const Index = () => {
   };
 
   useEffect(() => {
-    // slightly longer dwell time on each slide
     const interval = window.setInterval(() => {
-      setSlideDirection(1);
-      setActiveHeroSlide((current) => (current + 1) % heroSlides.length);
+      setActiveHeroSlide((current) => {
+        const next = (current + 1) % heroSlides.length;
+        setSlideDirection(1);
+        return next;
+      });
     }, 8500);
 
     return () => window.clearInterval(interval);
   }, [heroSlides.length]);
 
-  // The incoming slide slides fully in over the outgoing one.
-  // The outgoing slide stays put (no exit motion, no opacity change),
-  // so it just gets covered — no gap, no white flash between them.
   const slideVariants = {
     enter: (direction: number) => ({
       x: direction > 0 ? "100%" : "-100%",
+      opacity: 1,
     }),
     center: {
       x: "0%",
+      opacity: 1,
     },
     exit: {
       x: "0%",
+      opacity: 1,
     },
   };
-
-  return (
-    <div ref={heroRef} className="relative h-screen w-full overflow-hidden">
-      <motion.div
-        style={{ y: heroImageY, opacity: heroOpacity }}
-        className="absolute inset-0"
-      >
-        <AnimatePresence initial={false} custom={slideDirection}>
-          <motion.div
-            key={activeHeroSlide}
-            custom={slideDirection}
-            variants={slideVariants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{
-              duration: 1.2,
-              ease: [0.76, 0, 0.24, 1], // premium "expo-ish" cubic-bezier
-            }}
-            className="absolute inset-0 will-change-transform"
-          >
-            <img
-              src={heroSlides[activeHeroSlide]}
-              alt={`Hero slide ${activeHeroSlide + 1}`}
-              className="h-full w-full object-cover"
-              draggable={false}
-            />
-          </motion.div>
-        </AnimatePresence>
-      </motion.div>
-
-      {/* Slide indicators, if you have them */}
-      <div className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 gap-2">
-        {heroSlides.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => changeHeroSlide(index)}
-            className={`h-1.5 rounded-full transition-all duration-500 ${
-              index === activeHeroSlide ? "w-8 bg-white" : "w-1.5 bg-white/50"
-            }`}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
-      </div>
-    </div>
-  );
-};
-
 
   const whyChoose = [
     { icon: ShieldCheck, title: "Registered Ghanaian Business", copy: "A trusted, fully registered company based in Madina, Accra." },
@@ -133,17 +84,27 @@ const Index = () => {
       {/* Hero */}
       <section ref={heroRef} className="relative h-[100svh] -mt-16 md:-mt-20 overflow-hidden">
         <motion.div className="absolute inset-0" style={{ y: heroImageY }}>
-          <AnimatePresence initial={false} mode="wait">
-            <motion.img
+          <AnimatePresence initial={false} custom={slideDirection} mode="wait">
+            <motion.div
               key={heroSlides[activeHeroSlide]}
-              src={heroSlides[activeHeroSlide]}
-              alt="Featured interior design showcase by Bartey Decor"
-              initial={{ x: slideDirection * 120, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: slideDirection * -120, opacity: 0 }}
-              transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] as const }}
-              className="w-full h-[120%] object-cover animate-ken-burns"
-            />
+              custom={slideDirection}
+              variants={slideVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{
+                duration: 1.2,
+                ease: [0.76, 0, 0.24, 1],
+              }}
+              className="absolute inset-0 will-change-transform"
+            >
+              <img
+                src={heroSlides[activeHeroSlide]}
+                alt="Featured interior design showcase by Bartey Decor"
+                className="w-full h-[120%] object-cover animate-ken-burns"
+                draggable={false}
+              />
+            </motion.div>
           </AnimatePresence>
           <div className="absolute inset-0 bg-gradient-to-b from-charcoal/40 via-charcoal/20 to-charcoal/60" />
           <div className="absolute bottom-6 right-6 md:bottom-8 md:right-8 flex gap-2">
