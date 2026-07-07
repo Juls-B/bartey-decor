@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ArrowDown, Instagram, ShieldCheck, Hammer, Truck, Wrench } from "lucide-react";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Layout } from "@/components/Layout";
 import { ProductCard } from "@/components/ProductCard";
 import { CollectionCard } from "@/components/CollectionCard";
@@ -9,6 +9,11 @@ import { collections, getFeaturedProducts, products } from "@/data/products";
 import { Button } from "@/components/ui/button";
 import { CONTACT } from "@/lib/contact";
 
+import slide1 from "@/assets/slide1.jpg";
+import slide2 from "@/assets/slide2.jpg";
+import slide3 from "@/assets/slide3.jpg";
+import slide4 from "@/assets/slide4.jpg";
+import slide5 from "@/assets/slide5.jpg";
 import warmLivingRoom from "@/assets/warm-living-room.jfif";
 import wardrobeFitted from "@/assets/wardrobe-fitted.jfif";
 import tvConsoleMarble from "@/assets/tv-console-marble.jfif";
@@ -22,6 +27,7 @@ const Index = () => {
   const latestProducts = featured.length ? featured.slice(0, 4) : products.slice(0, 4);
   const displayedCollections = collections.slice(0, 6);
   const heroRef = useRef<HTMLDivElement>(null);
+  const [activeHeroSlide, setActiveHeroSlide] = useState(0);
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
@@ -29,14 +35,16 @@ const Index = () => {
   const heroImageY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
-  const gallery = [
-    warmLivingRoom,
-    wardrobeFitted,
-    tvConsoleMarble,
-    greenSofa,
-    armchairBoucle,
-    officeReception,
-  ];
+  const heroSlides = [slide1, slide2, slide3, slide4, slide5];
+  const gallery = [...heroSlides];
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setActiveHeroSlide((current) => (current + 1) % heroSlides.length);
+    }, 5000);
+
+    return () => window.clearInterval(interval);
+  }, [heroSlides.length]);
 
   const whyChoose = [
     { icon: ShieldCheck, title: "Registered Ghanaian Business", copy: "A trusted, fully registered company based in Madina, Accra." },
@@ -50,12 +58,32 @@ const Index = () => {
       {/* Hero */}
       <section ref={heroRef} className="relative h-[100svh] -mt-16 md:-mt-20 overflow-hidden">
         <motion.div className="absolute inset-0" style={{ y: heroImageY }}>
-          <img
-            src={warmLivingRoom}
-            alt="Warm modern living room styled by Bartey Decor"
-            className="w-full h-[120%] object-cover animate-ken-burns"
-          />
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={heroSlides[activeHeroSlide]}
+              src={heroSlides[activeHeroSlide]}
+              alt="Featured interior design showcase by Bartey Decor"
+              initial={{ opacity: 0, scale: 1.03 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.03 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="w-full h-[120%] object-cover animate-ken-burns"
+            />
+          </AnimatePresence>
           <div className="absolute inset-0 bg-gradient-to-b from-charcoal/40 via-charcoal/20 to-charcoal/60" />
+          <div className="absolute bottom-6 right-6 md:bottom-8 md:right-8 flex gap-2">
+            {heroSlides.map((_, index) => (
+              <button
+                key={index}
+                type="button"
+                aria-label={`Show slide ${index + 1}`}
+                onClick={() => setActiveHeroSlide(index)}
+                className={`h-2.5 w-2.5 rounded-full border border-white/70 transition-all ${
+                  activeHeroSlide === index ? "bg-white scale-125" : "bg-white/35"
+                }`}
+              />
+            ))}
+          </div>
         </motion.div>
 
         <motion.div
