@@ -28,6 +28,7 @@ const Index = () => {
   const displayedCollections = collections.slice(0, 6);
   const heroRef = useRef<HTMLDivElement>(null);
   const [activeHeroSlide, setActiveHeroSlide] = useState(0);
+  const [slideDirection, setSlideDirection] = useState(1);
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
@@ -38,10 +39,20 @@ const Index = () => {
   const heroSlides = [slide1, slide2, slide3, slide4, slide5];
   const gallery = [...heroSlides];
 
+  const changeHeroSlide = (index: number) => {
+    if (index === activeHeroSlide) return;
+    setSlideDirection(index > activeHeroSlide ? 1 : -1);
+    setActiveHeroSlide(index);
+  };
+
   useEffect(() => {
     const interval = window.setInterval(() => {
-      setActiveHeroSlide((current) => (current + 1) % heroSlides.length);
-    }, 5000);
+      setActiveHeroSlide((current) => {
+        const next = (current + 1) % heroSlides.length;
+        setSlideDirection(1);
+        return next;
+      });
+    }, 7000);
 
     return () => window.clearInterval(interval);
   }, [heroSlides.length]);
@@ -58,15 +69,15 @@ const Index = () => {
       {/* Hero */}
       <section ref={heroRef} className="relative h-[100svh] -mt-16 md:-mt-20 overflow-hidden">
         <motion.div className="absolute inset-0" style={{ y: heroImageY }}>
-          <AnimatePresence mode="wait">
+          <AnimatePresence initial={false} mode="wait">
             <motion.img
               key={heroSlides[activeHeroSlide]}
               src={heroSlides[activeHeroSlide]}
               alt="Featured interior design showcase by Bartey Decor"
-              initial={{ opacity: 0, scale: 1.03 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 1.03 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+              initial={{ x: slideDirection * 120, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: slideDirection * -120, opacity: 0 }}
+              transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] as const }}
               className="w-full h-[120%] object-cover animate-ken-burns"
             />
           </AnimatePresence>
@@ -77,7 +88,7 @@ const Index = () => {
                 key={index}
                 type="button"
                 aria-label={`Show slide ${index + 1}`}
-                onClick={() => setActiveHeroSlide(index)}
+                onClick={() => changeHeroSlide(index)}
                 className={`h-2.5 w-2.5 rounded-full border border-white/70 transition-all ${
                   activeHeroSlide === index ? "bg-white scale-125" : "bg-white/35"
                 }`}

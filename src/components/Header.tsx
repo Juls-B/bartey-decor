@@ -25,6 +25,10 @@ export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { items } = useWishlist();
+  const headerTextClass = scrolled
+    ? "text-foreground hover:text-primary"
+    : "text-white/85 hover:text-white";
+  const headerBorderClass = scrolled ? "border-border/70" : "border-transparent";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,8 +43,9 @@ export const Header = () => {
       className={cn(
         "sticky top-0 z-50 transition-all duration-500",
         scrolled
-          ? "bg-background/95 backdrop-blur-md border-b border-border shadow-sm"
-          : "bg-background/80 backdrop-blur-sm border-b border-transparent"
+          ? "bg-background/20 backdrop-blur-md border-b shadow-sm"
+          : "bg-transparent backdrop-blur-none border-b",
+        headerBorderClass
       )}
     >
       <nav className="container-full">
@@ -54,13 +59,13 @@ export const Header = () => {
             <img
               src={logo}
               alt="Bartey Decor"
-              className="h-10 md:h-12 w-auto object-contain"
+              className="h-10 md:h-12 w-10 md:w-12 rounded-full object-cover border border-white/50 shadow-sm"
             />
             <span className="hidden sm:flex flex-col leading-tight">
-              <span className="font-serif text-xl md:text-2xl tracking-tight text-foreground group-hover:text-primary transition-colors duration-300">
+              <span className={cn("font-serif text-xl md:text-2xl tracking-tight transition-colors duration-300", headerTextClass)}>
                 Bartey Decor
               </span>
-              <span className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground">
+              <span className={cn("text-[10px] tracking-[0.25em] uppercase", scrolled ? "text-muted-foreground" : "text-white/70")}>
                 Your Style, Our Work
               </span>
             </span>
@@ -71,7 +76,7 @@ export const Header = () => {
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="bg-transparent text-xs font-medium tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground">
+                  <NavigationMenuTrigger className={cn("bg-transparent text-xs font-medium tracking-[0.15em] uppercase", headerTextClass)}>
                     Services
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -103,21 +108,21 @@ export const Header = () => {
 
             <Link
               to="/products"
-              className="text-xs font-medium tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300 link-underline"
+              className={cn("text-xs font-medium tracking-[0.15em] uppercase transition-colors duration-300 link-underline", headerTextClass)}
             >
               Portfolio
             </Link>
 
             <Link
               to="/about"
-              className="text-xs font-medium tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300 link-underline"
+              className={cn("text-xs font-medium tracking-[0.15em] uppercase transition-colors duration-300 link-underline", headerTextClass)}
             >
               About
             </Link>
 
             <Link
               to="/contact"
-              className="text-xs font-medium tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300 link-underline"
+              className={cn("text-xs font-medium tracking-[0.15em] uppercase transition-colors duration-300 link-underline", headerTextClass)}
             >
               Contact
             </Link>
@@ -127,7 +132,7 @@ export const Header = () => {
           <div className="flex items-center gap-2">
             <Tooltip>
               <TooltipTrigger asChild>
-                <button className="relative p-2 hover:bg-accent transition-colors duration-300 group" aria-label="Saved pieces">
+                <button className={cn("relative p-2 hover:bg-accent/40 transition-colors duration-300 group rounded-full", scrolled ? "text-foreground" : "text-white/90")} aria-label="Saved pieces">
                   <Heart className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
                   <AnimatePresence>
                     {items.length > 0 && (
@@ -167,7 +172,7 @@ export const Header = () => {
             <CartIcon />
 
             <button
-              className="md:hidden p-2 hover:bg-accent transition-colors duration-300"
+              className={cn("md:hidden p-2 hover:bg-accent/40 transition-colors duration-300 rounded-full", scrolled ? "text-foreground" : "text-white/90")}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
             >
