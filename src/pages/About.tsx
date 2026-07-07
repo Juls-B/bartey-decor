@@ -12,12 +12,12 @@ import {
 } from "@/components/ui/accordion";
 import { CONTACT } from "@/lib/contact";
 
-import warmLivingRoom from "@/assets/warm-living-room.jpg.asset.json";
-import tvConsoleMarble from "@/assets/tv-console-marble.jpg.asset.json";
-import wardrobeFitted from "@/assets/wardrobe-fitted.jpg.asset.json";
-import officeReception from "@/assets/office-reception.jpg.asset.json";
-import armchairBoucle from "@/assets/armchair-boucle.jpg.asset.json";
-import greenSofa from "@/assets/green-sofa.jpg.asset.json";
+import warmLivingRoom from "@/assets/warm-living-room.jfif";
+import tvConsoleMarble from "@/assets/tv-console-marble.jfif";
+import wardrobeFitted from "@/assets/wardrobe-fitted.jfif";
+import officeReception from "@/assets/office-reception.jfif";
+import armchairBoucle from "@/assets/armchair-boucle.jfif";
+import greenSofa from "@/assets/green-sofa.jfif";
 
 const process = [
   { n: "01", title: "Consultation", copy: "We visit or meet virtually to understand your space, style and needs." },
@@ -86,7 +86,7 @@ const About = () => {
       <section ref={heroRef} className="relative h-[80vh] md:h-screen overflow-hidden">
         <motion.div className="absolute inset-0" style={{ y: heroImageY }}>
           <img
-            src={warmLivingRoom.url}
+            src={warmLivingRoom}
             alt="Bartey Decor styled interior"
             className="w-full h-[120%] object-cover"
           />
@@ -171,7 +171,7 @@ const About = () => {
             >
               <div className="aspect-[4/5] overflow-hidden group">
                 <img
-                  src={tvConsoleMarble.url}
+                  src={tvConsoleMarble}
                   alt="Custom TV wall project"
                   className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"
                 />
@@ -189,7 +189,7 @@ const About = () => {
           >
             <div className="relative h-[50vh] md:h-[70vh] overflow-hidden group">
               <img
-                src={wardrobeFitted.url}
+                src={wardrobeFitted}
                 alt="Fitted wardrobe detail"
                 className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-105"
               />
@@ -221,7 +221,7 @@ const About = () => {
             >
               <div className="aspect-[4/5] overflow-hidden group">
                 <img
-                  src={officeReception.url}
+                  src={officeReception}
                   alt="Commercial reception project"
                   className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"
                 />
@@ -333,7 +333,7 @@ const About = () => {
       {/* Three-image strip */}
       <section className="py-4 md:py-6">
         <div className="grid grid-cols-3 gap-2 md:gap-4 h-[35vh] md:h-[50vh]">
-          {[armchairBoucle.url, greenSofa.url, warmLivingRoom.url].map((src, i) => (
+          {[armchairBoucle, greenSofa, warmLivingRoom].map((src, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
@@ -426,7 +426,7 @@ const About = () => {
       {/* CTA */}
       <section className="py-28 md:py-40 relative overflow-hidden">
         <div className="absolute inset-0">
-          <img src={warmLivingRoom.url} alt="" className="w-full h-full object-cover" />
+          <img src={warmLivingRoom} alt="" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-charcoal/70" />
         </div>
 

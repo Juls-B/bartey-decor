@@ -15,7 +15,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import warmLivingRoom from "@/assets/warm-living-room.jpg.asset.json";
+import warmLivingRoom from "@/assets/warm-living-room.jfif";
 
 const services = [
   "Custom Wardrobes",
@@ -61,7 +61,7 @@ const Contact = () => {
       {/* Hero */}
       <section className="relative h-[45vh] md:h-[60vh] overflow-hidden">
         <div className="absolute inset-0">
-          <img src={warmLivingRoom.url} alt="Bartey Decor styled interior" className="w-full h-full object-cover" />
+          <img src={warmLivingRoom} alt="Bartey Decor styled interior" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-charcoal/30 to-charcoal/20" />
         </div>
         <div className="relative container-full h-full flex flex-col justify-end pb-12 md:pb-16">

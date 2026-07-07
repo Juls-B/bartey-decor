@@ -14,7 +14,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
-import warmLivingRoom from "@/assets/warm-living-room.jpg.asset.json";
+import warmLivingRoom from "@/assets/warm-living-room.jfif";
 
 type SortOption = "featured" | "newest" | "price-asc" | "price-desc" | "name-asc";
 
@@ -87,7 +87,7 @@ const Products = () => {
       <section className="relative h-[40vh] md:h-[55vh] overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src={currentCollection?.heroImage || warmLivingRoom.url}
+            src={currentCollection?.heroImage || warmLivingRoom}
             alt={currentCollection?.name || "Bartey Decor Portfolio"}
             className="w-full h-full object-cover transition-opacity duration-700"
           />
@@ -204,7 +204,7 @@ const Products = () => {
       {/* Bottom CTA */}
       <section className="relative h-[50vh] overflow-hidden">
         <div className="absolute inset-0">
-          <img src={warmLivingRoom.url} alt="Interior styled by Bartey Decor" className="w-full h-full object-cover" />
+          <img src={warmLivingRoom} alt="Interior styled by Bartey Decor" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-charcoal/60" />
         </div>
         <div className="relative h-full flex items-center justify-center text-center">

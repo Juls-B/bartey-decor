@@ -9,13 +9,13 @@ import { collections, getFeaturedProducts, products } from "@/data/products";
 import { Button } from "@/components/ui/button";
 import { CONTACT } from "@/lib/contact";
 
-import warmLivingRoom from "@/assets/warm-living-room.jpg.asset.json";
-import wardrobeFitted from "@/assets/wardrobe-fitted.jpg.asset.json";
-import tvConsoleMarble from "@/assets/tv-console-marble.jpg.asset.json";
-import greenSofa from "@/assets/green-sofa.jpg.asset.json";
-import armchairBoucle from "@/assets/armchair-boucle.jpg.asset.json";
-import tvConsoleModern from "@/assets/tv-console-modern.jpg.asset.json";
-import officeReception from "@/assets/office-reception.jpg.asset.json";
+import warmLivingRoom from "@/assets/warm-living-room.jfif";
+import wardrobeFitted from "@/assets/wardrobe-fitted.jfif";
+import tvConsoleMarble from "@/assets/tv-console-marble.jfif";
+import greenSofa from "@/assets/green-sofa.jfif";
+import armchairBoucle from "@/assets/armchair-boucle.jfif";
+import tvConsoleModern from "@/assets/tv-console-modern.jfif";
+import officeReception from "@/assets/office-reception.jfif";
 
 const Index = () => {
   const featured = getFeaturedProducts();
@@ -30,12 +30,12 @@ const Index = () => {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   const gallery = [
-    warmLivingRoom.url,
-    wardrobeFitted.url,
-    tvConsoleMarble.url,
-    greenSofa.url,
-    armchairBoucle.url,
-    officeReception.url,
+    warmLivingRoom,
+    wardrobeFitted,
+    tvConsoleMarble,
+    greenSofa,
+    armchairBoucle,
+    officeReception,
   ];
 
   const whyChoose = [
@@ -51,7 +51,7 @@ const Index = () => {
       <section ref={heroRef} className="relative h-[100svh] -mt-16 md:-mt-20 overflow-hidden">
         <motion.div className="absolute inset-0" style={{ y: heroImageY }}>
           <img
-            src={warmLivingRoom.url}
+            src={warmLivingRoom}
             alt="Warm modern living room styled by Bartey Decor"
             className="w-full h-[120%] object-cover animate-ken-burns"
           />
@@ -137,7 +137,7 @@ const Index = () => {
               className="relative aspect-[4/5] overflow-hidden group"
             >
               <img
-                src={tvConsoleMarble.url}
+                src={tvConsoleMarble}
                 alt="Custom TV console with marble backdrop"
                 className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"
               />

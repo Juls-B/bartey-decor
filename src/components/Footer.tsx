@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Instagram, Phone, MapPin, Mail } from "lucide-react";
 import { collections } from "@/data/products";
 import { CONTACT } from "@/lib/contact";
-import logo from "@/assets/bartey-logo.jpg.asset.json";
+import logo from "@/assets/bartey-logo.jpg";
 
 export const Footer = () => {
   return (
@@ -14,7 +14,7 @@ export const Footer = () => {
             <div>
               <Link to="/" className="flex items-center gap-3">
                 <img
-                  src={logo.url}
+                  src={logo}
                   alt="Bartey Decor"
                   className="h-12 w-auto object-contain bg-background/95 p-1.5 rounded-sm"
                 />

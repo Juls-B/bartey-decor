@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useWishlist } from "@/hooks/useWishlist";
 import { CartIcon } from "@/components/CartIcon";
 import { collections } from "@/data/products";
-import logo from "@/assets/bartey-logo.jpg.asset.json";
+import logo from "@/assets/bartey-logo.jpg";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -52,7 +52,7 @@ export const Header = () => {
             aria-label="Bartey Decor — home"
           >
             <img
-              src={logo.url}
+              src={logo}
               alt="Bartey Decor"
               className="h-10 md:h-12 w-auto object-contain"
             />
