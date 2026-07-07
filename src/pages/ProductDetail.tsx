@@ -5,7 +5,7 @@ import { Heart, ChevronLeft, ChevronRight, ArrowRight, ShoppingBag } from "lucid
 import { Layout } from "@/components/Layout";
 import { ProductCard } from "@/components/ProductCard";
 import { QuantitySelector } from "@/components/QuantitySelector";
-import { getProductBySlug, getRelatedProducts, collections } from "@/data/products";
+import { getProductBySlug, getRelatedProducts, collections, formatPrice } from "@/data/products";
 import { useWishlist } from "@/hooks/useWishlist";
 import { useCart } from "@/hooks/useCart";
 import { Button } from "@/components/ui/button";
@@ -25,12 +25,12 @@ const ProductDetail = () => {
     return (
       <Layout>
         <div className="container-wide py-28 text-center">
-          <h1 className="font-serif text-4xl mb-4">Product Not Found</h1>
+          <h1 className="font-serif text-4xl mb-4">Project Not Found</h1>
           <p className="text-muted-foreground mb-8">
-            The piece you're looking for doesn't exist.
+            The piece you're looking for doesn't exist in our portfolio.
           </p>
           <Button asChild className="rounded-none px-8 text-sm tracking-[0.1em] uppercase">
-            <Link to="/products">Browse All Products</Link>
+            <Link to="/products">Browse Portfolio</Link>
           </Button>
         </div>
       </Layout>
@@ -44,58 +44,36 @@ const ProductDetail = () => {
   const handleWishlistToggle = () => {
     if (inWishlist) {
       removeFromWishlist(product.id);
-      toast({
-        title: "Removed from wishlist",
-        description: `${product.name} has been removed from your wishlist.`,
-      });
+      toast({ title: "Removed from saved", description: `${product.name} was removed.` });
     } else {
       addToWishlist(product);
-      toast({
-        title: "Added to wishlist",
-        description: `${product.name} has been saved to your wishlist.`,
-      });
+      toast({ title: "Saved", description: `${product.name} has been saved.` });
     }
   };
 
   const handleAddToCart = () => {
     addToCart(product, quantity);
     toast({
-      title: "Added to bag",
-      description: `${quantity} × ${product.name} added to your bag.`,
+      title: "Added to your selection",
+      description: `${quantity} × ${product.name} added — proceed to request a quote.`,
     });
     setQuantity(1);
   };
 
-  const nextImage = () => {
-    setCurrentImageIndex((prev) =>
-      prev === product.images.length - 1 ? 0 : prev + 1
-    );
-  };
-
-  const prevImage = () => {
-    setCurrentImageIndex((prev) =>
-      prev === 0 ? product.images.length - 1 : prev - 1
-    );
-  };
+  const nextImage = () =>
+    setCurrentImageIndex((p) => (p === product.images.length - 1 ? 0 : p + 1));
+  const prevImage = () =>
+    setCurrentImageIndex((p) => (p === 0 ? product.images.length - 1 : p - 1));
 
   return (
     <Layout>
-      {/* Breadcrumb */}
       <div className="container-full py-6 border-b border-border">
         <div className="flex items-center gap-3 text-sm text-muted-foreground">
-          <Link
-            to="/products"
-            className="hover:text-foreground transition-colors"
-          >
-            Shop
-          </Link>
+          <Link to="/products" className="hover:text-foreground transition-colors">Portfolio</Link>
           <span className="text-border">/</span>
           {collection && (
             <>
-              <Link
-                to={`/products?collection=${collection.slug}`}
-                className="hover:text-foreground transition-colors"
-              >
+              <Link to={`/products?collection=${collection.slug}`} className="hover:text-foreground transition-colors">
                 {collection.name}
               </Link>
               <span className="text-border">/</span>
@@ -105,13 +83,10 @@ const ProductDetail = () => {
         </div>
       </div>
 
-      {/* Product Content */}
       <section className="py-10 md:py-16">
         <div className="container-full">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
-            {/* Image Gallery — Takes 7 columns */}
             <div className="lg:col-span-7 space-y-4">
-              {/* Main Image */}
               <div className="relative aspect-[4/5] overflow-hidden bg-muted/30 group cursor-zoom-in">
                 <AnimatePresence mode="wait">
                   <motion.img
@@ -130,23 +105,25 @@ const ProductDetail = () => {
                   <>
                     <button
                       onClick={prevImage}
+                      aria-label="Previous image"
                       className="absolute left-5 top-1/2 -translate-y-1/2 p-3 bg-background/90 backdrop-blur-md hover:bg-background transition-all duration-300 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0"
                     >
                       <ChevronLeft className="w-5 h-5" />
                     </button>
                     <button
                       onClick={nextImage}
+                      aria-label="Next image"
                       className="absolute right-5 top-1/2 -translate-y-1/2 p-3 bg-background/90 backdrop-blur-md hover:bg-background transition-all duration-300 opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0"
                     >
                       <ChevronRight className="w-5 h-5" />
                     </button>
 
-                    {/* Image counter */}
                     <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2">
                       {product.images.map((_, index) => (
                         <button
                           key={index}
                           onClick={() => setCurrentImageIndex(index)}
+                          aria-label={`Show image ${index + 1}`}
                           className={cn(
                             "w-8 h-0.5 transition-all duration-500",
                             index === currentImageIndex
@@ -159,7 +136,6 @@ const ProductDetail = () => {
                   </>
                 )}
 
-                {/* Badges */}
                 <div className="absolute top-5 left-5 flex flex-col gap-2">
                   {product.new && (
                     <span className="px-3 py-1.5 text-[10px] font-semibold tracking-[0.2em] uppercase bg-foreground text-background">
@@ -169,7 +145,6 @@ const ProductDetail = () => {
                 </div>
               </div>
 
-              {/* Thumbnail strip */}
               {product.images.length > 1 && (
                 <div className="flex gap-3">
                   {product.images.map((image, index) => (
@@ -183,18 +158,13 @@ const ProductDetail = () => {
                           : "opacity-60 hover:opacity-100"
                       )}
                     >
-                      <img
-                        src={image}
-                        alt={`${product.name} view ${index + 1}`}
-                        className="w-full h-full object-cover"
-                      />
+                      <img src={image} alt={`${product.name} view ${index + 1}`} className="w-full h-full object-cover" />
                     </button>
                   ))}
                 </div>
               )}
             </div>
 
-            {/* Product Info — Takes 5 columns */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -214,8 +184,11 @@ const ProductDetail = () => {
                 {product.name}
               </h1>
 
-              <p className="text-2xl font-serif text-foreground mb-8">
-                ${product.price.toLocaleString()}
+              <p className="text-2xl font-serif text-foreground mb-2">
+                From {formatPrice(product.price)}
+              </p>
+              <p className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-8">
+                Custom pricing — final quote after consultation
               </p>
 
               <div className="w-12 h-px bg-border mb-8" />
@@ -224,36 +197,24 @@ const ProductDetail = () => {
                 {product.longDescription}
               </p>
 
-              {/* Details */}
               <div className="space-y-5 mb-10 pb-10 border-b border-border">
                 <div>
-                  <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-muted-foreground block mb-1.5">
-                    Materials
-                  </span>
+                  <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-muted-foreground block mb-1.5">Materials</span>
                   <span className="text-sm text-foreground">{product.materials}</span>
                 </div>
                 {product.dimensions && (
                   <div>
-                    <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-muted-foreground block mb-1.5">
-                      Dimensions
-                    </span>
+                    <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-muted-foreground block mb-1.5">Dimensions</span>
                     <span className="text-sm text-foreground">{product.dimensions}</span>
                   </div>
                 )}
               </div>
 
-              {/* Quantity Selector */}
               <div className="mb-6">
-                <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-muted-foreground block mb-3">
-                  Quantity
-                </span>
-                <QuantitySelector
-                  quantity={quantity}
-                  onQuantityChange={setQuantity}
-                />
+                <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-muted-foreground block mb-3">Quantity</span>
+                <QuantitySelector quantity={quantity} onQuantityChange={setQuantity} />
               </div>
 
-              {/* Actions */}
               <div className="flex flex-col gap-3">
                 <Button
                   size="lg"
@@ -261,7 +222,18 @@ const ProductDetail = () => {
                   className="rounded-none w-full py-6 text-sm tracking-[0.15em] uppercase btn-premium"
                 >
                   <ShoppingBag className="w-4 h-4 mr-3" />
-                  Add to Bag
+                  Add to Selection
+                </Button>
+                <Button
+                  asChild
+                  variant="secondary"
+                  size="lg"
+                  className="rounded-none w-full py-6 text-sm tracking-[0.15em] uppercase"
+                >
+                  <Link to="/contact">
+                    Request a Quote
+                    <ArrowRight className="ml-3 w-4 h-4" />
+                  </Link>
                 </Button>
                 <Button
                   variant="outline"
@@ -269,33 +241,19 @@ const ProductDetail = () => {
                   className="rounded-none w-full py-6 text-sm tracking-[0.1em] uppercase"
                   onClick={handleWishlistToggle}
                 >
-                  <Heart
-                    className={cn(
-                      "w-4 h-4 mr-3 transition-all duration-300",
-                      inWishlist && "fill-primary text-primary"
-                    )}
-                  />
-                  {inWishlist ? "Saved to Wishlist" : "Add to Wishlist"}
+                  <Heart className={cn("w-4 h-4 mr-3 transition-all duration-300", inWishlist && "fill-primary text-primary")} />
+                  {inWishlist ? "Saved" : "Save for Later"}
                 </Button>
               </div>
 
-              {/* Trust signals */}
               <div className="mt-10 pt-8 border-t border-border grid grid-cols-2 gap-6">
                 <div>
-                  <p className="text-[11px] font-semibold tracking-[0.15em] uppercase text-muted-foreground/60 mb-1">
-                    Shipping
-                  </p>
-                  <p className="text-xs text-muted-foreground">
-                    Complimentary worldwide
-                  </p>
+                  <p className="text-[11px] font-semibold tracking-[0.15em] uppercase text-muted-foreground/60 mb-1">Delivery</p>
+                  <p className="text-xs text-muted-foreground">Doorstep delivery across Ghana</p>
                 </div>
                 <div>
-                  <p className="text-[11px] font-semibold tracking-[0.15em] uppercase text-muted-foreground/60 mb-1">
-                    Returns
-                  </p>
-                  <p className="text-xs text-muted-foreground">
-                    14-day return policy
-                  </p>
+                  <p className="text-[11px] font-semibold tracking-[0.15em] uppercase text-muted-foreground/60 mb-1">Installation</p>
+                  <p className="text-xs text-muted-foreground">Fitted by our own team</p>
                 </div>
               </div>
             </motion.div>
@@ -303,17 +261,16 @@ const ProductDetail = () => {
         </div>
       </section>
 
-      {/* Related Products */}
       {relatedProducts.length > 0 && (
         <section className="py-20 md:py-28 bg-linen">
           <div className="container-full">
             <div className="flex items-end justify-between mb-12">
               <div>
                 <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary mb-3">
-                  You May Also Like
+                  Related Projects
                 </p>
                 <h2 className="font-serif text-3xl md:text-4xl text-foreground">
-                  More from {collection?.name}
+                  More {collection?.name}
                 </h2>
               </div>
               <Link
@@ -326,11 +283,7 @@ const ProductDetail = () => {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
               {relatedProducts.map((product, index) => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  index={index}
-                />
+                <ProductCard key={product.id} product={product} index={index} />
               ))}
             </div>
           </div>
