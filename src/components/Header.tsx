@@ -4,8 +4,9 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useWishlist } from "@/hooks/useWishlist";
 import { CartIcon } from "@/components/CartIcon";
-import { collections } from "@/data/products";
-import logo from "@/assets/bartey-logo.jpg";
+import { services } from "@/data/services";
+import logoAsset from "@/assets/brand/logo.png.asset.json";
+
 import {
   NavigationMenu,
   NavigationMenuContent,
