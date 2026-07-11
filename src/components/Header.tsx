@@ -60,16 +60,20 @@ export const Header = () => {
             <img
               src={logoAsset.url}
               alt="Bartey Decor"
-              className="h-10 md:h-12 w-10 md:w-12 rounded-full object-cover border border-white/50 shadow-sm"
+              className={cn(
+                "h-11 md:h-14 w-auto object-contain transition-all duration-300",
+                scrolled ? "" : "bg-white/95 p-1 rounded-sm shadow-sm"
+              )}
             />
             <span className="hidden sm:flex flex-col leading-tight">
               <span className={cn("font-serif text-xl md:text-2xl tracking-tight transition-colors duration-300", headerTextClass)}>
                 Bartey Decor
               </span>
               <span className={cn("text-[10px] tracking-[0.25em] uppercase", scrolled ? "text-muted-foreground" : "text-white/70")}>
-                Your Style, Our Work
+                Designing Spaces
               </span>
             </span>
+
           </Link>
 
           {/* Desktop Navigation */}
