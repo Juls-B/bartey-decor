@@ -13,11 +13,16 @@ import {
 import { CONTACT } from "@/lib/contact";
 
 import warmLivingRoom from "@/assets/warm-living-room.jfif";
-import tvConsoleMarble from "@/assets/tv-console-marble.jfif";
 import wardrobeFitted from "@/assets/wardrobe-fitted.jfif";
 import officeReception from "@/assets/office-reception.jfif";
-import armchairBoucle from "@/assets/armchair-boucle.jfif";
-import greenSofa from "@/assets/green-sofa.jfif";
+
+// Brand assets — founder portrait + on-site team/workshop photography
+import founderAsset from "@/assets/brand/founder.jpg.asset.json";
+import worker01 from "@/assets/brand/worker_01.jpg.asset.json";
+import worker02 from "@/assets/brand/worker_02.jpg.asset.json";
+import worker03 from "@/assets/brand/worker_03.jpg.asset.json";
+import worker04 from "@/assets/brand/worker_04.jpg.asset.json";
+
 
 const process = [
   { n: "01", title: "Consultation", copy: "We visit or meet virtually to understand your space, style and needs." },
@@ -145,21 +150,30 @@ const About = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="md:col-span-5"
+              className="md:col-span-5 md:order-2"
             >
               <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary mb-5">
-                The Founder
+                Founder & CEO
               </p>
-              <h3 className="font-serif text-3xl md:text-4xl text-foreground mb-8 leading-tight">
-                A Vision from
-                <br />
-                <span className="italic">Barbara Osabutey</span>
+              <h3 className="font-serif text-4xl md:text-5xl text-foreground mb-3 leading-[1.05]">
+                Barbara <span className="italic">Osabutey</span>
               </h3>
-              <p className="text-muted-foreground leading-[1.8] mb-5">
-                Bartey Decor was founded by Barbara Osabutey with a simple belief — that Ghanaian homes and businesses deserve furniture and interiors built to international standards, without compromise on craftsmanship or care.
+              <div className="w-12 h-px bg-gold mb-8" />
+              <p className="text-muted-foreground leading-[1.9] mb-6">
+                Barbara Osabutey is the Founder and CEO of Bartey Decor, a registered Ghanaian furniture and interior décor company dedicated to creating elegant, functional, and timeless living spaces.
               </p>
-              <p className="text-muted-foreground leading-[1.8]">
-                Today the studio is a fully registered Ghanaian company operating out of Madina, Accra, with an in-house design and production team serving clients across the country.
+              <p className="text-muted-foreground leading-[1.9] mb-8">
+                Through exceptional craftsmanship, innovative design, and attention to detail, she has built a brand known for delivering premium custom furniture and beautiful interior solutions tailored to every client's vision.
+              </p>
+              {/* Signature-style flourish */}
+              <div className="flex items-center gap-4">
+                <p className="font-serif italic text-2xl md:text-3xl text-primary tracking-wide">
+                  Barbara Osabutey
+                </p>
+                <div className="flex-1 h-px bg-border" />
+              </div>
+              <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground mt-2">
+                Founder & CEO — Bartey Decor
               </p>
             </motion.div>
             <motion.div
@@ -167,16 +181,25 @@ const About = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.9, delay: 0.15 }}
-              className="md:col-span-7 relative"
+              className="md:col-span-7 md:order-1 relative"
             >
-              <div className="aspect-[4/5] overflow-hidden group">
+              <div className="aspect-[4/5] overflow-hidden group relative">
                 <img
-                  src={tvConsoleMarble}
-                  alt="Custom TV wall project"
+                  src={founderAsset.url}
+                  alt="Barbara Osabutey — Founder and CEO of Bartey Decor"
+                  loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"
                 />
+                <div className="absolute -bottom-0 -right-0 hidden md:block bg-background border-l border-t border-border/60 p-5 max-w-[220px]">
+                  <p className="font-serif text-lg text-foreground leading-tight">
+                    "We design spaces you come home to."
+                  </p>
+                </div>
               </div>
+              {/* Gold accent frame */}
+              <div className="absolute -top-4 -left-4 w-24 h-24 border-t-2 border-l-2 border-gold hidden md:block" />
             </motion.div>
+
           </div>
 
           {/* Mission / Vision banner */}
@@ -330,26 +353,103 @@ const About = () => {
         </div>
       </section>
 
-      {/* Three-image strip */}
-      <section className="py-4 md:py-6">
-        <div className="grid grid-cols-3 gap-2 md:gap-4 h-[35vh] md:h-[50vh]">
-          {[armchairBoucle, greenSofa, warmLivingRoom].map((src, i) => (
+      {/* Craftsmanship — Behind the Scenes with the Bartey Decor team */}
+      <section className="py-24 md:py-36 bg-charcoal text-white">
+        <div className="container-full">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-2xl mb-14 md:mb-20"
+          >
+            <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-gold mb-4">
+              Behind the Scenes
+            </p>
+            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-white leading-[1.05] mb-6">
+              Our <span className="italic">Craftsmanship</span>
+            </h2>
+            <p className="text-white/70 leading-[1.9] text-base md:text-lg">
+              Every wardrobe, kitchen and TV wall is built and installed by the
+              Bartey Decor team — in-house carpenters, upholsterers and
+              installers who take pride in the fit and finish of every project.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-12 gap-3 md:gap-5">
+            {/* Worker image 01 — tall left */}
             <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: i * 0.15 }}
-              className="overflow-hidden group"
+              transition={{ duration: 0.8 }}
+              className="col-span-6 md:col-span-4 aspect-[3/4] overflow-hidden group relative"
             >
-              <img
-                src={src}
-                alt="Bartey Decor project detail"
-                className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-110"
-              />
+              <img src={worker01.url} alt="Bartey Decor installation on-site" loading="lazy" className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105" />
+              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-charcoal/90 to-transparent">
+                <p className="text-[10px] tracking-[0.25em] uppercase text-gold">On-site installation</p>
+              </div>
             </motion.div>
-          ))}
+
+            {/* Worker image 02 — wide top right */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="col-span-6 md:col-span-8 aspect-[4/3] md:aspect-[16/9] overflow-hidden group relative"
+            >
+              <img src={worker02.url} alt="Bartey Decor commercial fit-out in progress" loading="lazy" className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105" />
+              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-charcoal/90 to-transparent">
+                <p className="text-[10px] tracking-[0.25em] uppercase text-gold">Commercial fit-out</p>
+              </div>
+            </motion.div>
+
+            {/* Worker image 03 — wide bottom right */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="col-span-12 md:col-span-5 aspect-[16/10] md:aspect-[4/3] overflow-hidden group relative order-4 md:order-none"
+            >
+              <img src={worker03.url} alt="Bartey Decor custom shelving build" loading="lazy" className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105" />
+              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-charcoal/90 to-transparent">
+                <p className="text-[10px] tracking-[0.25em] uppercase text-gold">Fitted joinery</p>
+              </div>
+            </motion.div>
+
+            {/* Worker image 04 — square bottom left */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="col-span-12 md:col-span-7 aspect-[16/10] md:aspect-[4/3] overflow-hidden group relative"
+            >
+              <img src={worker04.url} alt="Bartey Decor workshop — carpentry in progress" loading="lazy" className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105" />
+              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-charcoal/90 to-transparent">
+                <p className="text-[10px] tracking-[0.25em] uppercase text-gold">Workshop production</p>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Stats strip */}
+          <div className="mt-16 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 border-t border-white/10 pt-12">
+            {[
+              { n: "100%", l: "In-house team" },
+              { n: "6+", l: "Years of craft" },
+              { n: "150+", l: "Projects delivered" },
+              { n: "1", l: "Studio in Accra" },
+            ].map((s) => (
+              <div key={s.l}>
+                <p className="font-serif text-4xl md:text-5xl text-gold mb-2">{s.n}</p>
+                <p className="text-[11px] tracking-[0.25em] uppercase text-white/60">{s.l}</p>
+              </div>
+            ))}
+          </div>
         </div>
+
       </section>
 
       {/* Testimonials */}

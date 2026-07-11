@@ -55,10 +55,21 @@ export default {
           DEFAULT: "hsl(var(--terracotta))",
           light: "hsl(var(--terracotta-light))",
         },
+        // Warm gold accent — pulled from the Bartey Decor logo
+        gold: {
+          DEFAULT: "hsl(var(--gold))",
+          light: "hsl(var(--gold-light))",
+          dark: "hsl(var(--gold-dark))",
+        },
+        // Deep emerald — logo primary
+        emerald: {
+          DEFAULT: "hsl(var(--emerald))",
+        },
         cream: "hsl(var(--warm-cream))",
         taupe: "hsl(var(--warm-taupe))",
         charcoal: "hsl(var(--charcoal))",
         linen: "hsl(var(--linen))",
+
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

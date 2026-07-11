@@ -4,8 +4,9 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useWishlist } from "@/hooks/useWishlist";
 import { CartIcon } from "@/components/CartIcon";
-import { collections } from "@/data/products";
-import logo from "@/assets/bartey-logo.jpg";
+import { services } from "@/data/services";
+import logoAsset from "@/assets/brand/logo.png.asset.json";
+
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -57,18 +58,22 @@ export const Header = () => {
             aria-label="Bartey Decor — home"
           >
             <img
-              src={logo}
+              src={logoAsset.url}
               alt="Bartey Decor"
-              className="h-10 md:h-12 w-10 md:w-12 rounded-full object-cover border border-white/50 shadow-sm"
+              className={cn(
+                "h-11 md:h-14 w-auto object-contain transition-all duration-300",
+                scrolled ? "" : "bg-white/95 p-1 rounded-sm shadow-sm"
+              )}
             />
             <span className="hidden sm:flex flex-col leading-tight">
               <span className={cn("font-serif text-xl md:text-2xl tracking-tight transition-colors duration-300", headerTextClass)}>
                 Bartey Decor
               </span>
               <span className={cn("text-[10px] tracking-[0.25em] uppercase", scrolled ? "text-muted-foreground" : "text-white/70")}>
-                Your Style, Our Work
+                Designing Spaces
               </span>
             </span>
+
           </Link>
 
           {/* Desktop Navigation */}
@@ -81,20 +86,20 @@ export const Header = () => {
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid w-[400px] gap-1 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                      {collections.map((collection) => (
-                        <li key={collection.id}>
+                      {services.map((service) => (
+                        <li key={service.id}>
                           <NavigationMenuLink asChild>
                             <Link
-                              to={`/products?collection=${collection.slug}`}
+                              to={`/products?collection=${service.slug}`}
                               className={cn(
                                 "block select-none space-y-1 rounded-sm p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                               )}
                             >
                               <div className="text-sm font-medium leading-none">
-                                {collection.name}
+                                {service.name}
                               </div>
                               <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                                {collection.description}
+                                {service.shortDescription}
                               </p>
                             </Link>
                           </NavigationMenuLink>
@@ -218,19 +223,19 @@ export const Header = () => {
                   <p className="text-[10px] font-semibold tracking-[0.3em] uppercase text-muted-foreground/50 px-2 mb-3">
                     Services
                   </p>
-                  {collections.map((collection, i) => (
+                  {services.map((service, i) => (
                     <motion.div
-                      key={collection.id}
+                      key={service.id}
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: i * 0.05 }}
                     >
                       <Link
-                        to={`/products?collection=${collection.slug}`}
+                        to={`/products?collection=${service.slug}`}
                         className="block px-2 py-2.5 text-sm hover:bg-accent transition-colors duration-300"
                         onClick={() => setMobileMenuOpen(false)}
                       >
-                        {collection.name}
+                        {service.name}
                       </Link>
                     </motion.div>
                   ))}

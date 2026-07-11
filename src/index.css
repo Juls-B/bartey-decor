@@ -10,62 +10,76 @@
 
 @layer base {
   :root {
-    /* Warm neutral canvas */
+    /* ---------------------------------------------------------
+       Bartey Decor palette — evolved from the new logo:
+         • Deep emerald green (primary)
+         • Warm gold (accent / highlight)
+         • Soft cream (canvas)
+         • Dark charcoal (text)
+       --------------------------------------------------------- */
+
+    /* Soft cream canvas */
     --background: 40 33% 97%;
-    --foreground: 200 25% 12%;
+    --foreground: 175 30% 12%;
 
     --card: 40 30% 95%;
-    --card-foreground: 200 25% 12%;
+    --card-foreground: 175 30% 12%;
 
     --popover: 40 33% 97%;
-    --popover-foreground: 200 25% 12%;
+    --popover-foreground: 175 30% 12%;
 
-    /* Deep teal primary (from logo) */
-    --primary: 190 62% 30%;
+    /* Deep emerald primary (from logo) */
+    --primary: 174 55% 20%;
     --primary-foreground: 40 33% 97%;
 
-    /* Warm secondary */
-    --secondary: 200 15% 88%;
-    --secondary-foreground: 200 25% 15%;
+    /* Neutrals */
+    --secondary: 40 20% 90%;
+    --secondary-foreground: 175 30% 15%;
 
-    --muted: 200 10% 92%;
-    --muted-foreground: 200 8% 40%;
+    --muted: 40 15% 92%;
+    --muted-foreground: 175 10% 38%;
 
-    /* Soft turquoise accent */
-    --accent: 189 40% 92%;
-    --accent-foreground: 200 25% 15%;
+    /* Soft cream accent */
+    --accent: 40 35% 92%;
+    --accent-foreground: 175 30% 15%;
 
     --destructive: 0 65% 50%;
     --destructive-foreground: 40 33% 97%;
 
-    --border: 200 12% 86%;
-    --input: 200 12% 86%;
-    --ring: 190 62% 30%;
+    --border: 40 15% 85%;
+    --input: 40 15% 85%;
+    --ring: 174 55% 20%;
 
     --radius: 0.25rem;
 
     /* Brand tokens */
-    --terracotta: 190 62% 30%;         /* alias — teal, keeps template refs working */
-    --terracotta-light: 189 65% 49%;   /* turquoise */
-    --teal-deep: 190 62% 30%;
-    --teal-bright: 189 65% 49%;
+    --emerald: 174 55% 20%;
+    --gold: 36 55% 52%;
+    --gold-light: 40 58% 68%;
+    --gold-dark: 32 55% 40%;
+    --terracotta: 174 55% 20%;         /* alias → emerald, keeps legacy refs working */
+    --terracotta-light: 36 55% 52%;    /* alias → gold */
+    --teal-deep: 174 55% 20%;
+    --teal-bright: 174 45% 38%;
     --warm-cream: 40 33% 97%;
-    --warm-taupe: 200 12% 78%;
-    --charcoal: 200 25% 12%;
-    --linen: 40 25% 94%;
+    --warm-taupe: 40 15% 78%;
+    --charcoal: 175 30% 12%;
+    --linen: 40 30% 94%;
 
     --font-serif: 'Cormorant Garamond', Georgia, serif;
     --font-sans: 'Inter', system-ui, sans-serif;
 
     --sidebar-background: 40 30% 95%;
-    --sidebar-foreground: 200 25% 20%;
-    --sidebar-primary: 190 62% 30%;
+    --sidebar-foreground: 175 30% 20%;
+    --sidebar-primary: 174 55% 20%;
     --sidebar-primary-foreground: 40 33% 97%;
-    --sidebar-accent: 189 40% 92%;
-    --sidebar-accent-foreground: 200 25% 15%;
-    --sidebar-border: 200 12% 86%;
-    --sidebar-ring: 190 62% 30%;
+    --sidebar-accent: 40 35% 92%;
+    --sidebar-accent-foreground: 175 30% 15%;
+    --sidebar-border: 40 15% 85%;
+    --sidebar-ring: 174 55% 20%;
   }
+
+
 
   .dark {
     --background: 200 25% 8%;
@@ -96,7 +110,11 @@
     --input: 200 15% 20%;
     --ring: 189 65% 55%;
 
-    --terracotta: 189 65% 55%;
+    --emerald: 174 55% 45%;
+    --gold: 40 65% 62%;
+    --gold-light: 42 68% 74%;
+    --gold-dark: 34 55% 48%;
+    --terracotta: 174 55% 45%;
     --terracotta-light: 189 65% 65%;
     --teal-deep: 189 65% 55%;
     --teal-bright: 189 70% 65%;
