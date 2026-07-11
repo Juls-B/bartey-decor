@@ -353,26 +353,103 @@ const About = () => {
         </div>
       </section>
 
-      {/* Three-image strip */}
-      <section className="py-4 md:py-6">
-        <div className="grid grid-cols-3 gap-2 md:gap-4 h-[35vh] md:h-[50vh]">
-          {[armchairBoucle, greenSofa, warmLivingRoom].map((src, i) => (
+      {/* Craftsmanship — Behind the Scenes with the Bartey Decor team */}
+      <section className="py-24 md:py-36 bg-charcoal text-white">
+        <div className="container-full">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-2xl mb-14 md:mb-20"
+          >
+            <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-gold mb-4">
+              Behind the Scenes
+            </p>
+            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-white leading-[1.05] mb-6">
+              Our <span className="italic">Craftsmanship</span>
+            </h2>
+            <p className="text-white/70 leading-[1.9] text-base md:text-lg">
+              Every wardrobe, kitchen and TV wall is built and installed by the
+              Bartey Decor team — in-house carpenters, upholsterers and
+              installers who take pride in the fit and finish of every project.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-12 gap-3 md:gap-5">
+            {/* Worker image 01 — tall left */}
             <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: i * 0.15 }}
-              className="overflow-hidden group"
+              transition={{ duration: 0.8 }}
+              className="col-span-6 md:col-span-4 aspect-[3/4] overflow-hidden group relative"
             >
-              <img
-                src={src}
-                alt="Bartey Decor project detail"
-                className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-110"
-              />
+              <img src={worker01.url} alt="Bartey Decor installation on-site" loading="lazy" className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105" />
+              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-charcoal/90 to-transparent">
+                <p className="text-[10px] tracking-[0.25em] uppercase text-gold">On-site installation</p>
+              </div>
             </motion.div>
-          ))}
+
+            {/* Worker image 02 — wide top right */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="col-span-6 md:col-span-8 aspect-[4/3] md:aspect-[16/9] overflow-hidden group relative"
+            >
+              <img src={worker02.url} alt="Bartey Decor commercial fit-out in progress" loading="lazy" className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105" />
+              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-charcoal/90 to-transparent">
+                <p className="text-[10px] tracking-[0.25em] uppercase text-gold">Commercial fit-out</p>
+              </div>
+            </motion.div>
+
+            {/* Worker image 03 — wide bottom right */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="col-span-12 md:col-span-5 aspect-[16/10] md:aspect-[4/3] overflow-hidden group relative order-4 md:order-none"
+            >
+              <img src={worker03.url} alt="Bartey Decor custom shelving build" loading="lazy" className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105" />
+              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-charcoal/90 to-transparent">
+                <p className="text-[10px] tracking-[0.25em] uppercase text-gold">Fitted joinery</p>
+              </div>
+            </motion.div>
+
+            {/* Worker image 04 — square bottom left */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="col-span-12 md:col-span-7 aspect-[16/10] md:aspect-[4/3] overflow-hidden group relative"
+            >
+              <img src={worker04.url} alt="Bartey Decor workshop — carpentry in progress" loading="lazy" className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105" />
+              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-charcoal/90 to-transparent">
+                <p className="text-[10px] tracking-[0.25em] uppercase text-gold">Workshop production</p>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Stats strip */}
+          <div className="mt-16 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 border-t border-white/10 pt-12">
+            {[
+              { n: "100%", l: "In-house team" },
+              { n: "6+", l: "Years of craft" },
+              { n: "150+", l: "Projects delivered" },
+              { n: "1", l: "Studio in Accra" },
+            ].map((s) => (
+              <div key={s.l}>
+                <p className="font-serif text-4xl md:text-5xl text-gold mb-2">{s.n}</p>
+                <p className="text-[11px] tracking-[0.25em] uppercase text-white/60">{s.l}</p>
+              </div>
+            ))}
+          </div>
         </div>
+
       </section>
 
       {/* Testimonials */}
