@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Instagram, Phone, MapPin, Mail } from "lucide-react";
 import { services } from "@/data/services";
-import logoAsset from "@/assets/brand/logo.png.asset.json";
+import logoAsset from "@/assets/brand/logo.jpeg";
 import { CONTACT } from "@/lib/contact";
 
 
@@ -15,7 +15,7 @@ export const Footer = () => {
             <div>
               <Link to="/" className="flex items-center gap-3">
                 <img
-                  src={logoAsset.url}
+                  src={logoAsset}
                   alt="Bartey Decor"
                   className="h-12 w-auto object-contain bg-background/95 p-1.5 rounded-sm"
                 />

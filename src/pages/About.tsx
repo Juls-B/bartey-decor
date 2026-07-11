@@ -17,11 +17,11 @@ import wardrobeFitted from "@/assets/wardrobe-fitted.jfif";
 import officeReception from "@/assets/office-reception.jfif";
 
 // Brand assets — founder portrait + on-site team/workshop photography
-import founderAsset from "@/assets/brand/founder.jpg.asset.json";
-import worker01 from "@/assets/brand/worker_01.jpg.asset.json";
-import worker02 from "@/assets/brand/worker_02.jpg.asset.json";
-import worker03 from "@/assets/brand/worker_03.jpg.asset.json";
-import worker04 from "@/assets/brand/worker_04.jpg.asset.json";
+import founderAsset from "@/assets/brand/founder.jpeg";
+import worker01 from "@/assets/brand/worker_01.jfif";
+import worker02 from "@/assets/brand/worker_02.jfif";
+import worker03 from "@/assets/brand/worker_03.jfif";
+import worker04 from "@/assets/brand/worker_04.jfif";
 
 
 const process = [
@@ -185,7 +185,7 @@ const About = () => {
             >
               <div className="aspect-[4/5] overflow-hidden group relative">
                 <img
-                  src={founderAsset.url}
+                  src={founderAsset}
                   alt="Barbara Osabutey — Founder and CEO of Bartey Decor"
                   loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"
@@ -385,7 +385,7 @@ const About = () => {
               transition={{ duration: 0.8 }}
               className="col-span-6 md:col-span-4 aspect-[3/4] overflow-hidden group relative"
             >
-              <img src={worker01.url} alt="Bartey Decor installation on-site" loading="lazy" className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105" />
+              <img src={worker01} alt="Bartey Decor installation on-site" loading="lazy" className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105" />
               <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-charcoal/90 to-transparent">
                 <p className="text-[10px] tracking-[0.25em] uppercase text-gold">On-site installation</p>
               </div>
@@ -399,7 +399,7 @@ const About = () => {
               transition={{ duration: 0.8, delay: 0.1 }}
               className="col-span-6 md:col-span-8 aspect-[4/3] md:aspect-[16/9] overflow-hidden group relative"
             >
-              <img src={worker02.url} alt="Bartey Decor commercial fit-out in progress" loading="lazy" className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105" />
+              <img src={worker02} alt="Bartey Decor commercial fit-out in progress" loading="lazy" className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105" />
               <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-charcoal/90 to-transparent">
                 <p className="text-[10px] tracking-[0.25em] uppercase text-gold">Commercial fit-out</p>
               </div>
@@ -413,7 +413,7 @@ const About = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="col-span-12 md:col-span-5 aspect-[16/10] md:aspect-[4/3] overflow-hidden group relative order-4 md:order-none"
             >
-              <img src={worker03.url} alt="Bartey Decor custom shelving build" loading="lazy" className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105" />
+              <img src={worker03} alt="Bartey Decor custom shelving build" loading="lazy" className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105" />
               <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-charcoal/90 to-transparent">
                 <p className="text-[10px] tracking-[0.25em] uppercase text-gold">Fitted joinery</p>
               </div>
@@ -427,7 +427,7 @@ const About = () => {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="col-span-12 md:col-span-7 aspect-[16/10] md:aspect-[4/3] overflow-hidden group relative"
             >
-              <img src={worker04.url} alt="Bartey Decor workshop — carpentry in progress" loading="lazy" className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105" />
+              <img src={worker04} alt="Bartey Decor workshop — carpentry in progress" loading="lazy" className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105" />
               <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-charcoal/90 to-transparent">
                 <p className="text-[10px] tracking-[0.25em] uppercase text-gold">Workshop production</p>
               </div>
