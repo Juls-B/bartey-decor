@@ -42,137 +42,140 @@ export const serviceCategories: ServiceCategory[] = [
 // ============================================================
 // Wardrobes Gallery
 // ============================================================
+const serviceAsset = (fileName: string) =>
+  new URL(`../assets/services/${fileName}`, import.meta.url).href;
+
 const wardrobeImages = [
-  "/assets/services/wardrobe_01.jpg",
-  "/assets/services/wardrobe_02.jpg",
-  "/assets/services/wardrobe_03.jpg",
-  "/assets/services/wardrobe_04.jpg",
-  "/assets/services/wardrobe_05.jpg",
+  serviceAsset("wardrobe_01.jfif"),
+  serviceAsset("wardrobe_02.jfif"),
+  serviceAsset("wardrobe_03.jpg"),
+  serviceAsset("wardrobe_04.jpg"),
+  serviceAsset("wardrobe_05.jpg"),
 ];
 
 // ============================================================
 // Dressers Gallery
 // ============================================================
 const dresserImages = [
-  "/assets/services/dresser_01.jpg",
-  "/assets/services/dresser_02.jpg",
-  "/assets/services/dresser_03.jpg",
-  "/assets/services/dresser_04.jpg",
+  serviceAsset("dresser_01.jfif"),
+  serviceAsset("dresser_02.jfif"),
+  serviceAsset("dresser_03.jfif"),
+  serviceAsset("dresser_04.jfif"),
 ];
 
 // ============================================================
 // Sofas Gallery
 // ============================================================
 const sofaImages = [
-  "/assets/services/sofa_01.jpg",
-  "/assets/services/sofa_02.jpg",
-  "/assets/services/sofa_03.jpg",
-  "/assets/services/sofa_04.jpg",
+  serviceAsset("sofa_01.jpeg"),
+  serviceAsset("sofa_02.jpeg"),
+  serviceAsset("sofa_03.jpeg"),
+  serviceAsset("sofa_04.jfif"),
 ];
 
 // ============================================================
 // Wall Moulding Gallery
 // ============================================================
 const wallMouldingImages = [
-  "/assets/services/wall_moulding_01.jpg",
-  "/assets/services/wall_moulding_02.jpg",
-  "/assets/services/wall_moulding_03.jpg",
+  serviceAsset("wall_moulding_01.jfif"),
+  serviceAsset("wall_moulding_02.jfif"),
+  serviceAsset("wall_moulding_03.jfif"),
 ];
 
 // ============================================================
 // TV Units / Entertainment / Media Units Gallery
 // ============================================================
 const tvUnitImages = [
-  "/assets/services/tv_unit_01.jpg",
-  "/assets/services/tv_unit_02.jpg",
-  "/assets/services/tv_unit_03.jpg",
-  "/assets/services/tv_unit_04.jpg",
-  "/assets/services/tv_unit_05.jpg",
+  serviceAsset("tv_unit_01.jfif"),
+  serviceAsset("tv_unit_02.jfif"),
+  serviceAsset("tv_unit_03.jpg"),
+  serviceAsset("tv_unit_04.jpg"),
+  serviceAsset("tv_unit_05.jpg"),
 ];
 
 // ============================================================
 // Entryway Designs Gallery
 // ============================================================
 const entrywayImages = [
-  "/assets/services/entryway_01.jpg",
-  "/assets/services/entryway_02.jpg",
-  "/assets/services/entryway_03.jpg",
+  serviceAsset("entryway_01.jfif"),
+  serviceAsset("entryway_02.jfif"),
+  serviceAsset("entryway_03.jfif"),
 ];
 
 // ============================================================
 // Console Tables Gallery
 // ============================================================
 const consoleTableImages = [
-  "/assets/services/console_table_01.jpg",
-  "/assets/services/console_table_02.jpg",
-  "/assets/services/console_table_03.jpg",
+  serviceAsset("console_table_01.jfif"),
+  serviceAsset("console_table_02.jfif"),
+  serviceAsset("console_table_03.jfif"),
 ];
 
 // ============================================================
 // Center Tables Gallery
 // ============================================================
 const centerTableImages = [
-  "/assets/services/center_table_01.jpg",
-  "/assets/services/center_table_02.jpg",
-  "/assets/services/center_table_03.jpg",
+  serviceAsset("center_table_01.jfif"),
+  serviceAsset("center_table_02.jfif"),
+  serviceAsset("center_table_03.jfif"),
 ];
 
 // ============================================================
 // Chest of Drawers Gallery
 // ============================================================
 const chestDrawersImages = [
-  "/assets/services/chest_drawers_01.jpg",
-  "/assets/services/chest_drawers_02.jpg",
-  "/assets/services/chest_drawers_03.jpg",
+  serviceAsset("chest_drawers_01.jfif"),
+  serviceAsset("chest_drawers_02.jfif"),
+  serviceAsset("chest_drawers_03.jfif"),
 ];
 
 // ============================================================
 // Bed Frames Gallery
 // ============================================================
 const bedFrameImages = [
-  "/assets/services/bed_frame_01.jpg",
-  "/assets/services/bed_frame_02.jpg",
-  "/assets/services/bed_frame_03.jpg",
-  "/assets/services/bed_frame_04.jpg",
+  serviceAsset("bed_frame_01.jfif"),
+  serviceAsset("bed_frame_02.jfif"),
+  serviceAsset("bed_frame_03.jfif"),
+  serviceAsset("bed_frame_04.jfif"),
 ];
 
 // ============================================================
 // Mirrors Gallery
 // ============================================================
 const mirrorImages = [
-  "/assets/services/mirror_01.jpg",
-  "/assets/services/mirror_02.jpg",
-  "/assets/services/mirror_03.jpg",
+  serviceAsset("mirror_01.jfif"),
+  serviceAsset("mirror_02.jfif"),
+  serviceAsset("mirror_03.jfif"),
 ];
 
 // ============================================================
 // Kitchen Units Gallery
 // ============================================================
 const kitchenUnitImages = [
-  "/assets/services/kitchen_unit_01.jpg",
-  "/assets/services/kitchen_unit_02.jpg",
-  "/assets/services/kitchen_unit_03.jpg",
-  "/assets/services/kitchen_unit_04.jpg",
-  "/assets/services/kitchen_unit_05.jpg",
+  serviceAsset("kitchen_unit_01.jfif"),
+  serviceAsset("kitchen_unit_02.jfif"),
+  serviceAsset("kitchen_unit_03.jfif"),
+  serviceAsset("kitchen_unit_04.jfif"),
+  serviceAsset("kitchen_unit_05.jfif"),
 ];
 
 // ============================================================
 // Wall Cladding Gallery
 // ============================================================
 const wallCladdingImages = [
-  "/assets/services/wall_cladding_01.jpg",
-  "/assets/services/wall_cladding_02.jpg",
-  "/assets/services/wall_cladding_03.jpg",
+  serviceAsset("wall_cladding_01.jfif"),
+  serviceAsset("wall_cladding_02.jfif"),
+  serviceAsset("wall_cladding_03.jfif"),
 ];
 
 // ============================================================
 // Outdoor Conversation Sets Gallery
 // ============================================================
 const outdoorSetImages = [
-  "/assets/services/outdoor_set_01.jpg",
-  "/assets/services/outdoor_set_02.jpg",
-  "/assets/services/outdoor_set_03.jpg",
-  "/assets/services/outdoor_set_04.jpg",
+  serviceAsset("outdoor_set_01.jfif"),
+  serviceAsset("outdoor_set_02.jfif"),
+  serviceAsset("outdoor_set_03.jfif"),
+  serviceAsset("outdoor_set_04.jfif"),
 ];
 
 export const services: Service[] = [
