@@ -150,21 +150,30 @@ const About = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="md:col-span-5"
+              className="md:col-span-5 md:order-2"
             >
               <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary mb-5">
-                The Founder
+                Founder & CEO
               </p>
-              <h3 className="font-serif text-3xl md:text-4xl text-foreground mb-8 leading-tight">
-                A Vision from
-                <br />
-                <span className="italic">Barbara Osabutey</span>
+              <h3 className="font-serif text-4xl md:text-5xl text-foreground mb-3 leading-[1.05]">
+                Barbara <span className="italic">Osabutey</span>
               </h3>
-              <p className="text-muted-foreground leading-[1.8] mb-5">
-                Bartey Decor was founded by Barbara Osabutey with a simple belief — that Ghanaian homes and businesses deserve furniture and interiors built to international standards, without compromise on craftsmanship or care.
+              <div className="w-12 h-px bg-gold mb-8" />
+              <p className="text-muted-foreground leading-[1.9] mb-6">
+                Barbara Osabutey is the Founder and CEO of Bartey Decor, a registered Ghanaian furniture and interior décor company dedicated to creating elegant, functional, and timeless living spaces.
               </p>
-              <p className="text-muted-foreground leading-[1.8]">
-                Today the studio is a fully registered Ghanaian company operating out of Madina, Accra, with an in-house design and production team serving clients across the country.
+              <p className="text-muted-foreground leading-[1.9] mb-8">
+                Through exceptional craftsmanship, innovative design, and attention to detail, she has built a brand known for delivering premium custom furniture and beautiful interior solutions tailored to every client's vision.
+              </p>
+              {/* Signature-style flourish */}
+              <div className="flex items-center gap-4">
+                <p className="font-serif italic text-2xl md:text-3xl text-primary tracking-wide">
+                  Barbara Osabutey
+                </p>
+                <div className="flex-1 h-px bg-border" />
+              </div>
+              <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground mt-2">
+                Founder & CEO — Bartey Decor
               </p>
             </motion.div>
             <motion.div
@@ -172,16 +181,25 @@ const About = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.9, delay: 0.15 }}
-              className="md:col-span-7 relative"
+              className="md:col-span-7 md:order-1 relative"
             >
-              <div className="aspect-[4/5] overflow-hidden group">
+              <div className="aspect-[4/5] overflow-hidden group relative">
                 <img
-                  src={tvConsoleMarble}
-                  alt="Custom TV wall project"
+                  src={founderAsset.url}
+                  alt="Barbara Osabutey — Founder and CEO of Bartey Decor"
+                  loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"
                 />
+                <div className="absolute -bottom-0 -right-0 hidden md:block bg-background border-l border-t border-border/60 p-5 max-w-[220px]">
+                  <p className="font-serif text-lg text-foreground leading-tight">
+                    "We design spaces you come home to."
+                  </p>
+                </div>
               </div>
+              {/* Gold accent frame */}
+              <div className="absolute -top-4 -left-4 w-24 h-24 border-t-2 border-l-2 border-gold hidden md:block" />
             </motion.div>
+
           </div>
 
           {/* Mission / Vision banner */}
