@@ -13,11 +13,16 @@ import {
 import { CONTACT } from "@/lib/contact";
 
 import warmLivingRoom from "@/assets/warm-living-room.jfif";
-import tvConsoleMarble from "@/assets/tv-console-marble.jfif";
 import wardrobeFitted from "@/assets/wardrobe-fitted.jfif";
 import officeReception from "@/assets/office-reception.jfif";
-import armchairBoucle from "@/assets/armchair-boucle.jfif";
-import greenSofa from "@/assets/green-sofa.jfif";
+
+// Brand assets — founder portrait + on-site team/workshop photography
+import founderAsset from "@/assets/brand/founder.jpg.asset.json";
+import worker01 from "@/assets/brand/worker_01.jpg.asset.json";
+import worker02 from "@/assets/brand/worker_02.jpg.asset.json";
+import worker03 from "@/assets/brand/worker_03.jpg.asset.json";
+import worker04 from "@/assets/brand/worker_04.jpg.asset.json";
+
 
 const process = [
   { n: "01", title: "Consultation", copy: "We visit or meet virtually to understand your space, style and needs." },
