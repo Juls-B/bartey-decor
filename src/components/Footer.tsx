@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Instagram, Phone, MapPin, Mail } from "lucide-react";
-import { collections } from "@/data/products";
+import { services } from "@/data/services";
+import logoAsset from "@/assets/brand/logo.png.asset.json";
 import { CONTACT } from "@/lib/contact";
-import logo from "@/assets/bartey-logo.jpg";
+
 
 export const Footer = () => {
   return (
@@ -14,7 +15,7 @@ export const Footer = () => {
             <div>
               <Link to="/" className="flex items-center gap-3">
                 <img
-                  src={logo}
+                  src={logoAsset.url}
                   alt="Bartey Decor"
                   className="h-12 w-auto object-contain bg-background/95 p-1.5 rounded-sm"
                 />
@@ -53,13 +54,13 @@ export const Footer = () => {
               Services
             </h4>
             <ul className="space-y-3">
-              {collections.map((collection) => (
-                <li key={collection.id}>
+              {services.map((service) => (
+                <li key={service.id}>
                   <Link
-                    to={`/products?collection=${collection.slug}`}
+                    to={`/products?collection=${service.slug}`}
                     className="text-sm text-background/60 hover:text-background transition-colors duration-300"
                   >
-                    {collection.name}
+                    {service.name}
                   </Link>
                 </li>
               ))}
