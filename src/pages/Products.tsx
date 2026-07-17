@@ -1,11 +1,11 @@
-import { useState, useMemo } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Images } from "lucide-react";
 import { Layout } from "@/components/Layout";
-import { ServiceCard } from "@/components/ServiceCard";
 import { Button } from "@/components/ui/button";
-import { services, serviceCategories, type ServiceCategoryId } from "@/data/services";
+import { SafeImage } from "@/components/SafeImage";
+import { services, serviceCategories, type ServiceCategoryId, type Service } from "@/data/services";
 import { cn } from "@/lib/utils";
 import warmLivingRoom from "@/assets/warm-living-room.jfif";
 
@@ -13,31 +13,36 @@ type Filter = "all" | ServiceCategoryId;
 
 const Products = () => {
   const [filter, setFilter] = useState<Filter>("all");
+  const location = useLocation();
 
   const filtered = useMemo(
     () => (filter === "all" ? services : services.filter((s) => s.category === filter)),
     [filter]
   );
 
+  // If we arrive with a hash, ensure filter is "all" so the target section exists.
+  useEffect(() => {
+    if (location.hash) {
+      setFilter("all");
+      const id = location.hash.replace("#", "");
+      // Delay slightly so the section is in the DOM
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 60);
+    }
+  }, [location.hash]);
+
   return (
     <Layout>
       {/* Hero */}
       <section className="relative h-[45vh] md:h-[60vh] overflow-hidden">
         <div className="absolute inset-0">
-          <img
-            src={warmLivingRoom}
-            alt="Bartey Decor bespoke interiors"
-            className="w-full h-full object-cover"
-          />
+          <img src={warmLivingRoom} alt="Bartey Decor bespoke interiors" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/40 to-charcoal/30" />
         </div>
-
         <div className="relative container-full h-full flex flex-col justify-end pb-14 md:pb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] as const }}
-          >
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] as const }}>
             <p className="text-[10px] font-semibold tracking-[0.3em] uppercase text-gold mb-3">
               Our Services
             </p>
@@ -45,8 +50,7 @@ const Products = () => {
               Bespoke furniture <br className="hidden md:block" /> & interior craftsmanship
             </h1>
             <p className="text-base md:text-lg text-white/75 max-w-xl">
-              From custom wardrobes to full kitchen fit-outs — every piece designed,
-              built and installed by the Bartey Decor team in Accra.
+              Each service has its own dedicated section — jump straight to what you need.
             </p>
           </motion.div>
         </div>
@@ -56,15 +60,9 @@ const Products = () => {
       <section className="py-6 border-b border-border sticky top-16 md:top-20 bg-background/95 backdrop-blur-md z-40">
         <div className="container-full">
           <div className="flex gap-2 overflow-x-auto scrollbar-hide -mb-2 pb-2">
-            <FilterButton active={filter === "all"} onClick={() => setFilter("all")}>
-              All Services
-            </FilterButton>
+            <FilterButton active={filter === "all"} onClick={() => setFilter("all")}>All Services</FilterButton>
             {serviceCategories.map((cat) => (
-              <FilterButton
-                key={cat.id}
-                active={filter === cat.id}
-                onClick={() => setFilter(cat.id)}
-              >
+              <FilterButton key={cat.id} active={filter === cat.id} onClick={() => setFilter(cat.id)}>
                 {cat.name}
               </FilterButton>
             ))}
@@ -72,28 +70,32 @@ const Products = () => {
         </div>
       </section>
 
-      {/* Grid */}
-      <section className="py-16 md:py-24">
-        <div className="container-full">
-          <div className="flex items-end justify-between mb-10 md:mb-14 gap-6 flex-wrap">
-            <div>
-              <p className="text-[10px] font-semibold tracking-[0.3em] uppercase text-primary/70 mb-2">
-                {filter === "all" ? "All Services" : serviceCategories.find((c) => c.id === filter)?.name}
-              </p>
-              <h2 className="font-serif text-3xl md:text-4xl text-foreground">
-                {filtered.length} {filtered.length === 1 ? "service" : "services"} on offer
-              </h2>
+      {/* Quick jump index */}
+      {filter === "all" && (
+        <section className="py-8 border-b border-border/60 bg-linen">
+          <div className="container-full">
+            <p className="text-[10px] tracking-[0.3em] uppercase text-primary/70 mb-3">Jump to</p>
+            <div className="flex flex-wrap gap-2">
+              {services.map((s) => (
+                <a
+                  key={s.id}
+                  href={`#${s.slug}`}
+                  className="text-[11px] tracking-[0.15em] uppercase px-3 py-1.5 border border-border bg-background hover:border-primary hover:text-primary transition-colors"
+                >
+                  {s.name}
+                </a>
+              ))}
             </div>
-            <p className="text-sm text-muted-foreground max-w-sm">
-              Tap any service to open its gallery, or request a tailored quote for your space.
-            </p>
           </div>
+        </section>
+      )}
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-            {filtered.map((service, i) => (
-              <ServiceCard key={service.id} service={service} index={i} />
-            ))}
-          </div>
+      {/* Anchored service sections */}
+      <section className="py-16 md:py-20">
+        <div className="container-full space-y-24 md:space-y-32">
+          {filtered.map((service, i) => (
+            <ServiceSection key={service.id} service={service} reverse={i % 2 === 1} />
+          ))}
         </div>
       </section>
 
@@ -104,23 +106,10 @@ const Products = () => {
           <div className="absolute inset-0 bg-charcoal/70" />
         </div>
         <div className="relative h-full flex items-center justify-center text-center px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <p className="text-[10px] font-semibold tracking-[0.3em] uppercase text-gold mb-4">
-              Ready to begin?
-            </p>
-            <h2 className="font-serif text-3xl md:text-5xl text-white mb-6">
-              Let's design your space
-            </h2>
-            <Button
-              asChild
-              size="lg"
-              className="rounded-none px-10 py-6 text-sm tracking-[0.15em] uppercase bg-gold text-charcoal hover:bg-gold/90"
-            >
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+            <p className="text-[10px] font-semibold tracking-[0.3em] uppercase text-gold mb-4">Ready to begin?</p>
+            <h2 className="font-serif text-3xl md:text-5xl text-white mb-6">Let's design your space</h2>
+            <Button asChild size="lg" className="rounded-none px-10 py-6 text-sm tracking-[0.15em] uppercase bg-gold text-charcoal hover:bg-gold/90">
               <Link to="/contact">
                 Start Your Project
                 <ArrowRight className="ml-3 w-4 h-4" />
@@ -133,15 +122,99 @@ const Products = () => {
   );
 };
 
-const FilterButton = ({
-  children,
-  active,
-  onClick,
-}: {
-  children: React.ReactNode;
-  active: boolean;
-  onClick: () => void;
-}) => (
+const ServiceSection = ({ service, reverse }: { service: Service; reverse: boolean }) => {
+  const [active, setActive] = useState(0);
+  const primary = service.gallery[active] ?? service.gallery[0];
+  const thumbs = service.gallery.slice(0, 6);
+
+  return (
+    <article id={service.slug} className="scroll-mt-32 md:scroll-mt-36">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.7 }}
+        className={cn("grid md:grid-cols-12 gap-8 lg:gap-14 items-center", reverse && "md:[&>*:first-child]:order-2")}
+      >
+        <div className="md:col-span-7 relative">
+          <div className="relative aspect-[4/3] md:aspect-[5/4] overflow-hidden group bg-secondary">
+            <SafeImage
+              src={primary}
+              alt={`${service.name} — Bartey Decor`}
+              fallbackLabel={service.name}
+              className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105"
+              containerClassName="w-full h-full"
+            />
+            <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 px-2.5 py-1 bg-background/85 text-[10px] tracking-[0.18em] uppercase text-foreground">
+              <Images className="w-3 h-3" />
+              {service.gallery.length}
+            </div>
+          </div>
+          {thumbs.length > 1 && (
+            <div className="mt-3 grid grid-cols-6 gap-2">
+              {thumbs.map((src, i) => (
+                <button
+                  key={`${service.id}-${i}`}
+                  type="button"
+                  onClick={() => setActive(i)}
+                  className={cn(
+                    "aspect-square overflow-hidden border-2 transition-all",
+                    i === active ? "border-primary" : "border-transparent opacity-70 hover:opacity-100"
+                  )}
+                  aria-label={`Show image ${i + 1}`}
+                >
+                  <SafeImage
+                    src={src}
+                    alt={`${service.name} thumbnail ${i + 1}`}
+                    fallbackLabel={service.name}
+                    className="w-full h-full object-cover"
+                    containerClassName="w-full h-full"
+                  />
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="md:col-span-5">
+          <p className="text-[10px] font-semibold tracking-[0.3em] uppercase text-primary/70 mb-3">
+            Service · {serviceCategories.find((c) => c.id === service.category)?.name}
+          </p>
+          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mb-4 leading-[1.05]">
+            {service.name}
+          </h2>
+          <div className="w-10 h-px bg-gold mb-6" />
+          <p className="text-muted-foreground leading-[1.9] mb-6">{service.description}</p>
+          {service.materials && (
+            <div className="mb-6 pb-6 border-b border-border/60">
+              <p className="text-[10px] font-semibold tracking-[0.25em] uppercase text-muted-foreground mb-1.5">Materials</p>
+              <p className="text-sm text-foreground">{service.materials}</p>
+            </div>
+          )}
+          {service.price && (
+            <div className="mb-6 inline-flex items-baseline gap-3">
+              <span className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground">Price</span>
+              <span className="font-serif text-2xl text-gold">{service.price}</span>
+            </div>
+          )}
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Button asChild className="rounded-none px-6 py-6 text-xs tracking-[0.2em] uppercase">
+              <Link to={`/contact?service=${encodeURIComponent(service.name)}`}>
+                Request a Quote
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Link>
+            </Button>
+            <Button asChild variant="outline" className="rounded-none px-6 py-6 text-xs tracking-[0.2em] uppercase">
+              <a href="#top">Back to top</a>
+            </Button>
+          </div>
+        </div>
+      </motion.div>
+    </article>
+  );
+};
+
+const FilterButton = ({ children, active, onClick }: { children: React.ReactNode; active: boolean; onClick: () => void }) => (
   <button
     type="button"
     onClick={onClick}

@@ -64,7 +64,7 @@ const faqs = [
   },
   {
     q: "Which areas do you serve?",
-    a: "We are based in Madina, Accra and serve homes and businesses across Ghana. Deliveries outside Greater Accra are arranged during quoting.",
+    a: "We are based in Adenta, Accra and serve homes and businesses across Ghana. Deliveries outside Greater Accra are arranged during quoting.",
   },
 ];
 

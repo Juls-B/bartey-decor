@@ -8,6 +8,13 @@ import { CollectionCard } from "@/components/CollectionCard";
 import { collections, getFeaturedProducts, products } from "@/data/products";
 import { Button } from "@/components/ui/button";
 import { CONTACT } from "@/lib/contact";
+import { FeaturedMirror } from "@/components/FeaturedMirror";
+import { StatsSection } from "@/components/StatsSection";
+import { ProcessTimeline } from "@/components/ProcessTimeline";
+import { TestimonialsCarousel } from "@/components/TestimonialsCarousel";
+import { VideoShowcase } from "@/components/VideoShowcase";
+import { Marquee } from "@/components/Marquee";
+import { services } from "@/data/services";
 
 import slide4 from "@/assets/slide4.jpg";
 import warmLivingRoom from "@/assets/warm-living-room.jfif";
@@ -31,11 +38,27 @@ const Index = () => {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   const whyChoose = [
-    { icon: ShieldCheck, title: "Registered Ghanaian Business", copy: "A trusted, fully registered company based in Madina, Accra." },
+    { icon: ShieldCheck, title: "Registered Ghanaian Business", copy: "A trusted, fully registered company based in Adenta, Accra." },
     { icon: Hammer, title: "Premium Craftsmanship", copy: "Every piece is hand-built by our workshop team with obsessive attention to finish." },
     { icon: Truck, title: "Doorstep Delivery", copy: "We deliver anywhere in Ghana — carefully packed, on schedule." },
     { icon: Wrench, title: "Professional Installation", copy: "Our own installers set up your wardrobes, TV walls and furniture in-home." },
   ];
+
+  const marqueeCards = services.slice(0, 8).map((s) => (
+    <Link key={s.id} to={`/products#${s.slug}`} className="block w-[260px] md:w-[320px]">
+      <div className="aspect-[4/5] bg-secondary overflow-hidden group">
+        <img src={s.gallery[0]} alt={s.name} loading="lazy" className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105" onError={(e) => { (e.currentTarget as HTMLImageElement).style.opacity = "0"; }} />
+      </div>
+      <p className="mt-3 text-[10px] tracking-[0.25em] uppercase text-muted-foreground">Service</p>
+      <p className="font-serif text-lg text-foreground">{s.name}</p>
+    </Link>
+  ));
+
+  const inspirationTags = ["Furniture", "Living Rooms", "Bedrooms", "Kitchens", "Wardrobes", "Curtains", "Dining Areas", "Commercial Spaces"].map((t) => (
+    <span key={t} className="font-serif italic text-3xl md:text-5xl text-primary/70 whitespace-nowrap">
+      {t} <span className="text-gold not-italic mx-4">•</span>
+    </span>
+  ));
 
   return (
     <Layout>
@@ -118,6 +141,23 @@ const Index = () => {
             </motion.div>
           </motion.div>
         </motion.div>
+      </section>
+
+      {/* Featured Mirror */}
+      <FeaturedMirror />
+
+      {/* Sliding portfolio */}
+      <section id="portfolio" className="py-20 md:py-24 scroll-mt-24">
+        <div className="container-full mb-10">
+          <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary mb-3">Sliding Portfolio</p>
+          <h2 className="font-serif text-3xl md:text-5xl text-foreground">Recent <span className="italic">Installations</span></h2>
+        </div>
+        <Marquee items={marqueeCards} speed="slow" />
+      </section>
+
+      {/* Inspiration marquee */}
+      <section className="py-14 md:py-20 bg-linen border-y border-border/60 overflow-hidden">
+        <Marquee items={inspirationTags} speed="normal" />
       </section>
 
       {/* Featured project */}
@@ -332,6 +372,68 @@ const Index = () => {
         </div>
       </section>
 
+<<<<<<< HEAD
+=======
+      {/* Video showcase */}
+      <VideoShowcase />
+
+      {/* Stats */}
+      <StatsSection />
+
+      {/* Testimonials */}
+      <TestimonialsCarousel />
+
+      {/* Process */}
+      <ProcessTimeline />
+
+      {/* Instagram / Gallery */}
+      <section id="gallery" className="py-20 md:py-28 bg-linen scroll-mt-24">
+        <div className="container-full">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary mb-3">
+              Follow the Studio
+            </p>
+            <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4">
+              {CONTACT.instagramHandle}
+            </h2>
+            <p className="text-muted-foreground max-w-md mx-auto">
+              Behind-the-scenes builds, installs and completed spaces — straight from our workshop in Accra.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-4">
+            {gallery.map((image, index) => (
+              <motion.a
+                key={index}
+                href={CONTACT.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                className="relative aspect-square overflow-hidden group cursor-pointer"
+              >
+                <img
+                  src={image}
+                  alt="Bartey Decor project"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/40 transition-colors duration-300 flex items-center justify-center">
+                  <Instagram className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+              </motion.a>
+            ))}
+          </div>
+        </div>
+      </section>
+>>>>>>> 684876c9878d7a1c1ad44bcaf04cf62d2eef8bb7
     </Layout>
   );
 };

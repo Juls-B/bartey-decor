@@ -1,18 +1,30 @@
 // ============================================================
 // Bartey Decor — Services Catalogue
 // ------------------------------------------------------------
-// All service galleries reference images under /public/assets/services/
-// using the exact filenames documented in the brief. Drop the real
-// images into that folder later — the site will automatically pick
-// them up. Missing images fall back to /placeholder.svg (see SafeImage).
+// Every service exposes a stable `slug` used as an anchor id
+// on the Services page, so navigating to /services#kitchen-units
+// (etc.) scrolls directly to that section.
 // ============================================================
+
+import kitchenLuxury from "@/assets/uploaded/kitchen-luxury.jpeg.asset.json";
+import boucleBedSide from "@/assets/uploaded/boucle-bed-side.jpeg.asset.json";
+import boucleBedWide from "@/assets/uploaded/boucle-bed-wide.jpeg.asset.json";
+import greenSofaLuxe from "@/assets/uploaded/green-sofa-luxe.jpeg.asset.json";
+import shagPillows from "@/assets/uploaded/shag-pillows.jpg.asset.json";
+import fringePillows from "@/assets/uploaded/fringe-pillows.jpg.asset.json";
+import linenPillows from "@/assets/uploaded/linen-pillows.jpg.asset.json";
+import diningCream from "@/assets/uploaded/dining-set-cream.jpg.asset.json";
+import diningBrass from "@/assets/uploaded/dining-brass.jpg.asset.json";
+import diningMarble from "@/assets/uploaded/dining-marble.jpg.asset.json";
 
 export type ServiceCategoryId =
   | "living"
   | "bedroom"
   | "kitchen"
   | "walls"
-  | "outdoor";
+  | "outdoor"
+  | "textiles"
+  | "styling";
 
 export interface ServiceCategory {
   id: ServiceCategoryId;
@@ -29,19 +41,23 @@ export interface Service {
   description: string;
   materials?: string;
   gallery: string[];
+  price?: string;
 }
 
 export const serviceCategories: ServiceCategory[] = [
   { id: "living", name: "Living & Entertainment", tagline: "Sofas, TV units, tables and entryways" },
   { id: "bedroom", name: "Bedroom & Storage", tagline: "Wardrobes, dressers and bed frames" },
-  { id: "kitchen", name: "Kitchen", tagline: "Fully fitted, bespoke kitchen units" },
+  { id: "kitchen", name: "Kitchen & Dining", tagline: "Fitted kitchens and dining sets" },
   { id: "walls", name: "Walls & Detailing", tagline: "Moulding and premium wall cladding" },
+  { id: "textiles", name: "Textiles & Soft Furnishing", tagline: "Curtains, throw pillows and finishing touches" },
   { id: "outdoor", name: "Outdoor", tagline: "Conversation sets and outdoor lounging" },
+  { id: "styling", name: "Home Styling", tagline: "Full-room styling and interior curation" },
 ];
 
-// ============================================================
-// Wardrobes Gallery
-// ============================================================
+// ------------------------------------------------------------
+// Existing folder-based images (fall back to SafeImage tiles
+// where the .jfif/.jpg files have not yet been uploaded).
+// ------------------------------------------------------------
 const serviceAsset = (fileName: string) =>
   new URL(`../assets/services/${fileName}`, import.meta.url).href;
 
@@ -53,9 +69,6 @@ const wardrobeImages = [
   serviceAsset("wardrobe_05.jpg"),
 ];
 
-// ============================================================
-// Dressers Gallery
-// ============================================================
 const dresserImages = [
   serviceAsset("dresser_01.jfif"),
   serviceAsset("dresser_02.jfif"),
@@ -63,28 +76,20 @@ const dresserImages = [
   serviceAsset("dresser_04.jfif"),
 ];
 
-// ============================================================
-// Sofas Gallery
-// ============================================================
 const sofaImages = [
+  greenSofaLuxe.url,
   serviceAsset("sofa_01.jpeg"),
   serviceAsset("sofa_02.jpeg"),
   serviceAsset("sofa_03.jpeg"),
   serviceAsset("sofa_04.jfif"),
 ];
 
-// ============================================================
-// Wall Moulding Gallery
-// ============================================================
 const wallMouldingImages = [
   serviceAsset("wall_moulding_01.jfif"),
   serviceAsset("wall_moulding_02.jfif"),
   serviceAsset("wall_moulding_03.jfif"),
 ];
 
-// ============================================================
-// TV Units / Entertainment / Media Units Gallery
-// ============================================================
 const tvUnitImages = [
   serviceAsset("tv_unit_01.jfif"),
   serviceAsset("tv_unit_02.jfif"),
@@ -93,65 +98,47 @@ const tvUnitImages = [
   serviceAsset("tv_unit_05.jpg"),
 ];
 
-// ============================================================
-// Entryway Designs Gallery
-// ============================================================
 const entrywayImages = [
   serviceAsset("entryway_01.jfif"),
   serviceAsset("entryway_02.jfif"),
   serviceAsset("entryway_03.jfif"),
 ];
 
-// ============================================================
-// Console Tables Gallery
-// ============================================================
 const consoleTableImages = [
   serviceAsset("console_table_01.jfif"),
   serviceAsset("console_table_02.jfif"),
   serviceAsset("console_table_03.jfif"),
 ];
 
-// ============================================================
-// Center Tables Gallery
-// ============================================================
 const centerTableImages = [
   serviceAsset("center_table_01.jfif"),
   serviceAsset("center_table_02.jfif"),
   serviceAsset("center_table_03.jfif"),
 ];
 
-// ============================================================
-// Chest of Drawers Gallery
-// ============================================================
 const chestDrawersImages = [
   serviceAsset("chest_drawers_01.jfif"),
   serviceAsset("chest_drawers_02.jfif"),
   serviceAsset("chest_drawers_03.jfif"),
 ];
 
-// ============================================================
-// Bed Frames Gallery
-// ============================================================
 const bedFrameImages = [
+  boucleBedWide.url,
+  boucleBedSide.url,
   serviceAsset("bed_frame_01.jfif"),
   serviceAsset("bed_frame_02.jfif"),
   serviceAsset("bed_frame_03.jfif"),
   serviceAsset("bed_frame_04.jfif"),
 ];
 
-// ============================================================
-// Mirrors Gallery
-// ============================================================
 const mirrorImages = [
   serviceAsset("mirror_01.jfif"),
   serviceAsset("mirror_02.jfif"),
   serviceAsset("mirror_03.jfif"),
 ];
 
-// ============================================================
-// Kitchen Units Gallery
-// ============================================================
 const kitchenUnitImages = [
+  kitchenLuxury.url,
   serviceAsset("kitchen_unit_01.jfif"),
   serviceAsset("kitchen_unit_02.jfif"),
   serviceAsset("kitchen_unit_03.jfif"),
@@ -159,18 +146,12 @@ const kitchenUnitImages = [
   serviceAsset("kitchen_unit_05.jfif"),
 ];
 
-// ============================================================
-// Wall Cladding Gallery
-// ============================================================
 const wallCladdingImages = [
   serviceAsset("wall_cladding_01.jfif"),
   serviceAsset("wall_cladding_02.jfif"),
   serviceAsset("wall_cladding_03.jfif"),
 ];
 
-// ============================================================
-// Outdoor Conversation Sets Gallery
-// ============================================================
 const outdoorSetImages = [
   serviceAsset("outdoor_set_01.jfif"),
   serviceAsset("outdoor_set_02.jfif"),
@@ -178,11 +159,47 @@ const outdoorSetImages = [
   serviceAsset("outdoor_set_04.jfif"),
 ];
 
+const diningSetImages = [
+  diningMarble.url,
+  diningCream.url,
+  diningBrass.url,
+];
+
+const throwPillowImages = [
+  shagPillows.url,
+  fringePillows.url,
+  linenPillows.url,
+];
+
+const curtainImages = [
+  serviceAsset("curtain_01.jpg"),
+  serviceAsset("curtain_02.jpg"),
+  serviceAsset("curtain_03.jpg"),
+];
+
+const homeStylingImages = [
+  serviceAsset("styling_01.jpg"),
+  serviceAsset("styling_02.jpg"),
+  serviceAsset("styling_03.jpg"),
+];
+
+const entertainmentImages = [
+  serviceAsset("entertainment_01.jpg"),
+  serviceAsset("entertainment_02.jpg"),
+  serviceAsset("entertainment_03.jpg"),
+];
+
+const mediaUnitImages = [
+  serviceAsset("media_unit_01.jpg"),
+  serviceAsset("media_unit_02.jpg"),
+  serviceAsset("media_unit_03.jpg"),
+];
+
 export const services: Service[] = [
   {
     id: "wardrobes",
     slug: "wardrobes",
-    name: "Custom Wardrobes & Walk-in Closets",
+    name: "Wardrobes & Walk-in Closets",
     category: "bedroom",
     shortDescription: "Floor-to-ceiling fitted wardrobes and walk-in closets, built to your exact space.",
     description:
@@ -201,11 +218,42 @@ export const services: Service[] = [
     gallery: dresserImages,
   },
   {
-    id: "sofas",
-    slug: "sofas",
-    name: "Sofas",
+    id: "tv-units",
+    slug: "tv-units",
+    name: "TV Units",
     category: "living",
-    shortDescription: "Hand-built modular and classic sofas in premium linen, wool and velvet.",
+    shortDescription: "Floating TV units and feature TV walls with integrated media storage.",
+    description:
+      "Statement TV walls in marble, slats or lacquer with concealed cable management, floating storage and warm LED wash. Built and installed to your exact wall dimensions.",
+    materials: "Porcelain slab, walnut veneer, matte lacquer, warm LED",
+    gallery: tvUnitImages,
+  },
+  {
+    id: "entertainment-units",
+    slug: "entertainment-units",
+    name: "Entertainment Units",
+    category: "living",
+    shortDescription: "Full-wall entertainment units combining storage, display and media.",
+    description:
+      "Entertainment units that combine media storage, open display shelving and concealed cabinetry — planned so your living room stays serene and clutter-free.",
+    gallery: entertainmentImages,
+  },
+  {
+    id: "media-units",
+    slug: "media-units",
+    name: "Media Units",
+    category: "living",
+    shortDescription: "Sleek media units for consoles, sound systems and cable management.",
+    description:
+      "Low-profile media units with lift-up cable trays, ventilated compartments for AV equipment and finish options that complement your TV wall.",
+    gallery: mediaUnitImages,
+  },
+  {
+    id: "sofas",
+    slug: "sofa-sets",
+    name: "Sofa Sets",
+    category: "living",
+    shortDescription: "Hand-built modular and classic sofas in premium linen, wool and boucle.",
     description:
       "Kiln-dried hardwood frames, high-resilience foam and expertly stitched upholstery. Configure as three-seaters, corners or L-shapes and pick your fabric — bouclé, linen, wool or velvet.",
     materials: "Hardwood frame, HR foam, premium upholstery",
@@ -220,17 +268,6 @@ export const services: Service[] = [
     description:
       "From understated panel moulding to statement feature walls, our carpenters install crisp, symmetrical detailing with painted or lacquered finishes tailored to your room.",
     gallery: wallMouldingImages,
-  },
-  {
-    id: "tv-units",
-    slug: "tv-units",
-    name: "TV Units, Entertainment & Media Units",
-    category: "living",
-    shortDescription: "Floating TV units, feature TV walls and integrated media storage.",
-    description:
-      "Statement TV walls in marble, slats or lacquer with concealed cable management, floating storage and warm LED wash. Built and installed to your exact wall dimensions.",
-    materials: "Porcelain slab, walnut veneer, matte lacquer, warm LED",
-    gallery: tvUnitImages,
   },
   {
     id: "entryway",
@@ -264,12 +301,12 @@ export const services: Service[] = [
   },
   {
     id: "chest-of-drawers",
-    slug: "chest-of-drawers",
-    name: "Chest of Drawers",
+    slug: "chester-drawers",
+    name: "Chester Drawers",
     category: "bedroom",
-    shortDescription: "Refined chests of drawers with soft-close drawers and warm finishes.",
+    shortDescription: "Refined chester drawers with soft-close runners and warm finishes.",
     description:
-      "Bedroom and dressing-room chests of drawers built with dovetail joinery, soft-close runners and a finish that ties into the rest of your room.",
+      "Bedroom and dressing-room chester drawers built with dovetail joinery, soft-close runners and a finish that ties into the rest of your room.",
     gallery: chestDrawersImages,
   },
   {
@@ -289,7 +326,8 @@ export const services: Service[] = [
     category: "bedroom",
     shortDescription: "Feature mirrors — arched, floor-standing and framed statement pieces.",
     description:
-      "Custom mirrors in warm timber, brushed metal and lacquer frames. Perfect for dressing rooms, entryways, salons and hospitality spaces.",
+      "Custom mirrors in warm timber, brushed metal and lacquer frames. Perfect for dressing rooms, entryways, salons and hospitality spaces. Signature piece: the Luxury Decorative Mirror at GH₵ 3,500.",
+    price: "From GH₵ 3,500",
     gallery: mirrorImages,
   },
   {
@@ -304,6 +342,16 @@ export const services: Service[] = [
     gallery: kitchenUnitImages,
   },
   {
+    id: "dining-sets",
+    slug: "dining-sets",
+    name: "Dining Sets",
+    category: "kitchen",
+    shortDescription: "Dining tables and chair sets in marble, timber and upholstered finishes.",
+    description:
+      "Rectangular, round and extension dining sets seating 4 to 12. Marble, oak and lacquer table tops paired with upholstered dining chairs in your choice of fabric.",
+    gallery: diningSetImages,
+  },
+  {
     id: "wall-cladding",
     slug: "wall-cladding",
     name: "Wall Cladding",
@@ -314,6 +362,27 @@ export const services: Service[] = [
     gallery: wallCladdingImages,
   },
   {
+    id: "curtains",
+    slug: "curtains",
+    name: "Curtains",
+    category: "textiles",
+    shortDescription: "Made-to-measure curtains, sheers and blackout drapery.",
+    description:
+      "Full-height curtains and sheers in premium linen, velvet and woven blends. Motorised tracks, blackout linings and pelmet detailing available.",
+    // TODO: replace serviceAsset("curtain_*") placeholders with real curtain photos when available.
+    gallery: curtainImages,
+  },
+  {
+    id: "throw-pillows",
+    slug: "throw-pillows",
+    name: "Throw Pillows",
+    category: "textiles",
+    shortDescription: "Curated throw pillows in boucle, linen, velvet and mongolian fur.",
+    description:
+      "A finishing layer for every sofa and bed — texture-rich throw pillows sourced and styled to match your palette. Custom sizing and fabrics on request.",
+    gallery: throwPillowImages,
+  },
+  {
     id: "outdoor-sets",
     slug: "outdoor-sets",
     name: "Outdoor Conversation Sets",
@@ -322,6 +391,17 @@ export const services: Service[] = [
     description:
       "Outdoor lounge chairs, sofas and low tables built for terraces, gardens and rooftop lounges — upholstered in outdoor-grade fabrics on hardwood frames.",
     gallery: outdoorSetImages,
+  },
+  {
+    id: "home-styling",
+    slug: "home-styling",
+    name: "Home Styling",
+    category: "styling",
+    shortDescription: "Full-room styling, art curation and finishing touches.",
+    description:
+      "We style your finished space — sourcing rugs, art, lighting, planters and accessories — so every room feels curated, layered and complete.",
+    // TODO: replace serviceAsset("styling_*") placeholders with real styling photography.
+    gallery: homeStylingImages,
   },
 ];
 

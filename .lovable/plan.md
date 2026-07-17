@@ -1,233 +1,139 @@
+# Bartey Decor — Luxury Redesign Plan
 
-
-# Homepage & Store Restructure
-
-This plan transforms the portfolio/inquiry-only website into a fully functional e-commerce store with cart, checkout, and proper product flow.
+Preserve the current structure, navigation, animations, and responsiveness. Layer in a richer, more editorial luxury feel plus the functional fixes you called out.
 
 ---
 
-## Summary of Changes
+## 1. Brand & Identity
 
-### Current State → New State
-- **Wishlist page** → Removed (keep wishlist functionality in header icon only)
-- **Inquiry-based flow** → Shopping cart + checkout flow
-- **Product detail "Inquire" button** → "Add to Bag" + quantity selector
-- **Homepage structure** → Reorganized to match reference layout
-
----
-
-## 1. Homepage Restructure
-
-Reorganize sections to follow this exact order:
-
-| Section | Description |
-|---------|-------------|
-| Hero Banner | Keep existing lifestyle hero |
-| Featured Collection(s) | 1-2 highlighted collections with editorial imagery |
-| Latest Products | Grid of newest arrivals |
-| Collections | Grid/list of all collection categories |
-| About Us | Brand philosophy snippet with link |
-| Follow Us | Social media / Instagram feed placeholder |
-
-### Remove from Homepage
-- Philosophy statement section (move essence to About Us section)
-- Marquee text banner
-- Full-width lifestyle banner mid-page
-- Newsletter section (move to footer only)
+- **New logo**: upload via `lovable-assets`, replace in Header, Footer, favicon.
+- **Logo treatment**: remove thick border; render inside a clean circular container (no heavy ring).
+- **Location**: replace every "Madina" with "Adenta, Accra, Ghana" (contact lib, footer, contact page, About).
+- **Phones**: keep only `+233 55 506 9388`. Remove the other two.
+- **Instagram handle**: `@bartey.decor`.
+- **Tagline**: "Designing Spaces • Creating Experiences".
+- **Color palette** (in `index.css` + `tailwind.config.ts`):
+  - Deep Emerald `#0F3B33`
+  - Rich Teal `#116466`
+  - Warm Gold `#C9A24A`
+  - Soft Cream `#F6F1E7`
+  - White `#FFFFFF`
+  - Charcoal ink for text
 
 ---
 
-## 2. Collection/Products Page Updates
+## 2. Navigation
 
-### Add Filters
-- Collection filter (already exists)
-- Price range filter (Low to High, High to Low)
-- Material type filter
-- "New Arrivals" and "Featured" quick filters
+Keep sticky nav. Items: Home, About, Services, Gallery, Process, Contact. CTA button "Request a Quote". Transparent over hero, solid on scroll (already behaves this way — polish styling to match new palette).
 
-### Add Sorting
-- Dropdown with options:
-  - Featured (default)
-  - Newest
-  - Price: Low to High
-  - Price: High to Low
-  - Alphabetical A-Z
-
-### Product Grid
-- Keep existing editorial-style grid
-- Ensure all cards show mock data
-- Only the first product links to real detail page (others link to same product for demo purposes)
+### Search fix
+Rebuild the search into a real product/service finder:
+- Command-style dropdown listing all services + featured products as user types.
+- Selecting a result navigates to `/services#<slug>` (or `/#featured-mirror` for the mirror) and smooth-scrolls to that anchor.
+- No more redirect to generic Services page.
 
 ---
 
-## 3. Product Detail Page Updates
+## 3. Homepage
 
-### Current → New Layout
-| Element | Change |
-|---------|--------|
-| Images | Keep existing gallery |
-| Title, Description, Price | Keep |
-| "Inquire About This Piece" | → "Add to Bag" primary CTA |
-| Wishlist button | Keep as secondary action |
-| **New: Quantity Selector** | Add increment/decrement control |
-| Related Products | Keep existing |
+Same section order; each section elevated.
 
-### New Elements to Add
-- Quantity selector (1-10, with +/- buttons)
-- "Add to Bag" button replaces inquiry button
-- Toast notification on add to cart
-
----
-
-## 4. New Cart System
-
-### Create Cart Store (Zustand)
-Similar to wishlist but with quantity:
-- `items: { product, quantity }[]`
-- `addItem(product, quantity)`
-- `updateQuantity(productId, quantity)`
-- `removeItem(productId)`
-- `getTotal()`
-- `getItemCount()`
-- Persist to localStorage
-
-### Cart Page (`/cart`)
-| Element | Description |
-|---------|-------------|
-| Product List | Image, title, price, quantity selector, remove button |
-| Cart Summary | Subtotal, estimated shipping, total |
-| Checkout CTA | Button linking to checkout page |
-| Continue Shopping | Secondary link back to products |
+1. **Hero** — full-bleed cinematic image, soft parallax, gradient overlay, floating gold accent shapes, animated headline "Luxury Furniture Crafted For Beautiful Living", subcopy, two CTAs (Explore Our Collection, Request a Quote).
+2. **Featured Product — Luxury Decorative Mirror** (GH₵ 3,500). Split layout: large image left, editorial copy + CTA right, gold price tag, uses uploaded mirror image once provided (placeholder from existing mirror gallery until then).
+3. **Services preview** — elegant cards linking into `/services#slug`.
+4. **Premium Gallery** — masonry / editorial mix, hover zoom, lightbox modal, lazy loaded.
+5. **Sliding Portfolio** — CSS marquee, pause on hover, large image cards.
+6. **Inspiration Carousel** — second slower marquee row (Living, Bedroom, Kitchen, Wardrobes, Curtains, Dining, Commercial).
+7. **Video Showcase** — thumbnail cards with play icon; click opens a lightweight modal saying "Project video coming soon". No `<video>` streaming.
+8. **Business Statistics** — animated counters + CSS circular progress (Projects Completed, Satisfied Clients, Furniture Installed, Commercial Projects, Residential Projects, Years of Experience).
+9. **Testimonials** — carousel with stars, large quote marks, avatar placeholders.
+10. **Behind the Craft** — worker images in an editorial grid.
+11. **Process Timeline** — Consultation → Design → Approval → Production → Installation → Final Delivery.
+12. **CTA band** → Contact.
 
 ---
 
-## 5. Checkout Page (`/checkout`)
+## 4. Services
 
-### Coming Soon Banner
-- Prominent banner: "Online checkout coming soon"
-- Message: "Please contact us to complete your order"
-- Email/phone contact info
+Expand `src/data/services.ts` to include all requested items (add missing: Curtains, Dining Sets, Throw Pillows, Home Styling, split Entertainment/Media Units from TV Units, add Chester Drawers alias).
 
-### Order Summary
-- List of cart items (read-only)
-- Quantities and prices
-- Subtotal and total
-
-### Contact Form
-- Name, Email, Phone
-- Shipping address fields
-- Order notes/special requests
-- "Submit Order Request" button
-- Form submits and clears cart with success message
+- Services page renders each service as its own anchored section (`id={slug}`), so every product gets a deep-link like `/services#curtains`.
+- Category filter tabs stay.
+- Each section: gallery (hover zoom + lightbox), description, CTA "Request this piece" → prefilled contact form.
 
 ---
 
-## 6. Header Updates
+## 5. Contact — WhatsApp Flow
 
-### Navigation Changes
-| Current | New |
-|---------|-----|
-| Wishlist icon | Keep (but no dedicated page, opens mini drawer or tooltip) |
-| **New:** Cart icon | Bag icon with item count badge |
+Form fields: Name, Phone, Email (optional), Service (select from services list), Project Details, Budget (optional), Notes.
 
-### Cart Icon Behavior
-- Shows item count
-- Links to `/cart` page
+On submit, build a formatted message:
 
----
+```
+Hello Bartey Decor, I'd like to request a quote.
 
-## 7. Mock Data Strategy
-
-### Product Cards Approach
-- All product cards render with unique mock data (images, names, prices)
-- For demo simplicity, clicking any product goes to a single working detail page
-- This prevents broken pages while showcasing the grid design
-
-### Implementation
-- Keep existing product data
-- First product (Arc Pendant Light) is the "real" linkable product
-- Other cards can link to this same product for the demo
-
----
-
-## 8. Files to Create
-
-| File | Purpose |
-|------|---------|
-| `src/hooks/useCart.ts` | Cart state management with Zustand |
-| `src/pages/Cart.tsx` | Shopping cart page |
-| `src/pages/Checkout.tsx` | Checkout page with form |
-| `src/components/QuantitySelector.tsx` | Reusable +/- quantity control |
-| `src/components/CartIcon.tsx` | Header cart icon with badge |
-
----
-
-## 9. Files to Modify
-
-| File | Changes |
-|------|---------|
-| `src/pages/Index.tsx` | Restructure sections per new layout |
-| `src/pages/Products.tsx` | Add filters and sorting UI |
-| `src/pages/ProductDetail.tsx` | Add quantity selector, change CTA to "Add to Bag" |
-| `src/components/Header.tsx` | Add cart icon, update wishlist behavior |
-| `src/components/Footer.tsx` | Remove wishlist link, keep rest |
-| `src/App.tsx` | Add `/cart` and `/checkout` routes, remove `/wishlist` |
-| `src/components/Layout.tsx` | Fix TypeScript error with Framer Motion variants |
-
----
-
-## 10. Files to Delete
-
-| File | Reason |
-|------|--------|
-| `src/pages/Wishlist.tsx` | User requested removal |
-
----
-
-## Technical Details
-
-### Fix Build Error (Layout.tsx)
-The Framer Motion `ease` array needs to be typed as a tuple:
-```typescript
-ease: [0.25, 0.46, 0.45, 0.94] as const
+Name: ...
+Phone: ...
+Email: ...
+Service: ...
+Project details: ...
+Budget: ...
+Notes: ...
 ```
 
-### Cart Store Structure
-```typescript
-interface CartItem {
-  product: Product;
-  quantity: number;
-}
+Open `https://wa.me/233555069388?text=<encoded>` in a new tab. Show a toast confirming redirect. Zod validation client-side.
 
-interface CartState {
-  items: CartItem[];
-  addItem: (product: Product, quantity: number) => void;
-  updateQuantity: (productId: string, quantity: number) => void;
-  removeItem: (productId: string) => void;
-  clearCart: () => void;
-  getSubtotal: () => number;
-  getItemCount: () => number;
-}
-```
-
-### Quantity Selector Component
-- Shows current quantity (default: 1)
-- Minus button (disabled at 1)
-- Plus button (max 10)
-- Clean, minimal styling matching brand
-
-### Sorting Implementation
-- URL parameter based (`?sort=price-asc`)
-- Combined with existing collection filter
-- `useMemo` for filtered and sorted products
+Contact page also shows: Adenta address, single phone, Instagram, hours, and an embedded map iframe (Google Maps for Adenta).
 
 ---
 
-## Visual Design Notes
+## 6. Footer
 
-- Maintain warm, Scandinavian aesthetic throughout
-- Cart and checkout pages use same cream/neutral tones
-- No dark theming - keep light, warm palette
-- Generous whitespace on cart/checkout pages
-- Form inputs match existing inquiry form styling
+Logo (new circular), tagline, nav, services quick links, contact block (Adenta + single phone + Instagram), copyright. Palette refreshed.
 
+---
+
+## 7. New / Modified files
+
+**New**
+- `src/components/SearchCommand.tsx` — real product/service search
+- `src/components/Marquee.tsx` — CSS sliding row (used by Portfolio + Inspiration)
+- `src/components/Lightbox.tsx` — simple image lightbox
+- `src/components/StatsSection.tsx` — animated counters + circular progress
+- `src/components/TestimonialsCarousel.tsx`
+- `src/components/VideoShowcase.tsx`
+- `src/components/ProcessTimeline.tsx`
+- `src/components/FeaturedMirror.tsx`
+- `src/lib/whatsapp.ts` — message builder + link opener
+- `src/assets/brand/logo-new.png.asset.json` — uploaded logo pointer
+
+**Modified**
+- `src/index.css`, `tailwind.config.ts` — new palette tokens + marquee keyframes
+- `src/components/Header.tsx` — new logo, circular treatment, wired search
+- `src/components/Footer.tsx` — new details, palette, single phone, Adenta
+- `src/pages/Index.tsx` — new section composition
+- `src/pages/Products.tsx` (Services) — anchored sections per service
+- `src/pages/Contact.tsx` — WhatsApp submission
+- `src/pages/About.tsx` — refreshed founder + values
+- `src/data/services.ts` — new services (Curtains, Dining Sets, Throw Pillows, Home Styling, etc.)
+- `src/lib/contact.ts` — Adenta, single phone, new IG handle
+- `index.html` — favicon, meta
+
+---
+
+## 8. Performance guardrails
+
+- No new heavy libs. Only current stack (React, Tailwind, Framer Motion already present, shadcn).
+- Marquees, counters, progress rings: CSS + minimal JS.
+- All images `loading="lazy" decoding="async"`, via `SafeImage`.
+- Lightbox is a plain dialog, not a library.
+- Video section is thumbnails + modal only.
+
+---
+
+## 9. Assumptions / notes
+
+- Uploaded images in this message (kitchen, boucle bed, green sofa, dining sets, pillows) will be uploaded to `lovable-assets` and slotted into the corresponding service galleries (Kitchen Units, Bed Frames, Sofas, Dining Sets, Throw Pillows).
+- New Bartey Decor logo file: I'll use the **existing** `src/assets/brand/logo.png.asset.json` as the current logo. If you have a newer file, drop it in and I'll swap the pointer — otherwise I'll continue with the current logo but apply the circular no-border treatment now.
+- Any service without provided photos keeps the `SafeImage` fallback so the layout doesn't break; I'll leave `TODO:` comments where real photos should replace placeholders.
+- If any single subsection can't fit in one pass, I'll ship what I can and leave `TODO:` markers rather than break the site.
