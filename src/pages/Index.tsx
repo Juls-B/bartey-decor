@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, ArrowDown, Instagram, ShieldCheck, Hammer, Truck, Wrench } from "lucide-react";
+import { ArrowRight, ArrowDown, ShieldCheck, Hammer, Truck, Wrench } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Layout } from "@/components/Layout";
 import { ProductCard } from "@/components/ProductCard";
@@ -9,11 +9,7 @@ import { collections, getFeaturedProducts, products } from "@/data/products";
 import { Button } from "@/components/ui/button";
 import { CONTACT } from "@/lib/contact";
 
-import slide1 from "@/assets/slide1.jpg";
-import slide2 from "@/assets/slide2.jpg";
-import slide3 from "@/assets/slide3.jpg";
 import slide4 from "@/assets/slide4.jpg";
-import slide5 from "@/assets/slide5.jpg";
 import warmLivingRoom from "@/assets/warm-living-room.jfif";
 import wardrobeFitted from "@/assets/wardrobe-fitted.jfif";
 import tvConsoleMarble from "@/assets/tv-console-marble.jfif";
@@ -27,50 +23,12 @@ const Index = () => {
   const latestProducts = featured.length ? featured.slice(0, 4) : products.slice(0, 4);
   const displayedCollections = collections.slice(0, 6);
   const heroRef = useRef<HTMLDivElement>(null);
-  const [activeHeroSlide, setActiveHeroSlide] = useState(0);
-  const [slideDirection, setSlideDirection] = useState(1);
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
   });
   const heroImageY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-
-  const heroSlides = [slide1, slide2, slide3, slide4, slide5];
-  const gallery = [...heroSlides];
-
-  const changeHeroSlide = (index: number) => {
-    if (index === activeHeroSlide) return;
-    setSlideDirection(index > activeHeroSlide ? 1 : -1);
-    setActiveHeroSlide(index);
-  };
-
-  useEffect(() => {
-    const interval = window.setInterval(() => {
-      setActiveHeroSlide((current) => {
-        const next = (current + 1) % heroSlides.length;
-        setSlideDirection(1);
-        return next;
-      });
-    }, 8500);
-
-    return () => window.clearInterval(interval);
-  }, [heroSlides.length]);
-
-  const slideVariants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? "100%" : "-100%",
-      opacity: 1,
-    }),
-    center: {
-      x: "0%",
-      opacity: 1,
-    },
-    exit: {
-      x: "0%",
-      opacity: 1,
-    },
-  };
 
   const whyChoose = [
     { icon: ShieldCheck, title: "Registered Ghanaian Business", copy: "A trusted, fully registered company based in Madina, Accra." },
@@ -84,42 +42,15 @@ const Index = () => {
       {/* Hero */}
       <section ref={heroRef} className="relative h-[100svh] -mt-16 md:-mt-20 overflow-hidden">
         <motion.div className="absolute inset-0" style={{ y: heroImageY }}>
-          <AnimatePresence initial={false} custom={slideDirection} mode="wait">
-            <motion.div
-              key={heroSlides[activeHeroSlide]}
-              custom={slideDirection}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{
-                duration: 1.2,
-                ease: [0.76, 0, 0.24, 1],
-              }}
-              className="absolute inset-0 will-change-transform"
-            >
-              <img
-                src={heroSlides[activeHeroSlide]}
-                alt="Featured interior design showcase by Bartey Decor"
-                className="w-full h-[120%] object-cover animate-ken-burns"
-                draggable={false}
-              />
-            </motion.div>
-          </AnimatePresence>
-          <div className="absolute inset-0 bg-gradient-to-b from-charcoal/40 via-charcoal/20 to-charcoal/60" />
-          <div className="absolute bottom-6 right-6 md:bottom-8 md:right-8 flex gap-2">
-            {heroSlides.map((_, index) => (
-              <button
-                key={index}
-                type="button"
-                aria-label={`Show slide ${index + 1}`}
-                onClick={() => changeHeroSlide(index)}
-                className={`h-2.5 w-2.5 rounded-full border border-white/70 transition-all ${
-                  activeHeroSlide === index ? "bg-white scale-125" : "bg-white/35"
-                }`}
-              />
-            ))}
+          <div className="absolute inset-0 will-change-transform">
+            <img
+              src={slide4}
+              alt="Featured interior design showcase by Bartey Decor"
+              className="w-full h-[120%] object-cover animate-ken-burns"
+              draggable={false}
+            />
           </div>
+          <div className="absolute inset-0 bg-gradient-to-b from-charcoal/40 via-charcoal/20 to-charcoal/60" />
         </motion.div>
 
         <motion.div
@@ -401,53 +332,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Instagram / Gallery */}
-      <section className="py-20 md:py-28 bg-linen">
-        <div className="container-full">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary mb-3">
-              Follow the Studio
-            </p>
-            <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4">
-              {CONTACT.instagramHandle}
-            </h2>
-            <p className="text-muted-foreground max-w-md mx-auto">
-              Behind-the-scenes builds, installs and completed spaces — straight from our workshop in Accra.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-4">
-            {gallery.map((image, index) => (
-              <motion.a
-                key={index}
-                href={CONTACT.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.08 }}
-                className="relative aspect-square overflow-hidden group cursor-pointer"
-              >
-                <img
-                  src={image}
-                  alt="Bartey Decor project"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/40 transition-colors duration-300 flex items-center justify-center">
-                  <Instagram className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-              </motion.a>
-            ))}
-          </div>
-        </div>
-      </section>
     </Layout>
   );
 };

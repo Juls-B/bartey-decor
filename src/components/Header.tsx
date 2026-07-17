@@ -133,7 +133,7 @@ export const Header = () => {
                 src={logoAsset}
                 alt="Bartey Decor"
                 className={cn(
-                  "h-11 md:h-14 w-auto object-contain rounded-full border border-white/80 bg-white/95 p-1 shadow-lg transition-all duration-300",
+                  "h-11 md:h-14 w-auto object-contain rounded-full transition-all duration-300",
                   scrolled || !isHomePage ? "ring-1 ring-primary/20" : "ring-0"
                 )}
               />

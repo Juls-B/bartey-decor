@@ -24,15 +24,6 @@ import worker03 from "@/assets/brand/worker_03.jfif";
 import worker04 from "@/assets/brand/worker_04.jfif";
 
 
-const process = [
-  { n: "01", title: "Consultation", copy: "We visit or meet virtually to understand your space, style and needs." },
-  { n: "02", title: "Design & Planning", copy: "We produce concept boards, layouts and material selections tailored to you." },
-  { n: "03", title: "Design Approval", copy: "You sign off on drawings, finishes and pricing — no surprises later." },
-  { n: "04", title: "Production", copy: "Your piece is hand-built in our Accra workshop by our craftsmen." },
-  { n: "05", title: "Installation", copy: "Our own team delivers and installs on-site with care and precision." },
-  { n: "06", title: "Project Completion", copy: "Final walk-through, styling touches and full aftercare support." },
-];
-
 const testimonials = [
   {
     quote:
@@ -312,41 +303,6 @@ const About = () => {
                 <h3 className="font-serif text-2xl text-foreground mb-5">{value.title}</h3>
                 <div className="w-8 h-px bg-primary/30 mx-auto mb-5" />
                 <p className="text-muted-foreground leading-[1.8]">{value.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Process */}
-      <section className="py-24 md:py-36">
-        <div className="container-full">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary mb-3">
-              How We Work
-            </p>
-            <h2 className="font-serif text-4xl md:text-5xl text-foreground">Our Process</h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-            {process.map((step, i) => (
-              <motion.div
-                key={step.n}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.08 }}
-                className="border-t border-border pt-8"
-              >
-                <span className="text-[11px] font-semibold tracking-[0.3em] text-primary block mb-4">{step.n}</span>
-                <h3 className="font-serif text-2xl text-foreground mb-3">{step.title}</h3>
-                <p className="text-muted-foreground leading-[1.8]">{step.copy}</p>
               </motion.div>
             ))}
           </div>
