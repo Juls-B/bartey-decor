@@ -86,6 +86,22 @@ const Index = () => {
     { icon: Wrench, title: "Professional Installation", copy: "Our own installers set up your wardrobes, TV walls and furniture in-home." },
   ];
 
+  const marqueeCards = services.slice(0, 8).map((s) => (
+    <Link key={s.id} to={`/products#${s.slug}`} className="block w-[260px] md:w-[320px]">
+      <div className="aspect-[4/5] bg-secondary overflow-hidden group">
+        <img src={s.gallery[0]} alt={s.name} loading="lazy" className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105" onError={(e) => { (e.currentTarget as HTMLImageElement).style.opacity = "0"; }} />
+      </div>
+      <p className="mt-3 text-[10px] tracking-[0.25em] uppercase text-muted-foreground">Service</p>
+      <p className="font-serif text-lg text-foreground">{s.name}</p>
+    </Link>
+  ));
+
+  const inspirationTags = ["Furniture", "Living Rooms", "Bedrooms", "Kitchens", "Wardrobes", "Curtains", "Dining Areas", "Commercial Spaces"].map((t) => (
+    <span key={t} className="font-serif italic text-3xl md:text-5xl text-primary/70 whitespace-nowrap">
+      {t} <span className="text-gold not-italic mx-4">•</span>
+    </span>
+  ));
+
   return (
     <Layout>
       {/* Hero */}
