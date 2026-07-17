@@ -80,7 +80,7 @@ const Index = () => {
   };
 
   const whyChoose = [
-    { icon: ShieldCheck, title: "Registered Ghanaian Business", copy: "A trusted, fully registered company based in Madina, Accra." },
+    { icon: ShieldCheck, title: "Registered Ghanaian Business", copy: "A trusted, fully registered company based in Adenta, Accra." },
     { icon: Hammer, title: "Premium Craftsmanship", copy: "Every piece is hand-built by our workshop team with obsessive attention to finish." },
     { icon: Truck, title: "Doorstep Delivery", copy: "We deliver anywhere in Ghana — carefully packed, on schedule." },
     { icon: Wrench, title: "Professional Installation", copy: "Our own installers set up your wardrobes, TV walls and furniture in-home." },
