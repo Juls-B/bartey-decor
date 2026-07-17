@@ -127,24 +127,16 @@ export const Header = () => {
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo — clean circular treatment, no thick border */}
             <Link to="/" className="flex items-center gap-3 group" aria-label="Bartey Decor — home">
-<<<<<<< HEAD
-              <img
-                src={logoAsset}
-                alt="Bartey Decor"
-                className={cn(
-                  "h-11 md:h-14 w-auto object-contain rounded-full transition-all duration-300",
-                  scrolled || !isHomePage ? "ring-1 ring-primary/20" : "ring-0"
-                )}
-              />
-=======
-              <span className="relative inline-flex h-11 w-11 md:h-14 md:w-14 items-center justify-center overflow-hidden rounded-full bg-white shadow-[0_2px_16px_-4px_rgba(0,0,0,0.15)]">
+              <span className={cn(
+                "relative inline-flex h-11 w-11 md:h-14 md:w-14 items-center justify-center overflow-hidden rounded-full bg-white shadow-[0_2px_16px_-4px_rgba(0,0,0,0.15)]",
+                scrolled || !isHomePage ? "ring-1 ring-primary/20" : "ring-0"
+              )}>
                 <img
                   src={logoAsset}
                   alt="Bartey Decor"
                   className="h-full w-full object-cover"
                 />
               </span>
->>>>>>> 684876c9878d7a1c1ad44bcaf04cf62d2eef8bb7
               <span className="hidden sm:flex flex-col leading-tight">
                 <span className={cn("font-serif text-xl md:text-2xl tracking-tight transition-colors duration-300", headerTextClass)}>
                   Bartey Decor

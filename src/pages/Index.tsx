@@ -371,69 +371,6 @@ const Index = () => {
           </motion.div>
         </div>
       </section>
-
-<<<<<<< HEAD
-=======
-      {/* Video showcase */}
-      <VideoShowcase />
-
-      {/* Stats */}
-      <StatsSection />
-
-      {/* Testimonials */}
-      <TestimonialsCarousel />
-
-      {/* Process */}
-      <ProcessTimeline />
-
-      {/* Instagram / Gallery */}
-      <section id="gallery" className="py-20 md:py-28 bg-linen scroll-mt-24">
-        <div className="container-full">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary mb-3">
-              Follow the Studio
-            </p>
-            <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4">
-              {CONTACT.instagramHandle}
-            </h2>
-            <p className="text-muted-foreground max-w-md mx-auto">
-              Behind-the-scenes builds, installs and completed spaces — straight from our workshop in Accra.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-4">
-            {gallery.map((image, index) => (
-              <motion.a
-                key={index}
-                href={CONTACT.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.08 }}
-                className="relative aspect-square overflow-hidden group cursor-pointer"
-              >
-                <img
-                  src={image}
-                  alt="Bartey Decor project"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/40 transition-colors duration-300 flex items-center justify-center">
-                  <Instagram className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-              </motion.a>
-            ))}
-          </div>
-        </div>
-      </section>
->>>>>>> 684876c9878d7a1c1ad44bcaf04cf62d2eef8bb7
     </Layout>
   );
 };
