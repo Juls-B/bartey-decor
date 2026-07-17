@@ -4,6 +4,14 @@ import { services } from "@/data/services";
 import logoAsset from "@/assets/brand/logo.jpeg";
 import { CONTACT } from "@/lib/contact";
 
+const quickLinks = [
+  { to: "/", label: "Home" },
+  { to: "/about", label: "About" },
+  { to: "/products", label: "Services" },
+  { to: "/#gallery", label: "Gallery" },
+  { to: "/#process", label: "Process" },
+  { to: "/contact", label: "Contact" },
+];
 
 export const Footer = () => {
   return (
@@ -14,11 +22,9 @@ export const Footer = () => {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
             <div>
               <Link to="/" className="flex items-center gap-3">
-                <img
-                  src={logoAsset}
-                  alt="Bartey Decor"
-                  className="h-12 w-auto object-contain bg-background/95 p-1.5 rounded-sm"
-                />
+                <span className="inline-flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-white">
+                  <img src={logoAsset} alt="Bartey Decor" className="h-full w-full object-cover" />
+                </span>
                 <span className="font-serif text-3xl md:text-4xl tracking-tight text-background">
                   Bartey Decor
                 </span>
@@ -28,14 +34,13 @@ export const Footer = () => {
               </p>
             </div>
 
-            {/* CTA in footer */}
             <div className="max-w-sm w-full">
-              <p className="text-[10px] font-semibold tracking-[0.3em] uppercase text-background/40 mb-3">
+              <p className="text-[10px] font-semibold tracking-[0.3em] uppercase text-gold mb-3">
                 Start Your Project
               </p>
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-between w-full h-12 px-5 text-sm font-medium bg-background text-foreground hover:bg-background/90 transition-colors group"
+                className="inline-flex items-center justify-between w-full h-12 px-5 text-sm font-medium bg-gold text-charcoal hover:bg-gold/90 transition-colors group"
               >
                 <span className="tracking-[0.1em] uppercase text-xs">Request a Quote</span>
                 <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
@@ -45,19 +50,17 @@ export const Footer = () => {
         </div>
       </div>
 
-      {/* Main footer content */}
       <div className="container-full py-12 md:py-16">
         <div className="grid gap-10 md:grid-cols-4">
-          {/* Services */}
           <div>
-            <h4 className="text-[11px] font-semibold tracking-[0.25em] uppercase text-background/40 mb-5">
+            <h4 className="text-[11px] font-semibold tracking-[0.25em] uppercase text-gold mb-5">
               Services
             </h4>
             <ul className="space-y-3">
-              {services.map((service) => (
+              {services.slice(0, 10).map((service) => (
                 <li key={service.id}>
                   <Link
-                    to={`/products?collection=${service.slug}`}
+                    to={`/products#${service.slug}`}
                     className="text-sm text-background/60 hover:text-background transition-colors duration-300"
                   >
                     {service.name}
@@ -67,33 +70,23 @@ export const Footer = () => {
             </ul>
           </div>
 
-          {/* Quick Links */}
           <div>
-            <h4 className="text-[11px] font-semibold tracking-[0.25em] uppercase text-background/40 mb-5">
+            <h4 className="text-[11px] font-semibold tracking-[0.25em] uppercase text-gold mb-5">
               Quick Links
             </h4>
             <ul className="space-y-3">
-              <li>
-                <Link to="/" className="text-sm text-background/60 hover:text-background transition-colors">Home</Link>
-              </li>
-              <li>
-                <Link to="/products" className="text-sm text-background/60 hover:text-background transition-colors">Portfolio</Link>
-              </li>
-              <li>
-                <Link to="/about" className="text-sm text-background/60 hover:text-background transition-colors">About Us</Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-sm text-background/60 hover:text-background transition-colors">Contact</Link>
-              </li>
-              <li>
-                <Link to="/cart" className="text-sm text-background/60 hover:text-background transition-colors">Your Selection</Link>
-              </li>
+              {quickLinks.map((l) => (
+                <li key={l.to}>
+                  <Link to={l.to} className="text-sm text-background/60 hover:text-background transition-colors">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
-            <h4 className="text-[11px] font-semibold tracking-[0.25em] uppercase text-background/40 mb-5">
+            <h4 className="text-[11px] font-semibold tracking-[0.25em] uppercase text-gold mb-5">
               Contact
             </h4>
             <ul className="space-y-3 text-sm">
@@ -118,9 +111,8 @@ export const Footer = () => {
             </ul>
           </div>
 
-          {/* Follow */}
           <div>
-            <h4 className="text-[11px] font-semibold tracking-[0.25em] uppercase text-background/40 mb-5">
+            <h4 className="text-[11px] font-semibold tracking-[0.25em] uppercase text-gold mb-5">
               Follow
             </h4>
             <ul className="space-y-3">
@@ -146,7 +138,7 @@ export const Footer = () => {
                 </a>
               </li>
               <li className="pt-3">
-                <p className="text-[11px] font-semibold tracking-[0.15em] uppercase text-background/40 mb-1">Hours</p>
+                <p className="text-[11px] font-semibold tracking-[0.15em] uppercase text-gold mb-1">Hours</p>
                 <p className="text-sm text-background/50">{CONTACT.hours}</p>
               </li>
             </ul>
@@ -154,7 +146,6 @@ export const Footer = () => {
         </div>
       </div>
 
-      {/* Bottom bar */}
       <div className="border-t border-background/10">
         <div className="container-full py-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-background/30">
