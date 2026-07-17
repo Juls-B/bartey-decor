@@ -1,13 +1,13 @@
 import { CONTACT } from "./contact";
 
 export interface QuoteFormValues {
-  name: string;
-  phone: string;
+  name?: string;
+  phone?: string;
   email?: string;
   service?: string;
   budget?: string;
   location?: string;
-  message: string;
+  message?: string;
   notes?: string;
 }
 
