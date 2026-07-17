@@ -21,8 +21,7 @@ const primaryNav = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
   { to: "/products", label: "Services" },
-  { to: "/#gallery", label: "Gallery" },
-  { to: "/#process", label: "Process" },
+  
   { to: "/contact", label: "Contact" },
 ];
 
