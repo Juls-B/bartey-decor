@@ -212,6 +212,23 @@ const Index = () => {
         </motion.div>
       </section>
 
+      {/* Featured Mirror */}
+      <FeaturedMirror />
+
+      {/* Sliding portfolio */}
+      <section id="portfolio" className="py-20 md:py-24 scroll-mt-24">
+        <div className="container-full mb-10">
+          <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary mb-3">Sliding Portfolio</p>
+          <h2 className="font-serif text-3xl md:text-5xl text-foreground">Recent <span className="italic">Installations</span></h2>
+        </div>
+        <Marquee items={marqueeCards} speed="slow" />
+      </section>
+
+      {/* Inspiration marquee */}
+      <section className="py-14 md:py-20 bg-linen border-y border-border/60 overflow-hidden">
+        <Marquee items={inspirationTags} speed="normal" />
+      </section>
+
       {/* Featured project */}
       <section className="py-20 md:py-28">
         <div className="container-full">
@@ -424,8 +441,20 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Video showcase */}
+      <VideoShowcase />
+
+      {/* Stats */}
+      <StatsSection />
+
+      {/* Testimonials */}
+      <TestimonialsCarousel />
+
+      {/* Process */}
+      <ProcessTimeline />
+
       {/* Instagram / Gallery */}
-      <section className="py-20 md:py-28 bg-linen">
+      <section id="gallery" className="py-20 md:py-28 bg-linen scroll-mt-24">
         <div className="container-full">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
