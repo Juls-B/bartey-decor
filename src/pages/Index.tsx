@@ -8,6 +8,13 @@ import { CollectionCard } from "@/components/CollectionCard";
 import { collections, getFeaturedProducts, products } from "@/data/products";
 import { Button } from "@/components/ui/button";
 import { CONTACT } from "@/lib/contact";
+import { FeaturedMirror } from "@/components/FeaturedMirror";
+import { StatsSection } from "@/components/StatsSection";
+import { ProcessTimeline } from "@/components/ProcessTimeline";
+import { TestimonialsCarousel } from "@/components/TestimonialsCarousel";
+import { VideoShowcase } from "@/components/VideoShowcase";
+import { Marquee } from "@/components/Marquee";
+import { services } from "@/data/services";
 
 import slide1 from "@/assets/slide1.jpg";
 import slide2 from "@/assets/slide2.jpg";
@@ -73,11 +80,27 @@ const Index = () => {
   };
 
   const whyChoose = [
-    { icon: ShieldCheck, title: "Registered Ghanaian Business", copy: "A trusted, fully registered company based in Madina, Accra." },
+    { icon: ShieldCheck, title: "Registered Ghanaian Business", copy: "A trusted, fully registered company based in Adenta, Accra." },
     { icon: Hammer, title: "Premium Craftsmanship", copy: "Every piece is hand-built by our workshop team with obsessive attention to finish." },
     { icon: Truck, title: "Doorstep Delivery", copy: "We deliver anywhere in Ghana — carefully packed, on schedule." },
     { icon: Wrench, title: "Professional Installation", copy: "Our own installers set up your wardrobes, TV walls and furniture in-home." },
   ];
+
+  const marqueeCards = services.slice(0, 8).map((s) => (
+    <Link key={s.id} to={`/products#${s.slug}`} className="block w-[260px] md:w-[320px]">
+      <div className="aspect-[4/5] bg-secondary overflow-hidden group">
+        <img src={s.gallery[0]} alt={s.name} loading="lazy" className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105" onError={(e) => { (e.currentTarget as HTMLImageElement).style.opacity = "0"; }} />
+      </div>
+      <p className="mt-3 text-[10px] tracking-[0.25em] uppercase text-muted-foreground">Service</p>
+      <p className="font-serif text-lg text-foreground">{s.name}</p>
+    </Link>
+  ));
+
+  const inspirationTags = ["Furniture", "Living Rooms", "Bedrooms", "Kitchens", "Wardrobes", "Curtains", "Dining Areas", "Commercial Spaces"].map((t) => (
+    <span key={t} className="font-serif italic text-3xl md:text-5xl text-primary/70 whitespace-nowrap">
+      {t} <span className="text-gold not-italic mx-4">•</span>
+    </span>
+  ));
 
   return (
     <Layout>
@@ -187,6 +210,23 @@ const Index = () => {
             </motion.div>
           </motion.div>
         </motion.div>
+      </section>
+
+      {/* Featured Mirror */}
+      <FeaturedMirror />
+
+      {/* Sliding portfolio */}
+      <section id="portfolio" className="py-20 md:py-24 scroll-mt-24">
+        <div className="container-full mb-10">
+          <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary mb-3">Sliding Portfolio</p>
+          <h2 className="font-serif text-3xl md:text-5xl text-foreground">Recent <span className="italic">Installations</span></h2>
+        </div>
+        <Marquee items={marqueeCards} speed="slow" />
+      </section>
+
+      {/* Inspiration marquee */}
+      <section className="py-14 md:py-20 bg-linen border-y border-border/60 overflow-hidden">
+        <Marquee items={inspirationTags} speed="normal" />
       </section>
 
       {/* Featured project */}
@@ -401,8 +441,20 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Video showcase */}
+      <VideoShowcase />
+
+      {/* Stats */}
+      <StatsSection />
+
+      {/* Testimonials */}
+      <TestimonialsCarousel />
+
+      {/* Process */}
+      <ProcessTimeline />
+
       {/* Instagram / Gallery */}
-      <section className="py-20 md:py-28 bg-linen">
+      <section id="gallery" className="py-20 md:py-28 bg-linen scroll-mt-24">
         <div className="container-full">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
