@@ -8,6 +8,13 @@ import { CollectionCard } from "@/components/CollectionCard";
 import { collections, getFeaturedProducts, products } from "@/data/products";
 import { Button } from "@/components/ui/button";
 import { CONTACT } from "@/lib/contact";
+import { FeaturedMirror } from "@/components/FeaturedMirror";
+import { StatsSection } from "@/components/StatsSection";
+import { ProcessTimeline } from "@/components/ProcessTimeline";
+import { TestimonialsCarousel } from "@/components/TestimonialsCarousel";
+import { VideoShowcase } from "@/components/VideoShowcase";
+import { Marquee } from "@/components/Marquee";
+import { services } from "@/data/services";
 
 import slide1 from "@/assets/slide1.jpg";
 import slide2 from "@/assets/slide2.jpg";
