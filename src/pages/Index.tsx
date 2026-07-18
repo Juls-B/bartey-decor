@@ -45,12 +45,10 @@ const Index = () => {
   ];
 
   const marqueeCards = services.slice(0, 8).map((s) => (
-    <Link key={s.id} to={`/products#${s.slug}`} className="block w-[260px] md:w-[320px]">
+    <Link key={s.id} to={`/products#${s.slug}`} className="block w-[260px] md:w-[340px]" aria-label={s.name}>
       <div className="aspect-[4/5] bg-secondary overflow-hidden group">
         <img src={s.gallery[0]} alt={s.name} loading="lazy" className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105" onError={(e) => { (e.currentTarget as HTMLImageElement).style.opacity = "0"; }} />
       </div>
-      <p className="mt-3 text-[10px] tracking-[0.25em] uppercase text-muted-foreground">Service</p>
-      <p className="font-serif text-lg text-foreground">{s.name}</p>
     </Link>
   ));
 

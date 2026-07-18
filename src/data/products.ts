@@ -46,7 +46,7 @@ export const collections: Collection[] = [
     id: "tv-consoles",
     name: "TV Consoles",
     slug: "tv-consoles",
-    description: "Floating TV units and modern entertainment centres",
+    description: "Floating TV units and sculptural media walls",
     image: tvConsoleMarble,
     heroImage: tvConsoleMarble,
   },

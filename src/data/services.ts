@@ -183,17 +183,6 @@ const homeStylingImages = [
   serviceAsset("styling_03.jpg"),
 ];
 
-const entertainmentImages = [
-  serviceAsset("entertainment_01.jpg"),
-  serviceAsset("entertainment_02.jpg"),
-  serviceAsset("entertainment_03.jpg"),
-];
-
-const mediaUnitImages = [
-  serviceAsset("media_unit_01.jpg"),
-  serviceAsset("media_unit_02.jpg"),
-  serviceAsset("media_unit_03.jpg"),
-];
 
 export const services: Service[] = [
   {
@@ -227,26 +216,6 @@ export const services: Service[] = [
       "Statement TV walls in marble, slats or lacquer with concealed cable management, floating storage and warm LED wash. Built and installed to your exact wall dimensions.",
     materials: "Porcelain slab, walnut veneer, matte lacquer, warm LED",
     gallery: tvUnitImages,
-  },
-  {
-    id: "entertainment-units",
-    slug: "entertainment-units",
-    name: "Entertainment Units",
-    category: "living",
-    shortDescription: "Full-wall entertainment units combining storage, display and media.",
-    description:
-      "Entertainment units that combine media storage, open display shelving and concealed cabinetry — planned so your living room stays serene and clutter-free.",
-    gallery: entertainmentImages,
-  },
-  {
-    id: "media-units",
-    slug: "media-units",
-    name: "Media Units",
-    category: "living",
-    shortDescription: "Sleek media units for consoles, sound systems and cable management.",
-    description:
-      "Low-profile media units with lift-up cable trays, ventilated compartments for AV equipment and finish options that complement your TV wall.",
-    gallery: mediaUnitImages,
   },
   {
     id: "sofas",
