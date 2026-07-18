@@ -125,7 +125,7 @@ const Products = () => {
 const ServiceSection = ({ service, reverse }: { service: Service; reverse: boolean }) => {
   const [active, setActive] = useState(0);
   const primary = service.gallery[active] ?? service.gallery[0];
-  const thumbs = service.gallery.slice(0, 6);
+  const thumbs = service.gallery.slice(0, 5);
 
   return (
     <article id={service.slug} className="scroll-mt-32 md:scroll-mt-36">
@@ -134,24 +134,25 @@ const ServiceSection = ({ service, reverse }: { service: Service; reverse: boole
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.7 }}
-        className={cn("grid md:grid-cols-12 gap-8 lg:gap-14 items-center", reverse && "md:[&>*:first-child]:order-2")}
+        className={cn("grid md:grid-cols-12 gap-6 lg:gap-12 items-stretch", reverse && "md:[&>*:first-child]:order-2")}
       >
-        <div className="md:col-span-7 relative">
-          <div className="relative aspect-[4/3] md:aspect-[5/4] overflow-hidden group bg-secondary">
+        <div className="md:col-span-8 relative">
+          <div className="relative aspect-[4/3] md:aspect-[16/11] overflow-hidden group bg-secondary">
             <SafeImage
               src={primary}
               alt={`${service.name} — Bartey Decor`}
               fallbackLabel={service.name}
-              className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105"
+              className="w-full h-full object-cover transition-transform duration-[1.8s] ease-out group-hover:scale-[1.04]"
               containerClassName="w-full h-full"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 px-2.5 py-1 bg-background/85 text-[10px] tracking-[0.18em] uppercase text-foreground">
               <Images className="w-3 h-3" />
               {service.gallery.length}
             </div>
           </div>
           {thumbs.length > 1 && (
-            <div className="mt-3 grid grid-cols-6 gap-2">
+            <div className="mt-3 grid grid-cols-5 gap-2">
               {thumbs.map((src, i) => (
                 <button
                   key={`${service.id}-${i}`}
@@ -176,38 +177,26 @@ const ServiceSection = ({ service, reverse }: { service: Service; reverse: boole
           )}
         </div>
 
-        <div className="md:col-span-5">
+        <div className="md:col-span-4 flex flex-col justify-center">
           <p className="text-[10px] font-semibold tracking-[0.3em] uppercase text-primary/70 mb-3">
-            Service · {serviceCategories.find((c) => c.id === service.category)?.name}
+            {serviceCategories.find((c) => c.id === service.category)?.name}
           </p>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mb-4 leading-[1.05]">
+          <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4 leading-[1.05]">
             {service.name}
           </h2>
-          <div className="w-10 h-px bg-gold mb-6" />
-          <p className="text-muted-foreground leading-[1.9] mb-6">{service.description}</p>
-          {service.materials && (
-            <div className="mb-6 pb-6 border-b border-border/60">
-              <p className="text-[10px] font-semibold tracking-[0.25em] uppercase text-muted-foreground mb-1.5">Materials</p>
-              <p className="text-sm text-foreground">{service.materials}</p>
-            </div>
-          )}
+          <div className="w-10 h-px bg-gold mb-5" />
+          <p className="text-muted-foreground leading-[1.7] mb-6 text-[15px]">
+            {service.shortDescription}
+          </p>
           {service.price && (
-            <div className="mb-6 inline-flex items-baseline gap-3">
-              <span className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground">Price</span>
-              <span className="font-serif text-2xl text-gold">{service.price}</span>
-            </div>
+            <p className="mb-6 font-serif text-xl text-gold">{service.price}</p>
           )}
-          <div className="flex flex-col sm:flex-row gap-3">
-            <Button asChild className="rounded-none px-6 py-6 text-xs tracking-[0.2em] uppercase">
-              <Link to={`/contact?service=${encodeURIComponent(service.name)}`}>
-                Request a Quote
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Link>
-            </Button>
-            <Button asChild variant="outline" className="rounded-none px-6 py-6 text-xs tracking-[0.2em] uppercase">
-              <a href="#top">Back to top</a>
-            </Button>
-          </div>
+          <Button asChild className="rounded-none px-6 py-6 text-xs tracking-[0.2em] uppercase self-start">
+            <Link to={`/contact?service=${encodeURIComponent(service.name)}`}>
+              Request a Quote
+              <ArrowRight className="ml-2 w-4 h-4" />
+            </Link>
+          </Button>
         </div>
       </motion.div>
     </article>
