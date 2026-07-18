@@ -16,6 +16,9 @@ import linenPillows from "@/assets/uploaded/linen-pillows.jfif";
 import diningCream from "@/assets/uploaded/dining-set-cream.jfif";
 import diningBrass from "@/assets/uploaded/dining-brass.jfif";
 import diningMarble from "@/assets/uploaded/dining-marble.jfif";
+import slide1 from "@/assets/slide1.jpg";
+import slide2 from "@/assets/slide2.jpg";
+import slide3 from "@/assets/slide3.jpg";
 
 export type ServiceCategoryId =
   | "living"
@@ -177,11 +180,7 @@ const curtainImages = [
   serviceAsset("curtains3.jfif"),
 ];
 
-const homeStylingImages = [
-  serviceAsset("styling_01.jpg"),
-  serviceAsset("styling_02.jpg"),
-  serviceAsset("styling_03.jpg"),
-];
+const homeStylingImages = [slide1, slide2, slide3];
 
 
 export const services: Service[] = [

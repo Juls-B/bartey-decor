@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SafeImage } from "@/components/SafeImage";
+import luxuryMirror from "@/assets/luxurymirror.jpeg";
 
 /**
  * FeaturedMirror
@@ -24,7 +25,7 @@ export const FeaturedMirror = () => {
           >
             <div className="relative aspect-[4/5] md:aspect-[5/6] overflow-hidden group">
               <SafeImage
-                src=""
+                src={luxuryMirror}
                 fallbackLabel="Luxury Decorative Mirror"
                 alt="Luxury Decorative Mirror by Bartey Decor"
                 className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"

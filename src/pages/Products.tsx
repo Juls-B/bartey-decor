@@ -137,12 +137,12 @@ const ServiceSection = ({ service, reverse }: { service: Service; reverse: boole
         className={cn("grid md:grid-cols-12 gap-6 lg:gap-12 items-stretch", reverse && "md:[&>*:first-child]:order-2")}
       >
         <div className="md:col-span-8 relative">
-          <div className="relative aspect-[4/3] md:aspect-[16/11] overflow-hidden group bg-secondary">
+          <div className="relative aspect-[4/3] md:aspect-[16/11] overflow-hidden group bg-secondary rounded-[2rem] border border-border/70 shadow-[0_16px_50px_-28px_rgba(15,23,42,0.65)]">
             <SafeImage
               src={primary}
               alt={`${service.name} — Bartey Decor`}
               fallbackLabel={service.name}
-              className="w-full h-full object-cover transition-transform duration-[1.8s] ease-out group-hover:scale-[1.04]"
+              className="w-full h-full object-contain transition-transform duration-[1.8s] ease-out group-hover:scale-[1.02]"
               containerClassName="w-full h-full"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-charcoal/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
