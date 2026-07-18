@@ -6,16 +6,16 @@
 // (etc.) scrolls directly to that section.
 // ============================================================
 
-import kitchenLuxury from "@/assets/uploaded/kitchen-luxury.jpeg.asset.json";
-import boucleBedSide from "@/assets/uploaded/boucle-bed-side.jpeg.asset.json";
-import boucleBedWide from "@/assets/uploaded/boucle-bed-wide.jpeg.asset.json";
-import greenSofaLuxe from "@/assets/uploaded/green-sofa-luxe.jpeg.asset.json";
-import shagPillows from "@/assets/uploaded/shag-pillows.jpg.asset.json";
-import fringePillows from "@/assets/uploaded/fringe-pillows.jpg.asset.json";
-import linenPillows from "@/assets/uploaded/linen-pillows.jpg.asset.json";
-import diningCream from "@/assets/uploaded/dining-set-cream.jpg.asset.json";
-import diningBrass from "@/assets/uploaded/dining-brass.jpg.asset.json";
-import diningMarble from "@/assets/uploaded/dining-marble.jpg.asset.json";
+import kitchenLuxury from "@/assets/uploaded/kitchen-luxury.jpeg";
+import boucleBedSide from "@/assets/uploaded/boucle-bed-side.jpeg";
+import boucleBedWide from "@/assets/uploaded/boucle-bed-wide.jpeg";
+import greenSofaLuxe from "@/assets/uploaded/green-sofa-luxe.jpeg";
+import shagPillows from "@/assets/uploaded/shag-pillows.jfif";
+import fringePillows from "@/assets/uploaded/fringe-pillows.jfif";
+import linenPillows from "@/assets/uploaded/linen-pillows.jfif";
+import diningCream from "@/assets/uploaded/dining-set-cream.jfif";
+import diningBrass from "@/assets/uploaded/dining-brass.jfif";
+import diningMarble from "@/assets/uploaded/dining-marble.jfif";
 
 export type ServiceCategoryId =
   | "living"
@@ -77,7 +77,7 @@ const dresserImages = [
 ];
 
 const sofaImages = [
-  greenSofaLuxe.url,
+  greenSofaLuxe,
   serviceAsset("sofa_01.jpeg"),
   serviceAsset("sofa_02.jpeg"),
   serviceAsset("sofa_03.jpeg"),
@@ -123,8 +123,8 @@ const chestDrawersImages = [
 ];
 
 const bedFrameImages = [
-  boucleBedWide.url,
-  boucleBedSide.url,
+  boucleBedWide,
+  boucleBedSide,
   serviceAsset("bed_frame_01.jfif"),
   serviceAsset("bed_frame_02.jfif"),
   serviceAsset("bed_frame_03.jfif"),
@@ -138,7 +138,7 @@ const mirrorImages = [
 ];
 
 const kitchenUnitImages = [
-  kitchenLuxury.url,
+  kitchenLuxury,
   serviceAsset("kitchen_unit_01.jfif"),
   serviceAsset("kitchen_unit_02.jfif"),
   serviceAsset("kitchen_unit_03.jfif"),
@@ -160,21 +160,21 @@ const outdoorSetImages = [
 ];
 
 const diningSetImages = [
-  diningMarble.url,
-  diningCream.url,
-  diningBrass.url,
+  diningMarble,
+  diningCream,
+  diningBrass,
 ];
 
 const throwPillowImages = [
-  shagPillows.url,
-  fringePillows.url,
-  linenPillows.url,
+  shagPillows,
+  fringePillows,
+  linenPillows,
 ];
 
 const curtainImages = [
-  serviceAsset("curtain_01.jpg"),
-  serviceAsset("curtain_02.jpg"),
-  serviceAsset("curtain_03.jpg"),
+  serviceAsset("curtains1.jfif"),
+  serviceAsset("curtains2.jfif"),
+  serviceAsset("curtains3.jfif"),
 ];
 
 const homeStylingImages = [
