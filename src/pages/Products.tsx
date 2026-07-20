@@ -1,15 +1,18 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Images } from "lucide-react";
+import { ArrowRight, Images, Plus, Check } from "lucide-react";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { SafeImage } from "@/components/SafeImage";
-import { services, serviceCategories, type ServiceCategoryId, type Service } from "@/data/services";
+import { services, serviceCategories, serviceToCartProduct, type ServiceCategoryId, type Service } from "@/data/services";
+import { useCart } from "@/hooks/useCart";
+import { toast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
 import warmLivingRoom from "@/assets/warm-living-room.jfif";
 
 type Filter = "all" | ServiceCategoryId;
+
 
 const Products = () => {
   const [filter, setFilter] = useState<Filter>("all");
