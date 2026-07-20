@@ -182,6 +182,34 @@ const curtainImages = [
 
 const homeStylingImages = [slide1, slide2, slide3];
 
+// New service galleries — SafeImage will render an elegant fallback tile
+// until the real photography is uploaded to /src/assets/services/.
+const partitionImages = [
+  serviceAsset("partition_01.jpg"),
+  serviceAsset("partition_02.jpg"),
+  serviceAsset("partition_03.jpg"),
+];
+
+const receptionDeskImages = [
+  serviceAsset("reception_desk_01.jpg"),
+  serviceAsset("reception_desk_02.jpg"),
+  serviceAsset("reception_desk_03.jpg"),
+];
+
+const bedsideDrawerImages = [
+  serviceAsset("bedside_drawer_01.jpg"),
+  serviceAsset("bedside_drawer_02.jpg"),
+  serviceAsset("bedside_drawer_03.jpg"),
+];
+
+const shoeBagOrganizerImages = [
+  serviceAsset("shoe_bag_organizer_01.jpg"),
+  serviceAsset("shoe_bag_organizer_02.jpg"),
+  serviceAsset("shoe_bag_organizer_03.jpg"),
+];
+
+
+
 
 export const services: Service[] = [
   {
