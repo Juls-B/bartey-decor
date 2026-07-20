@@ -160,10 +160,19 @@ const Index = () => {
         <Marquee items={marqueeCards} speed="slow" />
       </section>
 
-      {/* Inspiration marquee */}
-      <section className="py-14 md:py-20 bg-linen border-y border-border/60 overflow-hidden">
-        <Marquee items={inspirationTags} speed="normal" />
+      {/* Inspiration marquee — refined typography */}
+      <section className="relative py-16 md:py-24 bg-linen border-y border-border/60 overflow-hidden">
+        <div className="container-full mb-8 md:mb-10 flex items-baseline justify-between gap-6">
+          <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary/80">Inspiration</p>
+          <span className="hidden sm:block text-[11px] tracking-[0.25em] uppercase text-muted-foreground">
+            Curated by Bartey Decor
+          </span>
+        </div>
+        <Marquee items={inspirationTags} speed="slow" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-linen to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-linen to-transparent" />
       </section>
+
 
       {/* Featured project */}
       <section className="py-20 md:py-28">
