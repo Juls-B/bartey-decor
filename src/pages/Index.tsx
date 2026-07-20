@@ -53,10 +53,17 @@ const Index = () => {
   ));
 
   const inspirationTags = ["Furniture", "Living Rooms", "Bedrooms", "Kitchens", "Wardrobes", "Curtains", "Dining Areas", "Commercial Spaces"].map((t) => (
-    <span key={t} className="font-serif italic text-3xl md:text-5xl text-primary/70 whitespace-nowrap">
-      {t} <span className="text-gold not-italic mx-4">•</span>
+    <span
+      key={t}
+      className="inline-flex items-center gap-8 md:gap-14 whitespace-nowrap"
+    >
+      <span className="font-serif italic text-[clamp(2rem,6vw,4.5rem)] leading-none text-primary/85 tracking-tight">
+        {t}
+      </span>
+      <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-gold shrink-0" />
     </span>
   ));
+
 
   return (
     <Layout>
