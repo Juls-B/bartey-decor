@@ -10,8 +10,9 @@ interface Stat {
 const counters: Stat[] = [
   { label: "Projects Completed", value: 320, suffix: "+" },
   { label: "Happy Clients", value: 240, suffix: "+" },
-  { label: "Custom Furniture Delivered", value: 1800, suffix: "+" },
+  { label: "Furniture Installed", value: 1800, suffix: "+" },
 ];
+
 
 // Circular / bar metrics — percentage-based for visual variety.
 const progressMetrics = [

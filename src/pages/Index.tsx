@@ -53,10 +53,17 @@ const Index = () => {
   ));
 
   const inspirationTags = ["Furniture", "Living Rooms", "Bedrooms", "Kitchens", "Wardrobes", "Curtains", "Dining Areas", "Commercial Spaces"].map((t) => (
-    <span key={t} className="font-serif italic text-3xl md:text-5xl text-primary/70 whitespace-nowrap">
-      {t} <span className="text-gold not-italic mx-4">•</span>
+    <span
+      key={t}
+      className="inline-flex items-center gap-8 md:gap-14 whitespace-nowrap"
+    >
+      <span className="font-serif italic text-[clamp(2rem,6vw,4.5rem)] leading-none text-primary/85 tracking-tight">
+        {t}
+      </span>
+      <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-gold shrink-0" />
     </span>
   ));
+
 
   return (
     <Layout>
@@ -153,10 +160,19 @@ const Index = () => {
         <Marquee items={marqueeCards} speed="slow" />
       </section>
 
-      {/* Inspiration marquee */}
-      <section className="py-14 md:py-20 bg-linen border-y border-border/60 overflow-hidden">
-        <Marquee items={inspirationTags} speed="normal" />
+      {/* Inspiration marquee — refined typography */}
+      <section className="relative py-16 md:py-24 bg-linen border-y border-border/60 overflow-hidden">
+        <div className="container-full mb-8 md:mb-10 flex items-baseline justify-between gap-6">
+          <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary/80">Inspiration</p>
+          <span className="hidden sm:block text-[11px] tracking-[0.25em] uppercase text-muted-foreground">
+            Curated by Bartey Decor
+          </span>
+        </div>
+        <Marquee items={inspirationTags} speed="slow" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-linen to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-linen to-transparent" />
       </section>
+
 
       {/* Featured project */}
       <section className="py-20 md:py-28">
@@ -238,8 +254,9 @@ const Index = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
             {latestProducts.map((product, index) => (
-              <ProductCard key={product.id} product={product} index={index} />
+              <ProductCard key={product.id} product={product} index={index} hidePrice />
             ))}
+
           </div>
 
           <div className="mt-14 text-center md:hidden">

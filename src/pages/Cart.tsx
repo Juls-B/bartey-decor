@@ -10,6 +10,9 @@ import { formatPrice } from "@/data/products";
 const Cart = () => {
   const { items, updateQuantity, removeItem, getSubtotal } = useCart();
   const subtotal = getSubtotal();
+  const hasPricedItems = items.some((i) => i.product.price > 0);
+  const serviceCount = items.filter((i) => i.product.price === 0).length;
+
 
   if (items.length === 0) {
     return (
@@ -95,10 +98,17 @@ const Cart = () => {
                         <p className="text-sm text-muted-foreground mt-1 line-clamp-2">
                           {item.product.description}
                         </p>
-                        <p className="font-serif text-lg mt-3">
-                          From {formatPrice(item.product.price)}
-                        </p>
+                        {item.product.price > 0 ? (
+                          <p className="font-serif text-lg mt-3">
+                            From {formatPrice(item.product.price)}
+                          </p>
+                        ) : (
+                          <p className="mt-3 text-[10px] tracking-[0.25em] uppercase text-primary/80">
+                            Service — Priced on Consultation
+                          </p>
+                        )}
                       </div>
+
 
                       <div className="flex items-center justify-between mt-4">
                         <QuantitySelector
@@ -137,14 +147,23 @@ const Cart = () => {
                 <h2 className="font-serif text-2xl mb-8">Quote Summary</h2>
 
                 <div className="space-y-4 mb-8">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">Estimated subtotal</span>
-                    <span>{formatPrice(subtotal)}</span>
-                  </div>
+                  {hasPricedItems && (
+                    <div className="flex justify-between text-sm">
+                      <span className="text-muted-foreground">Estimated subtotal</span>
+                      <span>{formatPrice(subtotal)}</span>
+                    </div>
+                  )}
+                  {serviceCount > 0 && (
+                    <div className="flex justify-between text-sm">
+                      <span className="text-muted-foreground">Services in inquiry</span>
+                      <span>{serviceCount}</span>
+                    </div>
+                  )}
                   <p className="text-xs text-muted-foreground leading-relaxed">
-                    Prices are indicative starting points. Delivery, installation and any customisation are confirmed in your final quote after consultation.
+                    Prices are indicative starting points. Services are quoted after consultation. Delivery, installation and any customisation are confirmed in your final quote.
                   </p>
                 </div>
+
 
                 <Button
                   asChild
