@@ -127,8 +127,17 @@ const Products = () => {
 
 const ServiceSection = ({ service, reverse }: { service: Service; reverse: boolean }) => {
   const [active, setActive] = useState(0);
+  const [added, setAdded] = useState(false);
+  const addToCart = useCart((s) => s.addItem);
   const primary = service.gallery[active] ?? service.gallery[0];
   const thumbs = service.gallery.slice(0, 5);
+
+  const handleAdd = () => {
+    addToCart(serviceToCartProduct(service) as never);
+    setAdded(true);
+    toast({ title: "Added to inquiry", description: service.name });
+    setTimeout(() => setAdded(false), 1600);
+  };
 
   return (
     <article id={service.slug} className="scroll-mt-32 md:scroll-mt-36">
@@ -194,12 +203,25 @@ const ServiceSection = ({ service, reverse }: { service: Service; reverse: boole
           {service.price && (
             <p className="mb-6 font-serif text-xl text-gold">{service.price}</p>
           )}
-          <Button asChild className="rounded-none px-6 py-6 text-xs tracking-[0.2em] uppercase self-start">
-            <Link to={`/contact?service=${encodeURIComponent(service.name)}`}>
-              Request a Quote
-              <ArrowRight className="ml-2 w-4 h-4" />
-            </Link>
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Button asChild className="rounded-none px-6 py-6 text-xs tracking-[0.2em] uppercase self-start">
+              <Link to={`/contact?service=${encodeURIComponent(service.name)}`}>
+                Request a Quote
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Link>
+            </Button>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={handleAdd}
+              className={cn(
+                "rounded-none px-6 py-6 text-xs tracking-[0.2em] uppercase self-start border-primary/40 text-primary hover:bg-primary hover:text-primary-foreground transition-all",
+                added && "bg-primary text-primary-foreground"
+              )}
+            >
+              {added ? <><Check className="mr-2 w-4 h-4" /> Added</> : <><Plus className="mr-2 w-4 h-4" /> Add to Inquiry</>}
+            </Button>
+          </div>
         </div>
       </motion.div>
     </article>
@@ -220,5 +242,6 @@ const FilterButton = ({ children, active, onClick }: { children: React.ReactNode
     {children}
   </button>
 );
+
 
 export default Products;
