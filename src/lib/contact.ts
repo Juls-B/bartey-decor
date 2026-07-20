@@ -3,7 +3,7 @@ export const CONTACT = {
   tagline: "Designing Spaces • Creating Experiences",
   founder: "Barbara Osabutey",
   location: "Adenta, Accra, Ghana",
-  email: "hello@barteydecor.com",
+  email: "barteydecor@gmail.com",
   phones: [
     { label: "+233 55 506 9388", tel: "+233555069388" },
   ],
