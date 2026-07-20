@@ -254,8 +254,9 @@ const Index = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
             {latestProducts.map((product, index) => (
-              <ProductCard key={product.id} product={product} index={index} />
+              <ProductCard key={product.id} product={product} index={index} hidePrice />
             ))}
+
           </div>
 
           <div className="mt-14 text-center md:hidden">
