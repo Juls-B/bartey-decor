@@ -95,10 +95,17 @@ const Cart = () => {
                         <p className="text-sm text-muted-foreground mt-1 line-clamp-2">
                           {item.product.description}
                         </p>
-                        <p className="font-serif text-lg mt-3">
-                          From {formatPrice(item.product.price)}
-                        </p>
+                        {item.product.price > 0 ? (
+                          <p className="font-serif text-lg mt-3">
+                            From {formatPrice(item.product.price)}
+                          </p>
+                        ) : (
+                          <p className="mt-3 text-[10px] tracking-[0.25em] uppercase text-primary/80">
+                            Service — Priced on Consultation
+                          </p>
+                        )}
                       </div>
+
 
                       <div className="flex items-center justify-between mt-4">
                         <QuantitySelector
