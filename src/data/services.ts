@@ -399,6 +399,46 @@ export const services: Service[] = [
     // TODO: replace serviceAsset("styling_*") placeholders with real styling photography.
     gallery: homeStylingImages,
   },
+  {
+    id: "partition",
+    slug: "partition",
+    name: "Partition",
+    category: "walls",
+    shortDescription: "Bespoke room partitions in timber slats, glass and fluted panels for elegant zoning.",
+    description:
+      "Freestanding and fixed partitions that divide open-plan spaces without closing them off. Warm timber slats, fluted panels and framed glass — designed to filter light while creating distinct zones for living, dining or working.",
+    gallery: partitionImages,
+  },
+  {
+    id: "reception-desk",
+    slug: "reception-desk",
+    name: "Reception Desk",
+    category: "living",
+    shortDescription: "Statement reception desks with backlit branding and concealed staff storage.",
+    description:
+      "Custom reception counters for offices, salons, clinics and hospitality — two-tone worktops, integrated cable management, warm timber slat feature walls and brand-lit signage. Built and installed to your exact footprint.",
+    gallery: receptionDeskImages,
+  },
+  {
+    id: "bedside-drawer",
+    slug: "bedside-drawer",
+    name: "Bedside Drawer",
+    category: "bedroom",
+    shortDescription: "Compact bedside drawers with soft-close runners and warm night-friendly finishes.",
+    description:
+      "Bedside drawers crafted to complement your bed frame — one, two or three-drawer options in matching veneer or lacquer, with soft-close runners and a discreet cable pass-through for lamps and chargers.",
+    gallery: bedsideDrawerImages,
+  },
+  {
+    id: "shoe-bag-organizer",
+    slug: "shoe-bag-organizer",
+    name: "Shoe & Bag Organizer",
+    category: "bedroom",
+    shortDescription: "Fitted shoe and bag organizers with adjustable shelving and glass-front display.",
+    description:
+      "Purpose-built shoe and handbag storage for walk-ins, dressing rooms and entryways — adjustable shelving, glass-front cabinetry, integrated LED display and a finish that ties into the rest of your fit-out.",
+    gallery: shoeBagOrganizerImages,
+  },
 ];
 
 export const getServiceBySlug = (slug: string): Service | undefined =>
@@ -406,3 +446,21 @@ export const getServiceBySlug = (slug: string): Service | undefined =>
 
 export const getServicesByCategory = (categoryId: ServiceCategoryId): Service[] =>
   services.filter((service) => service.category === categoryId);
+
+/**
+ * Adapts a Service into the Product-shape used by the inquiry cart so the
+ * same cart infrastructure can hold both products and services.
+ */
+export const serviceToCartProduct = (service: Service) => ({
+  id: `service-${service.id}`,
+  name: service.name,
+  slug: service.slug,
+  collection: service.category,
+  price: 0,
+  description: service.shortDescription,
+  longDescription: service.description,
+  materials: service.materials ?? "",
+  images: service.gallery,
+  isService: true as const,
+});
+
