@@ -1,18 +1,24 @@
 import { Link } from "react-router-dom";
-import { Heart } from "lucide-react";
+import { Heart, Plus, Check } from "lucide-react";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { Product, collections, formatPrice } from "@/data/products";
 import { useWishlist } from "@/hooks/useWishlist";
+import { useCart } from "@/hooks/useCart";
+import { toast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
 
 interface ProductCardProps {
   product: Product;
   index?: number;
   variant?: "default" | "large";
+  hidePrice?: boolean;
 }
 
-export const ProductCard = ({ product, index = 0, variant = "default" }: ProductCardProps) => {
+export const ProductCard = ({ product, index = 0, variant = "default", hidePrice = false }: ProductCardProps) => {
   const { addItem, removeItem, isInWishlist } = useWishlist();
+  const addToCart = useCart((s) => s.addItem);
+  const [added, setAdded] = useState(false);
   const inWishlist = isInWishlist(product.id);
   const collection = collections.find((c) => c.id === product.collection);
   const hasSecondImage = product.images.length > 1;
@@ -22,6 +28,15 @@ export const ProductCard = ({ product, index = 0, variant = "default" }: Product
     e.stopPropagation();
     if (inWishlist) removeItem(product.id);
     else addItem(product);
+  };
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    addToCart(product);
+    setAdded(true);
+    toast({ title: "Added to inquiry", description: product.name });
+    setTimeout(() => setAdded(false), 1600);
   };
 
   return (
@@ -60,23 +75,37 @@ export const ProductCard = ({ product, index = 0, variant = "default" }: Product
 
           <div className="absolute inset-0 bg-gradient-to-t from-charcoal/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
-          <button
-            onClick={handleWishlistToggle}
-            aria-label={inWishlist ? "Remove from saved" : "Save piece"}
-            className={cn(
-              "absolute top-5 right-5 p-2.5 rounded-full transition-all duration-500",
-              "bg-background/90 backdrop-blur-md hover:bg-background shadow-sm",
-              "opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0",
-              inWishlist && "opacity-100 translate-y-0"
-            )}
-          >
-            <Heart
+          <div className="absolute top-5 right-5 flex flex-col gap-2 items-end">
+            <button
+              onClick={handleWishlistToggle}
+              aria-label={inWishlist ? "Remove from saved" : "Save piece"}
               className={cn(
-                "w-4 h-4 transition-all duration-300",
-                inWishlist ? "fill-primary text-primary scale-110" : "text-foreground"
+                "p-2.5 rounded-full transition-all duration-500",
+                "bg-background/90 backdrop-blur-md hover:bg-background shadow-sm",
+                "opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0",
+                inWishlist && "opacity-100 translate-y-0"
               )}
-            />
-          </button>
+            >
+              <Heart
+                className={cn(
+                  "w-4 h-4 transition-all duration-300",
+                  inWishlist ? "fill-primary text-primary scale-110" : "text-foreground"
+                )}
+              />
+            </button>
+            <button
+              onClick={handleAddToCart}
+              aria-label="Add to inquiry"
+              className={cn(
+                "p-2.5 rounded-full transition-all duration-500 shadow-sm",
+                "bg-background/90 backdrop-blur-md hover:bg-primary hover:text-primary-foreground",
+                "opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0",
+                added && "opacity-100 translate-y-0 bg-primary text-primary-foreground"
+              )}
+            >
+              {added ? <Check className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+            </button>
+          </div>
 
           <div className="absolute top-5 left-5 flex flex-col gap-2">
             {product.new && (
@@ -123,19 +152,21 @@ export const ProductCard = ({ product, index = 0, variant = "default" }: Product
             {product.description}
           </p>
 
-          <div className="flex items-center gap-3 pt-1">
-            <p className="text-base font-medium text-foreground tracking-wide">
-              From {formatPrice(product.price)}
-            </p>
-            {product.materials && (
-              <>
-                <span className="w-px h-3 bg-border" />
-                <p className="text-xs text-muted-foreground/60 tracking-wide">
-                  {product.materials.split(",")[0]}
-                </p>
-              </>
-            )}
-          </div>
+          {!hidePrice && (
+            <div className="flex items-center gap-3 pt-1">
+              <p className="text-base font-medium text-foreground tracking-wide">
+                From {formatPrice(product.price)}
+              </p>
+              {product.materials && (
+                <>
+                  <span className="w-px h-3 bg-border" />
+                  <p className="text-xs text-muted-foreground/60 tracking-wide">
+                    {product.materials.split(",")[0]}
+                  </p>
+                </>
+              )}
+            </div>
+          )}
         </div>
       </Link>
     </motion.article>
