@@ -208,6 +208,12 @@ const shoeBagOrganizerImages = [
   serviceAsset("shoe_bag_organizer_03.jpg"),
 ];
 
+const accentChairImages = [
+  serviceAsset("accent_chair_01.jpg"),
+  serviceAsset("accent_chair_02.jpg"),
+  serviceAsset("accent_chair_03.jpg"),
+];
+
 
 
 
