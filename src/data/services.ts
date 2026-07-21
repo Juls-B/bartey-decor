@@ -262,6 +262,17 @@ export const services: Service[] = [
     gallery: sofaImages,
   },
   {
+    id: "accent-chairs",
+    slug: "accent-chairs",
+    name: "Accent Chairs",
+    category: "living",
+    shortDescription: "Sculptural accent chairs that add character, colour and comfort to any room.",
+    description:
+      "Statement accent chairs in bouclé, velvet, linen and leather — designed to sit beautifully alone or complete a seating group. Choose from wingback, barrel, slipper and sculptural silhouettes, all built with hardwood frames and high-resilience cushioning.",
+    materials: "Hardwood frame, HR foam, premium upholstery fabrics and leather",
+    gallery: accentChairImages,
+  },
+  {
     id: "wall-moulding",
     slug: "wall-moulding",
     name: "Wall Moulding",
