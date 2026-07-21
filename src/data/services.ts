@@ -208,6 +208,12 @@ const shoeBagOrganizerImages = [
   serviceAsset("shoe_bag_organizer_03.jpg"),
 ];
 
+const accentChairImages = [
+  serviceAsset("accent_chair_01.jpg"),
+  serviceAsset("accent_chair_02.jpg"),
+  serviceAsset("accent_chair_03.jpg"),
+];
+
 
 
 
@@ -254,6 +260,17 @@ export const services: Service[] = [
       "Kiln-dried hardwood frames, high-resilience foam and expertly stitched upholstery. Configure as three-seaters, corners or L-shapes and pick your fabric — bouclé, linen, wool or velvet.",
     materials: "Hardwood frame, HR foam, premium upholstery",
     gallery: sofaImages,
+  },
+  {
+    id: "accent-chairs",
+    slug: "accent-chairs",
+    name: "Accent Chairs",
+    category: "living",
+    shortDescription: "Sculptural accent chairs that add character, colour and comfort to any room.",
+    description:
+      "Statement accent chairs in bouclé, velvet, linen and leather — designed to sit beautifully alone or complete a seating group. Choose from wingback, barrel, slipper and sculptural silhouettes, all built with hardwood frames and high-resilience cushioning.",
+    materials: "Hardwood frame, HR foam, premium upholstery fabrics and leather",
+    gallery: accentChairImages,
   },
   {
     id: "wall-moulding",
