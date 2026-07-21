@@ -14,7 +14,7 @@ import { CONTACT } from "@/lib/contact";
 
 import warmLivingRoom from "@/assets/warm-living-room.jpeg";
 import wardrobeFitted from "@/assets/wardrobe-fitted.jfif";
-import officeReception from "@/assets/office-reception.jfif";
+import officeReception from "@/assets/office-reception.png";
 
 // Brand assets — founder portrait + on-site team/workshop photography
 import founderAsset from "@/assets/brand/founder.jpeg";

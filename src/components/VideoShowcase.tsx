@@ -11,7 +11,7 @@ import { SafeImage } from "@/components/SafeImage";
 
 import warmLivingRoom from "@/assets/warm-living-room.jpeg";
 import tvConsoleMarble from "@/assets/tv-console-marble.jfif";
-import officeReception from "@/assets/office-reception.jfif";
+import officeReception from "@/assets/office-reception.png";
 
 const videos = [
   {

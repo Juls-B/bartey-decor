@@ -23,7 +23,7 @@ import tvConsoleMarble from "@/assets/tv-console-marble.jfif";
 import greenSofa from "@/assets/green-sofa.jfif";
 import armchairBoucle from "@/assets/armchair-boucle.jfif";
 import tvConsoleModern from "@/assets/tv-console-modern.jfif";
-import officeReception from "@/assets/office-reception.jfif";
+import officeReception from "@/assets/office-reception.png";
 
 const Index = () => {
   const featured = getFeaturedProducts();

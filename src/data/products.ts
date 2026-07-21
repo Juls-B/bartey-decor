@@ -6,7 +6,7 @@ import greenSofa from "@/assets/green-sofa.jfif";
 import yellowLounge from "@/assets/yellow-lounge.jfif";
 import armchairBoucle from "@/assets/armchair-boucle.jfif";
 import greyAccentChair from "@/assets/grey-accent-chair.jfif";
-import officeReception from "@/assets/office-reception.jfif";
+import officeReception from "@/assets/office-reception.png";
 
 export interface Collection {
   id: string;
