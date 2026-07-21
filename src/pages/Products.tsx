@@ -9,7 +9,7 @@ import { services, serviceCategories, serviceToCartProduct, type ServiceCategory
 import { useCart } from "@/hooks/useCart";
 import { toast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
-import warmLivingRoom from "@/assets/warm-living-room.jfif";
+import warmLivingRoom from "@/assets/warm-living-room.jpeg";
 
 type Filter = "all" | ServiceCategoryId;
 

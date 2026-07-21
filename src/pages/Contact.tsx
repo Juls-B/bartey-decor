@@ -18,7 +18,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import warmLivingRoom from "@/assets/warm-living-room.jfif";
+import warmLivingRoom from "@/assets/warm-living-room.jpeg";
 
 const budgetOptions = [
   "Under GH₵ 5,000",

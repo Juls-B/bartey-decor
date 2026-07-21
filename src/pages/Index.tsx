@@ -17,7 +17,7 @@ import { Marquee } from "@/components/Marquee";
 import { services } from "@/data/services";
 
 import slide4 from "@/assets/slide4.jpg";
-import warmLivingRoom from "@/assets/warm-living-room.jfif";
+import warmLivingRoom from "@/assets/warm-living-room.jpeg";
 import wardrobeFitted from "@/assets/wardrobe-fitted.jfif";
 import tvConsoleMarble from "@/assets/tv-console-marble.jfif";
 import greenSofa from "@/assets/green-sofa.jfif";

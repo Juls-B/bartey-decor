@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/accordion";
 import { CONTACT } from "@/lib/contact";
 
-import warmLivingRoom from "@/assets/warm-living-room.jfif";
+import warmLivingRoom from "@/assets/warm-living-room.jpeg";
 import wardrobeFitted from "@/assets/wardrobe-fitted.jfif";
 import officeReception from "@/assets/office-reception.jfif";
 

@@ -10,12 +10,12 @@ import kitchenLuxury from "@/assets/uploaded/kitchen-luxury.jpeg";
 import boucleBedSide from "@/assets/uploaded/boucle-bed-side.jpeg";
 import boucleBedWide from "@/assets/uploaded/boucle-bed-wide.jpeg";
 import greenSofaLuxe from "@/assets/uploaded/green-sofa-luxe.jpeg";
-import shagPillows from "@/assets/uploaded/shag-pillows.jfif";
-import fringePillows from "@/assets/uploaded/fringe-pillows.jfif";
-import linenPillows from "@/assets/uploaded/linen-pillows.jfif";
-import diningCream from "@/assets/uploaded/dining-set-cream.jfif";
-import diningBrass from "@/assets/uploaded/dining-brass.jfif";
-import diningMarble from "@/assets/uploaded/dining-marble.jfif";
+import shagPillows from "@/assets/uploaded/shag-pillows.jpeg";
+import fringePillows from "@/assets/uploaded/fringe-pillows.jpeg";
+import linenPillows from "@/assets/uploaded/linen-pillows.jpeg";
+import diningCream from "@/assets/uploaded/dining-set-cream.jpeg";
+import diningBrass from "@/assets/uploaded/dining-brass.jpeg";
+import diningMarble from "@/assets/uploaded/dining-marble.jpeg";
 import slide1 from "@/assets/slide1.jpg";
 import slide2 from "@/assets/slide2.jpg";
 import slide3 from "@/assets/slide3.jpg";
@@ -83,22 +83,22 @@ const sofaImages = [
   greenSofaLuxe,
   serviceAsset("sofa_01.jpeg"),
   serviceAsset("sofa_02.jpeg"),
-  serviceAsset("sofa_03.jpeg"),
-  serviceAsset("sofa_04.jfif"),
+  serviceAsset("sofa_03.png"),
+  serviceAsset("sofa_04.jpeg"),
 ];
 
 const wallMouldingImages = [
-  serviceAsset("wall_moulding_01.jfif"),
+  serviceAsset("wall_moulding_01.png"),
   serviceAsset("wall_moulding_02.jfif"),
-  serviceAsset("wall_moulding_03.jfif"),
+  serviceAsset("wall_moulding_03.jpeg"),
 ];
 
 const tvUnitImages = [
-  serviceAsset("tv_unit_01.jfif"),
-  serviceAsset("tv_unit_02.jfif"),
+  serviceAsset("tv_unit_01.jpeg"),
+  serviceAsset("tv_unit_02.jpeg"),
   serviceAsset("tv_unit_03.jpg"),
   serviceAsset("tv_unit_04.jpg"),
-  serviceAsset("tv_unit_05.jpg"),
+  serviceAsset("tv_unit_05.jpeg"),
 ];
 
 const entrywayImages = [
@@ -114,52 +114,52 @@ const consoleTableImages = [
 ];
 
 const centerTableImages = [
-  serviceAsset("center_table_01.jfif"),
-  serviceAsset("center_table_02.jfif"),
-  serviceAsset("center_table_03.jfif"),
+  serviceAsset("center_table_01.jpeg"),
+  serviceAsset("center_table_02.jpeg"),
+  serviceAsset("center_table_03.jpeg"),
 ];
 
 const chestDrawersImages = [
-  serviceAsset("chest_drawers_01.jfif"),
-  serviceAsset("chest_drawers_02.jfif"),
-  serviceAsset("chest_drawers_03.jfif"),
+  serviceAsset("chest_drawers_01.jpeg"),
+  serviceAsset("chest_drawers_02.jpeg"),
+  serviceAsset("chest_drawers_03.jpeg"),
 ];
 
 const bedFrameImages = [
   boucleBedWide,
   boucleBedSide,
-  serviceAsset("bed_frame_01.jfif"),
-  serviceAsset("bed_frame_02.jfif"),
-  serviceAsset("bed_frame_03.jfif"),
-  serviceAsset("bed_frame_04.jfif"),
+  serviceAsset("bed_frame_01.jpeg"),
+  serviceAsset("bed_frame_02.jpeg"),
+  serviceAsset("bed_frame_03.jpeg"),
+  serviceAsset("bed_frame_04.jpeg"),
 ];
 
 const mirrorImages = [
-  serviceAsset("mirror_01.jfif"),
-  serviceAsset("mirror_02.jfif"),
-  serviceAsset("mirror_03.jfif"),
+  serviceAsset("mirror_01.jpeg"),
+  serviceAsset("mirror_02.jpeg"),
+  serviceAsset("mirror_03.png"),
 ];
 
 const kitchenUnitImages = [
   kitchenLuxury,
-  serviceAsset("kitchen_unit_01.jfif"),
-  serviceAsset("kitchen_unit_02.jfif"),
-  serviceAsset("kitchen_unit_03.jfif"),
-  serviceAsset("kitchen_unit_04.jfif"),
-  serviceAsset("kitchen_unit_05.jfif"),
+  serviceAsset("kitchen_unit_01.png"),
+  serviceAsset("kitchen_unit_02.jpeg"),
+  serviceAsset("kitchen_unit_03.jpeg"),
+  serviceAsset("kitchen_unit_04.jpeg"),
+  serviceAsset("kitchen_unit_05.jpeg"),
 ];
 
 const wallCladdingImages = [
-  serviceAsset("wall_cladding_01.jfif"),
+  serviceAsset("wall_cladding_01.jpeg"),
   serviceAsset("wall_cladding_02.jfif"),
   serviceAsset("wall_cladding_03.jfif"),
 ];
 
 const outdoorSetImages = [
-  serviceAsset("outdoor_set_01.jfif"),
-  serviceAsset("outdoor_set_02.jfif"),
-  serviceAsset("outdoor_set_03.jfif"),
-  serviceAsset("outdoor_set_04.jfif"),
+  serviceAsset("outdoor_set_01.jpeg"),
+  serviceAsset("outdoor_set_02.jpeg"),
+  serviceAsset("outdoor_set_03.jpeg"),
+  serviceAsset("outdoor_set_04.jpeg"),
 ];
 
 const diningSetImages = [
@@ -175,7 +175,7 @@ const throwPillowImages = [
 ];
 
 const curtainImages = [
-  serviceAsset("curtains1.jfif"),
+  serviceAsset("curtains1.jpeg"),
   serviceAsset("curtains2.jfif"),
   serviceAsset("curtains3.jfif"),
 ];
@@ -185,33 +185,33 @@ const homeStylingImages = [slide1, slide2, slide3];
 // New service galleries — SafeImage will render an elegant fallback tile
 // until the real photography is uploaded to /src/assets/services/.
 const partitionImages = [
-  serviceAsset("partition_01.jpg"),
-  serviceAsset("partition_02.jpg"),
-  serviceAsset("partition_03.jpg"),
+  serviceAsset("partition1.jpeg"),
+  serviceAsset("partition2.jpeg"),
+  serviceAsset("partition3.jfif"),
 ];
 
 const receptionDeskImages = [
-  serviceAsset("reception_desk_01.jpg"),
-  serviceAsset("reception_desk_02.jpg"),
-  serviceAsset("reception_desk_03.jpg"),
+  serviceAsset("reception_desk1.jpeg"),
+  serviceAsset("reception_desk2.jpeg"),
+  serviceAsset("reception_desk3.jpeg"),
 ];
 
 const bedsideDrawerImages = [
-  serviceAsset("bedside_drawer_01.jpg"),
-  serviceAsset("bedside_drawer_02.jpg"),
-  serviceAsset("bedside_drawer_03.jpg"),
+  serviceAsset("bedside_drawer1.jpeg"),
+  serviceAsset("bedside_drawer2.jpeg"),
+  serviceAsset("bedside_drawer3.jpeg"),
 ];
 
 const shoeBagOrganizerImages = [
-  serviceAsset("shoe_bag_organizer_01.jpg"),
-  serviceAsset("shoe_bag_organizer_02.jpg"),
-  serviceAsset("shoe_bag_organizer_03.jpg"),
+  serviceAsset("shoe_bag_organizer1.jfif"),
+  serviceAsset("shoe_bag_organizer2.jfif"),
+  serviceAsset("shoe_bag_organizer3.jfif"),
 ];
 
 const accentChairImages = [
-  serviceAsset("accent_chair_01.jpg"),
-  serviceAsset("accent_chair_02.jpg"),
-  serviceAsset("accent_chair_03.jpg"),
+  serviceAsset("accent_chair1.jpeg"),
+  serviceAsset("accent_chair2.jpeg"),
+  serviceAsset("accent_chair3.jpeg"),
 ];
 
 
