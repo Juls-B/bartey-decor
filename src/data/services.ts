@@ -6,7 +6,7 @@
 // (etc.) scrolls directly to that section.
 // ============================================================
 
-import kitchenLuxury from "@/assets/uploaded/kitchen-luxury.jpeg";
+
 import boucleBedSide from "@/assets/uploaded/boucle-bed-side.jpeg";
 import boucleBedWide from "@/assets/uploaded/boucle-bed-wide.jpeg";
 import greenSofaLuxe from "@/assets/uploaded/green-sofa-luxe.jpeg";
@@ -65,18 +65,20 @@ const serviceAsset = (fileName: string) =>
   new URL(`../assets/services/${fileName}`, import.meta.url).href;
 
 const wardrobeImages = [
-  serviceAsset("wardrobe_01.jfif"),
-  serviceAsset("wardrobe_02.jfif"),
+  serviceAsset("wardrobe_01.jpeg"),
+  serviceAsset("wardrobe_02.jpeg"),
   serviceAsset("wardrobe_03.jpg"),
   serviceAsset("wardrobe_04.jpg"),
   serviceAsset("wardrobe_05.jpg"),
+  serviceAsset("wardrobe_06.jpeg"),
 ];
 
 const dresserImages = [
-  serviceAsset("dresser_01.jfif"),
-  serviceAsset("dresser_02.jfif"),
-  serviceAsset("dresser_03.jfif"),
-  serviceAsset("dresser_04.jfif"),
+  serviceAsset("dresser_01.jpeg"),
+  serviceAsset("dresser_02.jpeg"),
+  serviceAsset("dresser_03.jpeg"),
+  serviceAsset("dresser_04.jpeg"),
+  serviceAsset("dresser_05.jpeg"),
 ];
 
 const sofaImages = [
@@ -141,7 +143,6 @@ const mirrorImages = [
 ];
 
 const kitchenUnitImages = [
-  kitchenLuxury,
   serviceAsset("kitchen_unit_01.png"),
   serviceAsset("kitchen_unit_02.jpeg"),
   serviceAsset("kitchen_unit_03.jpeg"),
