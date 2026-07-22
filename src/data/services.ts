@@ -6,7 +6,7 @@
 // (etc.) scrolls directly to that section.
 // ============================================================
 
-import kitchenLuxury from "@/assets/uploaded/kitchen-luxury.jpeg";
+
 import boucleBedSide from "@/assets/uploaded/boucle-bed-side.jpeg";
 import boucleBedWide from "@/assets/uploaded/boucle-bed-wide.jpeg";
 import greenSofaLuxe from "@/assets/uploaded/green-sofa-luxe.jpeg";
