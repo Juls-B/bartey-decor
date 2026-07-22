@@ -1,5 +1,5 @@
 import wardrobeFitted from "@/assets/wardrobe-fitted.jfif";
-import tvConsoleModern from "@/assets/tv-console-modern.jfif";
+import tvConsoleModern from "@/assets/tv-console-modern.jpeg";
 import tvConsoleMarble from "@/assets/tv-console-marble.jfif";
 import warmLivingRoom from "@/assets/warm-living-room.jpeg";
 import greenSofa from "@/assets/green-sofa.jfif";
