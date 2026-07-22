@@ -65,18 +65,20 @@ const serviceAsset = (fileName: string) =>
   new URL(`../assets/services/${fileName}`, import.meta.url).href;
 
 const wardrobeImages = [
-  serviceAsset("wardrobe_01.jfif"),
-  serviceAsset("wardrobe_02.jfif"),
+  serviceAsset("wardrobe_01.jpeg"),
+  serviceAsset("wardrobe_02.jpeg"),
   serviceAsset("wardrobe_03.jpg"),
   serviceAsset("wardrobe_04.jpg"),
   serviceAsset("wardrobe_05.jpg"),
+  serviceAsset("wardrobe_06.jpeg"),
 ];
 
 const dresserImages = [
-  serviceAsset("dresser_01.jfif"),
-  serviceAsset("dresser_02.jfif"),
-  serviceAsset("dresser_03.jfif"),
-  serviceAsset("dresser_04.jfif"),
+  serviceAsset("dresser_01.jpeg"),
+  serviceAsset("dresser_02.jpeg"),
+  serviceAsset("dresser_03.jpeg"),
+  serviceAsset("dresser_04.jpeg"),
+  serviceAsset("dresser_05.jpeg"),
 ];
 
 const sofaImages = [
