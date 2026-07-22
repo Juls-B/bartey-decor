@@ -98,7 +98,6 @@ const wallMouldingImages = [
 const tvUnitImages = [
   serviceAsset("tv_unit_01.jpeg"),
   serviceAsset("tv_unit_02.jpeg"),
-  serviceAsset("tv_unit_03.jpg"),
   serviceAsset("tv_unit_04.jpg"),
   serviceAsset("tv_unit_05.jpeg"),
 ];
