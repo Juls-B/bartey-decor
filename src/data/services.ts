@@ -143,7 +143,6 @@ const mirrorImages = [
 ];
 
 const kitchenUnitImages = [
-  kitchenLuxury,
   serviceAsset("kitchen_unit_01.png"),
   serviceAsset("kitchen_unit_02.jpeg"),
   serviceAsset("kitchen_unit_03.jpeg"),
