@@ -98,7 +98,7 @@ const wallMouldingImages = [
 const tvUnitImages = [
   serviceAsset("tv_unit_01.jpeg"),
   serviceAsset("tv_unit_02.jpeg"),
-  serviceAsset("tv_unit_04.jpg"),
+  serviceAsset("tv_unit_04.jpeg"),
   serviceAsset("tv_unit_05.jpeg"),
 ];
 
@@ -340,7 +340,6 @@ export const services: Service[] = [
     shortDescription: "Feature mirrors — arched, floor-standing and framed statement pieces.",
     description:
       "Custom mirrors in warm timber, brushed metal and lacquer frames. Perfect for dressing rooms, entryways, salons and hospitality spaces. Signature piece: the Luxury Decorative Mirror at GH₵ 3,500.",
-    price: "From GH₵ 3,500",
     gallery: mirrorImages,
   },
   {
