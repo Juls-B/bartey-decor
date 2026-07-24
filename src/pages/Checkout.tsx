@@ -36,7 +36,7 @@ const Checkout = () => {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <h1 className="font-serif text-4xl mb-4">Nothing to Quote</h1>
             <p className="text-muted-foreground mb-8">
-              Your selection is empty. Browse the portfolio and add pieces before requesting a quote.
+              Your selection is empty. Browse the portfolio and Add pieces before requesting a quote.
             </p>
             <Button asChild size="lg" className="rounded-none px-10 py-6 text-sm tracking-[0.15em] uppercase btn-premium">
               <Link to="/products">
