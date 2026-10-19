@@ -16,9 +16,9 @@ import linenPillows from "@/assets/uploaded/linen-pillows.jpeg";
 import diningCream from "@/assets/uploaded/dining-set-cream.jpeg";
 import diningBrass from "@/assets/uploaded/dining-brass.jpeg";
 import diningMarble from "@/assets/uploaded/dining-marble.jpeg";
-import homeStyling01 from "@/assets/uploaded/home-styling-01.jpeg.asset.json";
-import homeStyling02 from "@/assets/uploaded/home-styling-02.jpeg.asset.json";
-import homeStyling03 from "@/assets/uploaded/home-styling-03.jpeg.asset.json";
+import homeStyling01 from "@/assets/slide1.jpeg";
+import homeStyling02 from "@/assets/slide2.jpeg";
+import homeStyling03 from "@/assets/slide3.jpeg";
 
 export type ServiceCategoryId =
   | "living"
@@ -180,7 +180,7 @@ const curtainImages = [
   serviceAsset("curtains3.jfif"),
 ];
 
-const homeStylingImages = [homeStyling01.url, homeStyling02.url, homeStyling03.url];
+const homeStylingImages = [homeStyling01, homeStyling02, homeStyling03];
 
 // New service galleries — SafeImage will render an elegant fallback tile
 // until the real photography is uploaded to /src/assets/services/.
@@ -412,7 +412,6 @@ export const services: Service[] = [
     shortDescription: "Full-room styling, art curation and finishing touches.",
     description:
       "We style your finished space — sourcing rugs, art, lighting, planters and accessories — so every room feels curated, layered and complete.",
-    // TODO: replace serviceAsset("styling_*") placeholders with real styling photography.
     gallery: homeStylingImages,
   },
   {
@@ -479,4 +478,3 @@ export const serviceToCartProduct = (service: Service) => ({
   images: service.gallery,
   isService: true as const,
 });
-
