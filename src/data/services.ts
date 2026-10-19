@@ -16,9 +16,9 @@ import linenPillows from "@/assets/uploaded/linen-pillows.jpeg";
 import diningCream from "@/assets/uploaded/dining-set-cream.jpeg";
 import diningBrass from "@/assets/uploaded/dining-brass.jpeg";
 import diningMarble from "@/assets/uploaded/dining-marble.jpeg";
-import slide1 from "@/assets/slide1.jpg";
-import slide2 from "@/assets/slide2.jpg";
-import slide3 from "@/assets/slide3.jpg";
+import homeStyling01 from "@/assets/uploaded/home-styling-01.jpeg.asset.json";
+import homeStyling02 from "@/assets/uploaded/home-styling-02.jpeg.asset.json";
+import homeStyling03 from "@/assets/uploaded/home-styling-03.jpeg.asset.json";
 
 export type ServiceCategoryId =
   | "living"
@@ -180,7 +180,7 @@ const curtainImages = [
   serviceAsset("curtains3.jfif"),
 ];
 
-const homeStylingImages = [slide1, slide2, slide3];
+const homeStylingImages = [homeStyling01.url, homeStyling02.url, homeStyling03.url];
 
 // New service galleries — SafeImage will render an elegant fallback tile
 // until the real photography is uploaded to /src/assets/services/.
